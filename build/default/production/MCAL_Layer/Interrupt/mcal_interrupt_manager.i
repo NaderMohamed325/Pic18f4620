@@ -4497,8 +4497,7 @@ __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer suppo
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "D:/IDE MCU/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 2 3
-# 12 "MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h" 2
-
+# 13 "MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h" 2
 # 1 "MCAL_LAYER/Interrupt/../mcal_std_types.h" 1
 # 13 "MCAL_LAYER/Interrupt/../mcal_std_types.h"
 # 1 "MCAL_LAYER/Interrupt/../std_lin.h" 1
@@ -4655,8 +4654,7 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 13 "MCAL_LAYER/Interrupt/../std_lin.h" 2
-
+# 14 "MCAL_LAYER/Interrupt/../std_lin.h" 2
 
 # 1 "D:\\IDE MCU\\pic\\include\\c99\\string.h" 1 3
 # 25 "D:\\IDE MCU\\pic\\include\\c99\\string.h" 3
@@ -4715,11 +4713,383 @@ size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
 
 
 void *memccpy (void *restrict, const void *restrict, int, size_t);
-# 15 "MCAL_LAYER/Interrupt/../std_lin.h" 2
-# 13 "MCAL_LAYER/Interrupt/../mcal_std_types.h" 2
+# 16 "MCAL_LAYER/Interrupt/../std_lin.h" 2
+# 1 "D:\\IDE MCU\\pic\\include\\c99\\math.h" 1 3
+# 15 "D:\\IDE MCU\\pic\\include\\c99\\math.h" 3
+# 1 "D:\\IDE MCU\\pic\\include\\c99\\bits/alltypes.h" 1 3
+# 39 "D:\\IDE MCU\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef float float_t;
 
-# 1 "MCAL_LAYER/Interrupt/../compiler.h" 1
+
+
+
+typedef double double_t;
+# 16 "D:\\IDE MCU\\pic\\include\\c99\\math.h" 2 3
+# 42 "D:\\IDE MCU\\pic\\include\\c99\\math.h" 3
+int __fpclassifyf(float);
+
+
+
+
+
+
+
+int __signbitf(float);
+# 59 "D:\\IDE MCU\\pic\\include\\c99\\math.h" 3
+double acos(double);
+float acosf(float);
+long double acosl(long double);
+
+
+
+double acosh(double);
+float acoshf(float);
+long double acoshl(long double);
+
+
+
+double asin(double);
+float asinf(float);
+long double asinl(long double);
+
+
+
+double asinh(double);
+float asinhf(float);
+long double asinhl(long double);
+
+
+
+double atan(double);
+float atanf(float);
+long double atanl(long double);
+
+
+
+double atan2(double, double);
+float atan2f(float, float);
+long double atan2l(long double, long double);
+
+
+
+double atanh(double);
+float atanhf(float);
+long double atanhl(long double);
+
+
+
+double cbrt(double);
+float cbrtf(float);
+long double cbrtl(long double);
+
+
+
+double ceil(double);
+float ceilf(float);
+long double ceill(long double);
+
+
+
+double copysign(double, double);
+float copysignf(float, float);
+long double copysignl(long double, long double);
+
+
+
+double cos(double);
+float cosf(float);
+long double cosl(long double);
+
+
+
+double cosh(double);
+float coshf(float);
+long double coshl(long double);
+
+
+
+double erf(double);
+float erff(float);
+long double erfl(long double);
+
+
+
+double erfc(double);
+float erfcf(float);
+long double erfcl(long double);
+
+
+
+double exp(double);
+float expf(float);
+long double expl(long double);
+
+
+
+double exp2(double);
+float exp2f(float);
+long double exp2l(long double);
+
+
+
+double expm1(double);
+float expm1f(float);
+long double expm1l(long double);
+
+
+
+double fabs(double);
+float fabsf(float);
+long double fabsl(long double);
+
+
+
+double fdim(double, double);
+float fdimf(float, float);
+long double fdiml(long double, long double);
+
+
+
+double floor(double);
+float floorf(float);
+long double floorl(long double);
+
+
+
+double fma(double, double, double);
+float fmaf(float, float, float);
+long double fmal(long double, long double, long double);
+
+
+
+double fmax(double, double);
+float fmaxf(float, float);
+long double fmaxl(long double, long double);
+
+
+
+double fmin(double, double);
+float fminf(float, float);
+long double fminl(long double, long double);
+
+
+
+double fmod(double, double);
+float fmodf(float, float);
+long double fmodl(long double, long double);
+
+
+
+double frexp(double, int *);
+float frexpf(float, int *);
+long double frexpl(long double, int *);
+
+
+
+double hypot(double, double);
+float hypotf(float, float);
+long double hypotl(long double, long double);
+
+
+
+int ilogb(double);
+int ilogbf(float);
+int ilogbl(long double);
+
+
+
+double ldexp(double, int);
+float ldexpf(float, int);
+long double ldexpl(long double, int);
+
+
+
+
+double lgamma(double);
+float lgammaf(float);
+long double lgammal(long double);
+
+
+
+
+long long llrint(double);
+long long llrintf(float);
+long long llrintl(long double);
+
+
+
+long long llround(double);
+long long llroundf(float);
+long long llroundl(long double);
+
+
+
+
+double log(double);
+float logf(float);
+long double logl(long double);
+
+
+
+double log10(double);
+float log10f(float);
+long double log10l(long double);
+
+
+
+double log1p(double);
+float log1pf(float);
+long double log1pl(long double);
+
+
+
+double log2(double);
+float log2f(float);
+long double log2l(long double);
+
+
+
+double logb(double);
+float logbf(float);
+long double logbl(long double);
+
+
+
+long lrint(double);
+long lrintf(float);
+long lrintl(long double);
+
+
+
+long lround(double);
+long lroundf(float);
+long lroundl(long double);
+
+
+
+double modf(double, double *);
+float modff(float, float *);
+long double modfl(long double, long double *);
+
+
+
+double nan(const char *);
+float nanf(const char *);
+long double nanl(const char *);
+
+
+
+double nearbyint(double);
+float nearbyintf(float);
+long double nearbyintl(long double);
+
+
+
+double nextafter(double, double);
+float nextafterf(float, float);
+long double nextafterl(long double, long double);
+
+
+
+double nexttoward(double, long double);
+float nexttowardf(float, long double);
+long double nexttowardl(long double, long double);
+# 326 "D:\\IDE MCU\\pic\\include\\c99\\math.h" 3
+double pow(double, double);
+__attribute__((nonreentrant)) float powf(float, float);
+long double powl(long double, long double);
+
+
+
+double remainder(double, double);
+float remainderf(float, float);
+long double remainderl(long double, long double);
+
+
+
+double remquo(double, double, int *);
+float remquof(float, float, int *);
+long double remquol(long double, long double, int *);
+
+
+
+double rint(double);
+float rintf(float);
+long double rintl(long double);
+
+
+
+double round(double);
+float roundf(float);
+long double roundl(long double);
+
+
+
+double scalbln(double, long);
+float scalblnf(float, long);
+long double scalblnl(long double, long);
+
+
+
+double scalbn(double, int);
+float scalbnf(float, int);
+long double scalbnl(long double, int);
+
+
+
+double sin(double);
+float sinf(float);
+long double sinl(long double);
+
+
+
+double sinh(double);
+float sinhf(float);
+long double sinhl(long double);
+
+
+
+double sqrt(double);
+float sqrtf(float);
+long double sqrtl(long double);
+
+
+
+double tan(double);
+float tanf(float);
+long double tanl(long double);
+
+
+
+double tanh(double);
+float tanhf(float);
+long double tanhl(long double);
+
+
+
+double tgamma(double);
+float tgammaf(float);
+long double tgammal(long double);
+
+
+
+double trunc(double);
+float truncf(float);
+long double truncl(long double);
+# 431 "D:\\IDE MCU\\pic\\include\\c99\\math.h" 3
+extern int signgam;
+
+double j0(double);
+double j1(double);
+double jn(int, double);
+
+double y0(double);
+double y1(double);
+double yn(int, double);
+# 17 "MCAL_LAYER/Interrupt/../std_lin.h" 2
 # 14 "MCAL_LAYER/Interrupt/../mcal_std_types.h" 2
+# 1 "MCAL_LAYER/Interrupt/../compiler.h" 1
+# 15 "MCAL_LAYER/Interrupt/../mcal_std_types.h" 2
 # 25 "MCAL_LAYER/Interrupt/../mcal_std_types.h"
 typedef unsigned char uint8;
 typedef unsigned short uint16;
@@ -4728,18 +5098,15 @@ typedef signed int sint32;
 typedef signed char sint8;
 typedef signed short sint16;
 typedef uint8 Std_ReturnType;
-# 13 "MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h" 2
-
-# 1 "MCAL_LAYER/Interrupt/mcal_interrupt_gen_cfg.h" 1
 # 14 "MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h" 2
-
+# 1 "MCAL_LAYER/Interrupt/mcal_interrupt_gen_cfg.h" 1
+# 15 "MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h" 2
 # 1 "MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h" 1
 # 16 "MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h"
 # 1 "MCAL_LAYER/Interrupt/../GPIO/../decive_config.h" 1
-# 16 "MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h" 2
-
-# 1 "MCAL_LAYER/Interrupt/../GPIO/hal_pio_cnfg.h" 1
 # 17 "MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h" 2
+# 1 "MCAL_LAYER/Interrupt/../GPIO/hal_pio_cnfg.h" 1
+# 18 "MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h" 2
 # 38 "MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h"
 typedef enum {
     GPIO_LOW = 0,
@@ -4798,13 +5165,13 @@ Std_ReturnType gpio_port_write_logic(port_index_t port, uint8 logic);
 Std_ReturnType gpio_port_read_logic(port_index_t port, uint8 *logic);
 # 191 "MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h"
 Std_ReturnType gpio_port_toggle_logic(port_index_t port);
-# 15 "MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h" 2
+# 16 "MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h" 2
 # 58 "MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h"
 typedef enum {
     INTERRUPT_LOW_PRIORITY = 0,
     INTERRUPT_HIGH_PRIORITY
 } interrupt_priority_cfg;
-# 12 "MCAL_LAYER/Interrupt/mcal_interrupt_manager.h" 2
+# 13 "MCAL_LAYER/Interrupt/mcal_interrupt_manager.h" 2
 # 27 "MCAL_LAYER/Interrupt/mcal_interrupt_manager.h"
 void INT0_ISR(void);
 void INT1_ISR(void);
@@ -4813,10 +5180,12 @@ void RB4_ISR(uint8 source);
 void RB5_ISR(uint8 source);
 void RB6_ISR(uint8 source);
 void RB7_ISR(uint8 source);
-# 8 "MCAL_LAYER/Interrupt/mcal_interrupt_manager.c" 2
-
+# 9 "MCAL_LAYER/Interrupt/mcal_interrupt_manager.c" 2
 static volatile uint8 RB4_f = 1, RB5_f = 1, RB6_f = 1, RB7_f = 1;
-# 36 "MCAL_LAYER/Interrupt/mcal_interrupt_manager.c"
+
+
+
+
 void __attribute__((picinterrupt(("")))) Interrupt_Manager_High(void) {
 
     if ((INTCONbits.INT0IE == 1) && (INTCONbits.INT0IF == 1)) {
@@ -4826,50 +5195,12 @@ void __attribute__((picinterrupt(("")))) Interrupt_Manager_High(void) {
     if ((INTCON3bits.INT1IE == 1) && (INTCON3bits.INT1IF == 1)) {
         INT1_ISR();
     }
+}
+
+
+void __attribute__((picinterrupt(("low_priority")))) Interrupt_Manager_Low(void) {
 
     if ((INTCON3bits.INT2IE == 1) && (INTCON3bits.INT2IF == 1)) {
         INT2_ISR();
-    }
-
-
-    if ((INTCONbits.RBIE == 1) && (INTCONbits.RBIF == 1)) {
-
-
-
-        if ((PORTBbits.RB4 == GPIO_HIGH) && RB4_f == 1) {
-            RB4_f = 0;
-            RB4_ISR(0);
-        }
-        if ((PORTBbits.RB4 == GPIO_LOW) && RB4_f == 0) {
-            RB4_f = 1;
-            RB4_ISR(1);
-        }
-
-        if ((PORTBbits.RB5 == GPIO_HIGH) && RB5_f == 1) {
-            RB5_f = 0;
-            RB5_ISR(0);
-        }
-        if ((PORTBbits.RB5 == GPIO_LOW) && RB5_f == 0) {
-            RB5_f = 1;
-            RB5_ISR(1);
-        }
-
-        if ((PORTBbits.RB6 == GPIO_HIGH) && RB6_f == 1) {
-            RB6_f = 0;
-            RB6_ISR(0);
-        }
-        if ((PORTBbits.RB6 == GPIO_LOW) && RB6_f == 0) {
-            RB6_f = 1;
-            RB6_ISR(1);
-        }
-
-        if ((PORTBbits.RB7 == GPIO_HIGH) && RB7_f == 1) {
-            RB7_f = 0;
-            RB7_ISR(0);
-        }
-        if ((PORTBbits.RB7 == GPIO_LOW) && RB7_f == 0) {
-            RB7_f = 1;
-            RB7_ISR(1);
-        }
     }
 }

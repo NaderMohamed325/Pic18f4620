@@ -1,35 +1,39 @@
 Version 4.0 HI-TECH Software Intermediate Code
+"24 ECU_LAYER/Led/ecu_led.h
+[; ;ECU_LAYER/Led/ecu_led.h: 24: typedef struct {
+[s S276 :3 `uc 1 :3 `uc 1 :1 `uc 1 ]
+[n S276 . port_index pin_index led_status ]
+"10 ECU_LAYER/ecu_layer_init.c
+[; ;ECU_LAYER/ecu_layer_init.c: 10: Led_t led = {
+[c E3410 0 1 2 3 4 .. ]
+[n E3410 . PORTA_INDEX PORTB_INDEX PORTC_INDEX PORTD_INDEX PORTE_INDEX  ]
+[c E3417 0 1 2 3 4 5 6 7 .. ]
+[n E3417 . PIN0 PIN1 PIN2 PIN3 PIN4 PIN5 PIN6 PIN7  ]
+[c E3490 0 1 .. ]
+[n E3490 . LED_OFF LED_ON  ]
 "67 ECU_LAYER/Chr_Lcd/../../MCAL_LAYER/GPIO/hal_gpio.h
 [s S273 :3 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S273 . port pin direction logic ]
-"9 ECU_LAYER/ecu_layer_init.c
-[; ;ECU_LAYER/ecu_layer_init.c: 9: button_t button = {
-[c E3121 0 1 .. ]
-[n E3121 . BUTTON_ACTVE_HIGH BUTTON_ACTIVE_LOW  ]
-[c E3117 0 1 .. ]
-[n E3117 . BUTTON_PRESSED BUTTON_RELEASED  ]
-"40 ECU_LAYER/button/ecu_button.h
-[; ;ECU_LAYER/button/ecu_button.h: 40: typedef struct {
-[s S279 `S273 1 `E3121 1 `E3117 1 ]
-[n S279 . pin_config button_active button_state ]
-"9 ECU_LAYER/ecu_layer_init.c
-[; ;ECU_LAYER/ecu_layer_init.c: 9: button_t button = {
-[c E2986 0 1 2 3 4 .. ]
-[n E2986 . PORTA_INDEX PORTB_INDEX PORTC_INDEX PORTD_INDEX PORTE_INDEX  ]
-[c E2993 0 1 2 3 4 5 6 7 .. ]
-[n E2993 . PIN0 PIN1 PIN2 PIN3 PIN4 PIN5 PIN6 PIN7  ]
-[c E2982 0 1 .. ]
-[n E2982 . GPIO_OUTPUT GPIO_INPUT  ]
-[c E2978 0 1 .. ]
-[n E2978 . GPIO_LOW GPIO_HIGH  ]
-"52 ECU_LAYER/Chr_Lcd/ecu_chr_lcd.h
-[; ;ECU_LAYER/Chr_Lcd/ecu_chr_lcd.h: 52: typedef struct {
-[s S280 `S273 1 `S273 1 `S273 -> 4 `i ]
-[n S280 . lcd_rs lcd_en lcd_data ]
-"27 ECU_LAYER/Keypad/ecu_keypad.h
-[; ;ECU_LAYER/Keypad/ecu_keypad.h: 27: typedef struct {
-[s S275 `S273 -> 4 `i `S273 -> 4 `i ]
-[n S275 . keypad_row_pins keypad_col_pins ]
+"15 ECU_LAYER/ecu_layer_init.c
+[; ;ECU_LAYER/ecu_layer_init.c: 15: Seven_Segment_t segment_10 = {
+[c E3522 0 1 .. ]
+[n E3522 . SEVEN_SEG_TYPE_ANODE SEVEN_SEG_TYPE_CATHOD  ]
+"30 ECU_LAYER/Seven_Seg/Seven_Seg.h
+[; ;ECU_LAYER/Seven_Seg/Seven_Seg.h: 30: typedef struct {
+[s S278 `S273 -> 4 `i `E3522 1 ]
+[n S278 . segment_pins Seg_Type ]
+"15 ECU_LAYER/ecu_layer_init.c
+[; ;ECU_LAYER/ecu_layer_init.c: 15: Seven_Segment_t segment_10 = {
+[c E3406 0 1 .. ]
+[n E3406 . GPIO_OUTPUT GPIO_INPUT  ]
+[c E3402 0 1 .. ]
+[n E3402 . GPIO_LOW GPIO_HIGH  ]
+"41 ECU_LAYER/Seven_Seg/Seven_Seg.h
+[; ;ECU_LAYER/Seven_Seg/Seven_Seg.h: 41: Std_ReturnType Seven_Segm_initailize(Seven_Segment_t * _Seven_Seg);
+[v _Seven_Segm_initailize `(uc ~T0 @X0 0 ef1`*S278 ]
+"40 ECU_LAYER/Led/ecu_led.h
+[; ;ECU_LAYER/Led/ecu_led.h: 40: Std_ReturnType led_intialize(const Led_t *Led);
+[v _led_intialize `(uc ~T0 @X0 0 ef1`*CS276 ]
 "54 D:/IDE MCU/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
 [; ;D:/IDE MCU/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -441,148 +445,110 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6715
 [; ;D:/IDE MCU/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6715: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"9 ECU_LAYER/ecu_layer_init.c
-[; ;ECU_LAYER/ecu_layer_init.c: 9: button_t button = {
-[v _button `S279 ~T0 @X0 1 e ]
-[i _button
+"10 ECU_LAYER/ecu_layer_init.c
+[; ;ECU_LAYER/ecu_layer_init.c: 10: Led_t led = {
+[v _led `S276 ~T0 @X0 1 e ]
+[i _led
 :U ..
 :U ..
-:U ..
-:U ..
--> . `E2986 3 `uc
--> . `E2993 6 `uc
--> . `E2982 1 `uc
--> . `E2978 0 `uc
-..
-..
-. `E3121 0
-. `E3117 1
+-> . `E3410 2 `uc
+-> . `E3417 4 `uc
+-> . `E3490 0 `uc
 ..
 ..
 ]
-"17
-[; ;ECU_LAYER/ecu_layer_init.c: 17: lcd_4bit_mode lcd = {
-[v _lcd `S280 ~T0 @X0 1 e ]
-[i _lcd
+"15
+[; ;ECU_LAYER/ecu_layer_init.c: 15: Seven_Segment_t segment_10 = {
+[v _segment_10 `S278 ~T0 @X0 1 e ]
+[i _segment_10
 :U ..
 :U ..
 :U ..
 :U ..
--> . `E2986 3 `uc
--> . `E2993 1 `uc
--> . `E2982 0 `uc
--> . `E2978 0 `uc
-..
-..
-:U ..
-:U ..
--> . `E2986 3 `uc
--> . `E2993 0 `uc
--> . `E2982 0 `uc
--> . `E2978 0 `uc
-..
+-> . `E3410 2 `uc
+-> . `E3417 0 `uc
+-> . `E3406 0 `uc
+-> . `E3402 0 `uc
 ..
 :U ..
-:U ..
--> . `E2986 3 `uc
--> . `E2993 2 `uc
--> . `E2982 0 `uc
--> . `E2978 0 `uc
+-> . `E3410 2 `uc
+-> . `E3417 1 `uc
+-> . `E3406 0 `uc
+-> . `E3402 0 `uc
 ..
 :U ..
--> . `E2986 3 `uc
--> . `E2993 3 `uc
--> . `E2982 0 `uc
--> . `E2978 0 `uc
+-> . `E3410 2 `uc
+-> . `E3417 2 `uc
+-> . `E3406 0 `uc
+-> . `E3402 0 `uc
 ..
 :U ..
--> . `E2986 3 `uc
--> . `E2993 4 `uc
--> . `E2982 0 `uc
--> . `E2978 0 `uc
-..
-:U ..
--> . `E2986 3 `uc
--> . `E2993 5 `uc
--> . `E2982 0 `uc
--> . `E2978 0 `uc
+-> . `E3410 2 `uc
+-> . `E3417 3 `uc
+-> . `E3406 0 `uc
+-> . `E3402 0 `uc
 ..
 ..
+. `E3522 1
 ..
 ..
 ]
-"48
-[; ;ECU_LAYER/ecu_layer_init.c: 48: Keypad_t key = {
-[v _key `S275 ~T0 @X0 1 e ]
-[i _key
+"39
+[; ;ECU_LAYER/ecu_layer_init.c: 39: Seven_Segment_t segment = {
+[v _segment `S278 ~T0 @X0 1 e ]
+[i _segment
 :U ..
 :U ..
 :U ..
 :U ..
--> . `E2986 2 `uc
--> . `E2993 0 `uc
--> . `E2982 0 `uc
--> . `E2978 0 `uc
+-> . `E3410 0 `uc
+-> . `E3417 0 `uc
+-> . `E3406 0 `uc
+-> . `E3402 0 `uc
 ..
 :U ..
--> . `E2986 2 `uc
--> . `E2993 1 `uc
--> . `E2982 0 `uc
--> . `E2978 0 `uc
+-> . `E3410 0 `uc
+-> . `E3417 1 `uc
+-> . `E3406 0 `uc
+-> . `E3402 0 `uc
 ..
 :U ..
--> . `E2986 2 `uc
--> . `E2993 2 `uc
--> . `E2982 0 `uc
--> . `E2978 0 `uc
+-> . `E3410 0 `uc
+-> . `E3417 2 `uc
+-> . `E3406 0 `uc
+-> . `E3402 0 `uc
 ..
 :U ..
--> . `E2986 2 `uc
--> . `E2993 3 `uc
--> . `E2982 0 `uc
--> . `E2978 0 `uc
+-> . `E3410 0 `uc
+-> . `E3417 3 `uc
+-> . `E3406 0 `uc
+-> . `E3402 0 `uc
 ..
 ..
-:U ..
-:U ..
--> . `E2986 2 `uc
--> . `E2993 4 `uc
--> . `E2982 1 `uc
--> . `E2978 0 `uc
-..
-:U ..
--> . `E2986 2 `uc
--> . `E2993 5 `uc
--> . `E2982 1 `uc
--> . `E2978 0 `uc
-..
-:U ..
--> . `E2986 2 `uc
--> . `E2993 6 `uc
--> . `E2982 1 `uc
--> . `E2978 0 `uc
-..
-:U ..
--> . `E2986 2 `uc
--> . `E2993 7 `uc
--> . `E2982 1 `uc
--> . `E2978 0 `uc
-..
-..
+. `E3522 1
 ..
 ..
 ]
-"94
-[; ;ECU_LAYER/ecu_layer_init.c: 94: void ecu_layer_initailize(void) {
+"64
+[; ;ECU_LAYER/ecu_layer_init.c: 64: void ecu_layer_initailize(void) {
 [v _ecu_layer_initailize `(v ~T0 @X0 1 ef ]
 {
 [e :U _ecu_layer_initailize ]
 [f ]
-"95
-[; ;ECU_LAYER/ecu_layer_init.c: 95:     Std_ReturnType ret = (Std_ReturnType)0X01;
+"65
+[; ;ECU_LAYER/ecu_layer_init.c: 65:     Std_ReturnType ret = (Std_ReturnType)0X01;
 [v _ret `uc ~T0 @X0 1 a ]
 [e = _ret -> -> 1 `i `uc ]
-"97
-[; ;ECU_LAYER/ecu_layer_init.c: 97: }
+"66
+[; ;ECU_LAYER/ecu_layer_init.c: 66:     ret = Seven_Segm_initailize(&segment);
+[e = _ret ( _Seven_Segm_initailize (1 &U _segment ]
+"67
+[; ;ECU_LAYER/ecu_layer_init.c: 67:     ret = Seven_Segm_initailize(&segment_10);
+[e = _ret ( _Seven_Segm_initailize (1 &U _segment_10 ]
+"68
+[; ;ECU_LAYER/ecu_layer_init.c: 68:     ret = led_intialize(&led);
+[e = _ret ( _led_intialize (1 -> &U _led `*CS276 ]
+"69
+[; ;ECU_LAYER/ecu_layer_init.c: 69: }
 [e :UE 282 ]
 }

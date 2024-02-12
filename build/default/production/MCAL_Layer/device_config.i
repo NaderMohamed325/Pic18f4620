@@ -8,8 +8,7 @@
 # 2 "<built-in>" 2
 # 1 "MCAL_LAYER/device_config.c" 2
 # 1 "MCAL_LAYER/decive_config.h" 1
-# 1 "MCAL_LAYER/device_config.c" 2
-
+# 2 "MCAL_LAYER/device_config.c" 2
 
 
 

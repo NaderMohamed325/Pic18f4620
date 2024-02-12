@@ -12,6 +12,7 @@
 #include "mcal_interrupt_cfg.h"
 
 /*---------------- MACROS --------------------*/
+typedef void (*Interrupt_Handler)(void);
 
 /*-------------- EXTERNAL INTERRUPT MACROS --------------*/
 #if EXTERNAL_INTERRUPT_INTx_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE

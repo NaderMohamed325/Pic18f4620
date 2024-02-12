@@ -8,7 +8,7 @@
 #include "mcal_external_interrupt.h"
 
 // Static function declarations
-typedef void (*Interrupt_Handler)(void);
+
 static Std_ReturnType Interrupt_INTx_Enable(const interrupt_INTx_t *obj);
 static Std_ReturnType Interrupt_INTx_Disable(const interrupt_INTx_t *obj);
 static Std_ReturnType Interrupt_INTx_Priority_Init(const interrupt_INTx_t *obj);
@@ -16,9 +16,9 @@ static Std_ReturnType Interrupt_INTx_Edge_Init(const interrupt_INTx_t *obj);
 static Std_ReturnType Interrupt_INTx_Pin_Init(const interrupt_INTx_t *obj);
 static Std_ReturnType Interrupt_INTx_Clear_Flag(const interrupt_INTx_t *obj);
 
-static Std_ReturnType INT0_Set_Interrupt_Handler(Interrupt_Handler);
-static Std_ReturnType INT1_Set_Interrupt_Handler(Interrupt_Handler);
-static Std_ReturnType INT2_Set_Interrupt_Handler(Interrupt_Handler);
+static Std_ReturnType INT0_Set_Interrupt_Handler(void (*Interrupt_Handler)(void));
+static Std_ReturnType INT1_Set_Interrupt_Handler(void (*Interrupt_Handler)(void));
+static Std_ReturnType INT2_Set_Interrupt_Handler(void (*Interrupt_Handler)(void));
 static Std_ReturnType Interrupt_Set_Interrupt_Handler(const interrupt_INTx_t *obj);
 
 // Static variables for interrupt handlers
@@ -51,8 +51,8 @@ Std_ReturnType Interrupt_INTx_Init(const interrupt_INTx_t *obj) {
         ret |= Interrupt_INTx_Edge_Init(obj);
 
         // Initialize priority if enabled
-#if INTERRUPT_PRIORITY_LEVELS_ENABLE==INTERRUPT_FEATURE_ENABLE
-        ret | = Interrupt_INTx_Priority_Init(obj);
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
+        ret |= Interrupt_INTx_Priority_Init(obj);
 #endif
 
         // Initialize pin and set interrupt handler
@@ -146,7 +146,7 @@ Std_ReturnType Interrupt_RBx_Init(const interrupt_RBx_t *obj) {
     return ret;
 }
 
- 
+
 
 // Implementation of static functions
 

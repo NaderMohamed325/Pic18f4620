@@ -198,11 +198,15 @@ SEVEN_SEG_TYPE_CATHOD 1
 ]
 "24
 [v _main main `(i  1 e 2 0 ]
-"36
+"37
 [v _Application_initialize Application_initialize `(v  1 e 1 0 ]
-"41
+"42
 [v _timer_increment timer_increment `(v  1 e 1 0 ]
 [v i2_timer_increment timer_increment `(v  1 e 1 0 ]
+"7 D:\IDE MCU\pic\sources\c99\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"7 D:\IDE MCU\pic\sources\c99\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
 "4 D:\IDE MCU\pic\sources\c99\common\fleq.c
 [v ___fleq __fleq `(b  1 e 0 0 ]
 "62 D:\IDE MCU\pic\sources\c99\common\float.c
@@ -257,7 +261,7 @@ SEVEN_SEG_TYPE_CATHOD 1
 [v _lcd_4bits_command lcd_4bits_command `(uc  1 s 1 lcd_4bits_command ]
 "433
 [v _lcd_4bit_set_cursor lcd_4bit_set_cursor `(uc  1 s 1 lcd_4bit_set_cursor ]
-"40 C:\Users\xcite\OneDrive\Documents\Drivers.X\ECU_LAYER/ecu_layer_init.c
+"64 C:\Users\xcite\OneDrive\Documents\Drivers.X\ECU_LAYER/ecu_layer_init.c
 [v _ecu_layer_initailize ecu_layer_initailize `(v  1 e 1 0 ]
 "12 C:\Users\xcite\OneDrive\Documents\Drivers.X\ECU_LAYER/Led/ecu_led.c
 [v _led_intialize led_intialize `(uc  1 e 1 0 ]
@@ -319,8 +323,8 @@ SEVEN_SEG_TYPE_CATHOD 1
 `uc 1 logic 1 0 :1:7 
 ]
 "13
-[s S813 . 6 `*.37(v 1 External_CallBack 2 0 `E3468 1 Edge 1 2 `E3472 1 Source 1 3 `E3462 1 Priority 1 4 `S24 1 mcu_pin 1 5 ]
-[v _clock clock `S813  1 e 6 0 ]
+[s S816 . 6 `*.37(v 1 External_CallBack 2 0 `E3468 1 Edge 1 2 `E3472 1 Source 1 3 `E3462 1 Priority 1 4 `S24 1 mcu_pin 1 5 ]
+[v _clock clock `S816  1 e 6 0 ]
 "52 D:/IDE MCU/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
 [v _PORTA PORTA `VEuc  1 e 1 @3968 ]
 "189
@@ -351,7 +355,7 @@ SEVEN_SEG_TYPE_CATHOD 1
 [v _TRISD TRISD `VEuc  1 e 1 @3989 ]
 "2268
 [v _TRISE TRISE `VEuc  1 e 1 @3990 ]
-[s S1452 . 1 `uc 1 RD 1 0 :1:0 
+[s S1456 . 1 `uc 1 RD 1 0 :1:0 
 `uc 1 WR 1 0 :1:1 
 `uc 1 WREN 1 0 :1:2 
 `uc 1 WRERR 1 0 :1:3 
@@ -361,11 +365,11 @@ SEVEN_SEG_TYPE_CATHOD 1
 `uc 1 EEPGD 1 0 :1:7 
 ]
 "2947
-[s S1461 . 1 `uc 1 . 1 0 :6:0 
+[s S1465 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 EEFS 1 0 :1:6 
 ]
-[u S1464 . 1 `S1452 1 . 1 0 `S1461 1 . 1 0 ]
-[v _EECON1bits EECON1bits `VES1464  1 e 1 @4006 ]
+[u S1468 . 1 `S1456 1 . 1 0 `S1465 1 . 1 0 ]
+[v _EECON1bits EECON1bits `VES1468  1 e 1 @4006 ]
 "2992
 [v _EECON2 EECON2 `VEuc  1 e 1 @4007 ]
 "2999
@@ -374,22 +378,22 @@ SEVEN_SEG_TYPE_CATHOD 1
 [v _EEADR EEADR `VEuc  1 e 1 @4009 ]
 "3013
 [v _EEADRH EEADRH `VEuc  1 e 1 @4010 ]
-[s S905 . 1 `uc 1 NOT_BOR 1 0 :1:0 
+[s S908 . 1 `uc 1 NOT_BOR 1 0 :1:0 
 ]
 "5391
-[s S907 . 1 `uc 1 . 1 0 :1:0 
+[s S910 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 NOT_POR 1 0 :1:1 
 ]
-[s S910 . 1 `uc 1 . 1 0 :2:0 
+[s S913 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_PD 1 0 :1:2 
 ]
-[s S913 . 1 `uc 1 . 1 0 :3:0 
+[s S916 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 NOT_TO 1 0 :1:3 
 ]
-[s S916 . 1 `uc 1 . 1 0 :4:0 
+[s S919 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 NOT_RI 1 0 :1:4 
 ]
-[s S919 . 1 `uc 1 nBOR 1 0 :1:0 
+[s S922 . 1 `uc 1 nBOR 1 0 :1:0 
 `uc 1 nPOR 1 0 :1:1 
 `uc 1 nPD 1 0 :1:2 
 `uc 1 nTO 1 0 :1:3 
@@ -398,15 +402,15 @@ SEVEN_SEG_TYPE_CATHOD 1
 `uc 1 SBOREN 1 0 :1:6 
 `uc 1 IPEN 1 0 :1:7 
 ]
-[s S928 . 1 `uc 1 BOR 1 0 :1:0 
+[s S931 . 1 `uc 1 BOR 1 0 :1:0 
 `uc 1 POR 1 0 :1:1 
 `uc 1 PD 1 0 :1:2 
 `uc 1 TO 1 0 :1:3 
 `uc 1 RI 1 0 :1:4 
 ]
-[u S934 . 1 `S905 1 . 1 0 `S907 1 . 1 0 `S910 1 . 1 0 `S913 1 . 1 0 `S916 1 . 1 0 `S919 1 . 1 0 `S928 1 . 1 0 ]
-[v _RCONbits RCONbits `VES934  1 e 1 @4048 ]
-[s S1017 . 1 `uc 1 INT1IF 1 0 :1:0 
+[u S937 . 1 `S908 1 . 1 0 `S910 1 . 1 0 `S913 1 . 1 0 `S916 1 . 1 0 `S919 1 . 1 0 `S922 1 . 1 0 `S931 1 . 1 0 ]
+[v _RCONbits RCONbits `VES937  1 e 1 @4048 ]
+[s S1020 . 1 `uc 1 INT1IF 1 0 :1:0 
 `uc 1 INT2IF 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 INT1IE 1 0 :1:3 
@@ -416,7 +420,7 @@ SEVEN_SEG_TYPE_CATHOD 1
 `uc 1 INT2IP 1 0 :1:7 
 ]
 "6239
-[s S1026 . 1 `uc 1 INT1F 1 0 :1:0 
+[s S1029 . 1 `uc 1 INT1F 1 0 :1:0 
 `uc 1 INT2F 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 INT1E 1 0 :1:3 
@@ -425,13 +429,13 @@ SEVEN_SEG_TYPE_CATHOD 1
 `uc 1 INT1P 1 0 :1:6 
 `uc 1 INT2P 1 0 :1:7 
 ]
-[u S1035 . 1 `S1017 1 . 1 0 `S1026 1 . 1 0 ]
-[v _INTCON3bits INTCON3bits `VES1035  1 e 1 @4080 ]
-[s S972 . 1 `uc 1 . 1 0 :7:0 
+[u S1038 . 1 `S1020 1 . 1 0 `S1029 1 . 1 0 ]
+[v _INTCON3bits INTCON3bits `VES1038  1 e 1 @4080 ]
+[s S975 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 NOT_RBPU 1 0 :1:7 
 ]
 "6329
-[s S975 . 1 `uc 1 RBIP 1 0 :1:0 
+[s S978 . 1 `uc 1 RBIP 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 TMR0IP 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -440,12 +444,12 @@ SEVEN_SEG_TYPE_CATHOD 1
 `uc 1 INTEDG0 1 0 :1:6 
 `uc 1 nRBPU 1 0 :1:7 
 ]
-[s S984 . 1 `uc 1 . 1 0 :7:0 
+[s S987 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 RBPU 1 0 :1:7 
 ]
-[u S987 . 1 `S972 1 . 1 0 `S975 1 . 1 0 `S984 1 . 1 0 ]
-[v _INTCON2bits INTCON2bits `VES987  1 e 1 @4081 ]
-[s S856 . 1 `uc 1 RBIF 1 0 :1:0 
+[u S990 . 1 `S975 1 . 1 0 `S978 1 . 1 0 `S987 1 . 1 0 ]
+[v _INTCON2bits INTCON2bits `VES990  1 e 1 @4081 ]
+[s S859 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -455,7 +459,7 @@ SEVEN_SEG_TYPE_CATHOD 1
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
 "6406
-[s S865 . 1 `uc 1 . 1 0 :1:0 
+[s S868 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -464,12 +468,12 @@ SEVEN_SEG_TYPE_CATHOD 1
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S874 . 1 `uc 1 . 1 0 :6:0 
+[s S877 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[u S878 . 1 `S856 1 . 1 0 `S865 1 . 1 0 `S874 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES878  1 e 1 @4082 ]
+[u S881 . 1 `S859 1 . 1 0 `S868 1 . 1 0 `S877 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES881  1 e 1 @4082 ]
 [s S440 . 1 `uc 1 port_index 1 0 :3:0 
 `uc 1 pin_index 1 0 :3:3 
 `uc 1 led_status 1 0 :1:6 
@@ -478,6 +482,8 @@ SEVEN_SEG_TYPE_CATHOD 1
 [v _led led `S440  1 e 1 0 ]
 "15
 [s S599 . 5 `[4]S24 1 segment_pins 4 0 `E3462 1 Seg_Type 1 4 ]
+[v _segment_10 segment_10 `S599  1 e 5 0 ]
+"39
 [v _segment segment `S599  1 e 5 0 ]
 "11 C:\Users\xcite\OneDrive\Documents\Drivers.X\ECU_LAYER/Keypad/ecu_keypad.c
 [v _btn_values btn_values `C[4][4]uc  1 s 16 btn_values ]
@@ -517,7 +523,31 @@ SEVEN_SEG_TYPE_CATHOD 1
 "24 C:\Users\xcite\OneDrive\Documents\Drivers.X\app.c
 [v _main main `(i  1 e 2 0 ]
 {
-"33
+"34
+} 0
+"7 D:\IDE MCU\pic\sources\c99\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+{
+"10
+[v ___awmod@sign sign `uc  1 a 1 5 ]
+[v ___awmod@counter counter `uc  1 a 1 4 ]
+"7
+[v ___awmod@dividend dividend `i  1 p 2 0 ]
+[v ___awmod@divisor divisor `i  1 p 2 2 ]
+"34
+} 0
+"7 D:\IDE MCU\pic\sources\c99\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"10
+[v ___awdiv@quotient quotient `i  1 a 2 6 ]
+"11
+[v ___awdiv@sign sign `uc  1 a 1 5 ]
+[v ___awdiv@counter counter `uc  1 a 1 4 ]
+"7
+[v ___awdiv@dividend dividend `i  1 p 2 0 ]
+[v ___awdiv@divisor divisor `i  1 p 2 2 ]
+"41
 } 0
 "51 C:\Users\xcite\OneDrive\Documents\Drivers.X\ECU_LAYER/Seven_Seg/Seven_Seg.c
 [v _Seven_Segm_Display_Number Seven_Segm_Display_Number `(uc  1 e 1 0 ]
@@ -535,15 +565,15 @@ SEVEN_SEG_TYPE_CATHOD 1
 [v Seven_Segm_Display_Number@number number `uc  1 p 1 9 ]
 "64
 } 0
-"36 C:\Users\xcite\OneDrive\Documents\Drivers.X\app.c
+"37 C:\Users\xcite\OneDrive\Documents\Drivers.X\app.c
 [v _Application_initialize Application_initialize `(v  1 e 1 0 ]
 {
-"39
+"40
 } 0
-"40 C:\Users\xcite\OneDrive\Documents\Drivers.X\ECU_LAYER/ecu_layer_init.c
+"64 C:\Users\xcite\OneDrive\Documents\Drivers.X\ECU_LAYER/ecu_layer_init.c
 [v _ecu_layer_initailize ecu_layer_initailize `(v  1 e 1 0 ]
 {
-"44
+"69
 } 0
 "12 C:\Users\xcite\OneDrive\Documents\Drivers.X\ECU_LAYER/Led/ecu_led.c
 [v _led_intialize led_intialize `(uc  1 e 1 0 ]
@@ -593,8 +623,8 @@ SEVEN_SEG_TYPE_CATHOD 1
 `uc 1 logic 1 0 :1:7 
 ]
 "44
-[s S813 . 6 `*.37(v 1 External_CallBack 2 0 `E3468 1 Edge 1 2 `E3472 1 Source 1 3 `E3462 1 Priority 1 4 `S24 1 mcu_pin 1 5 ]
-[v Interrupt_INTx_Init@obj obj `*.30CS813  1 p 1 13 ]
+[s S816 . 6 `*.37(v 1 External_CallBack 2 0 `E3468 1 Edge 1 2 `E3472 1 Source 1 3 `E3462 1 Priority 1 4 `S24 1 mcu_pin 1 5 ]
+[v Interrupt_INTx_Init@obj obj `*.30CS816  1 p 1 13 ]
 "66
 } 0
 "428
@@ -608,8 +638,8 @@ SEVEN_SEG_TYPE_CATHOD 1
 `uc 1 logic 1 0 :1:7 
 ]
 "428
-[s S813 . 6 `*.37(v 1 External_CallBack 2 0 `E3468 1 Edge 1 2 `E3472 1 Source 1 3 `E3462 1 Priority 1 4 `S24 1 mcu_pin 1 5 ]
-[v Interrupt_Set_Interrupt_Handler@obj obj `*.30CS813  1 p 1 3 ]
+[s S816 . 6 `*.37(v 1 External_CallBack 2 0 `E3468 1 Edge 1 2 `E3472 1 Source 1 3 `E3462 1 Priority 1 4 `S24 1 mcu_pin 1 5 ]
+[v Interrupt_Set_Interrupt_Handler@obj obj `*.30CS816  1 p 1 3 ]
 "450
 } 0
 "411
@@ -650,8 +680,8 @@ SEVEN_SEG_TYPE_CATHOD 1
 `uc 1 logic 1 0 :1:7 
 ]
 "251
-[s S813 . 6 `*.37(v 1 External_CallBack 2 0 `E3468 1 Edge 1 2 `E3472 1 Source 1 3 `E3462 1 Priority 1 4 `S24 1 mcu_pin 1 5 ]
-[v Interrupt_INTx_Priority_Init@obj obj `*.30CS813  1 p 1 0 ]
+[s S816 . 6 `*.37(v 1 External_CallBack 2 0 `E3468 1 Edge 1 2 `E3472 1 Source 1 3 `E3462 1 Priority 1 4 `S24 1 mcu_pin 1 5 ]
+[v Interrupt_INTx_Priority_Init@obj obj `*.30CS816  1 p 1 0 ]
 "281
 } 0
 "331
@@ -665,8 +695,8 @@ SEVEN_SEG_TYPE_CATHOD 1
 `uc 1 logic 1 0 :1:7 
 ]
 "331
-[s S813 . 6 `*.37(v 1 External_CallBack 2 0 `E3468 1 Edge 1 2 `E3472 1 Source 1 3 `E3462 1 Priority 1 4 `S24 1 mcu_pin 1 5 ]
-[v Interrupt_INTx_Pin_Init@obj obj `*.30CS813  1 p 1 11 ]
+[s S816 . 6 `*.37(v 1 External_CallBack 2 0 `E3468 1 Edge 1 2 `E3472 1 Source 1 3 `E3462 1 Priority 1 4 `S24 1 mcu_pin 1 5 ]
+[v Interrupt_INTx_Pin_Init@obj obj `*.30CS816  1 p 1 11 ]
 "340
 } 0
 "101 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_Layer/GPIO/hal_gpio.c
@@ -723,8 +753,8 @@ SEVEN_SEG_TYPE_CATHOD 1
 `uc 1 logic 1 0 :1:7 
 ]
 "159
-[s S813 . 6 `*.37(v 1 External_CallBack 2 0 `E3468 1 Edge 1 2 `E3472 1 Source 1 3 `E3462 1 Priority 1 4 `S24 1 mcu_pin 1 5 ]
-[v Interrupt_INTx_Enable@obj obj `*.30CS813  1 p 1 0 ]
+[s S816 . 6 `*.37(v 1 External_CallBack 2 0 `E3468 1 Edge 1 2 `E3472 1 Source 1 3 `E3462 1 Priority 1 4 `S24 1 mcu_pin 1 5 ]
+[v Interrupt_INTx_Enable@obj obj `*.30CS816  1 p 1 0 ]
 "206
 } 0
 "290
@@ -738,8 +768,8 @@ SEVEN_SEG_TYPE_CATHOD 1
 `uc 1 logic 1 0 :1:7 
 ]
 "290
-[s S813 . 6 `*.37(v 1 External_CallBack 2 0 `E3468 1 Edge 1 2 `E3472 1 Source 1 3 `E3462 1 Priority 1 4 `S24 1 mcu_pin 1 5 ]
-[v Interrupt_INTx_Edge_Init@obj obj `*.30CS813  1 p 1 0 ]
+[s S816 . 6 `*.37(v 1 External_CallBack 2 0 `E3468 1 Edge 1 2 `E3472 1 Source 1 3 `E3462 1 Priority 1 4 `S24 1 mcu_pin 1 5 ]
+[v Interrupt_INTx_Edge_Init@obj obj `*.30CS816  1 p 1 0 ]
 "323
 } 0
 "214
@@ -753,8 +783,8 @@ SEVEN_SEG_TYPE_CATHOD 1
 `uc 1 logic 1 0 :1:7 
 ]
 "214
-[s S813 . 6 `*.37(v 1 External_CallBack 2 0 `E3468 1 Edge 1 2 `E3472 1 Source 1 3 `E3462 1 Priority 1 4 `S24 1 mcu_pin 1 5 ]
-[v Interrupt_INTx_Disable@obj obj `*.30CS813  1 p 1 0 ]
+[s S816 . 6 `*.37(v 1 External_CallBack 2 0 `E3468 1 Edge 1 2 `E3472 1 Source 1 3 `E3462 1 Priority 1 4 `S24 1 mcu_pin 1 5 ]
+[v Interrupt_INTx_Disable@obj obj `*.30CS816  1 p 1 0 ]
 "235
 } 0
 "26 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Interrupt/mcal_interrupt_manager.c
@@ -767,10 +797,10 @@ SEVEN_SEG_TYPE_CATHOD 1
 {
 "470
 } 0
-"41 C:\Users\xcite\OneDrive\Documents\Drivers.X\app.c
+"42 C:\Users\xcite\OneDrive\Documents\Drivers.X\app.c
 [v _timer_increment timer_increment `(v  1 e 1 0 ]
 {
-"44
+"45
 } 0
 "87 C:\Users\xcite\OneDrive\Documents\Drivers.X\ECU_LAYER/Led/ecu_led.c
 [v _led_toggle_status led_toggle_status `(uc  1 e 1 0 ]
@@ -820,10 +850,10 @@ SEVEN_SEG_TYPE_CATHOD 1
 {
 "458
 } 0
-"41 C:\Users\xcite\OneDrive\Documents\Drivers.X\app.c
+"42 C:\Users\xcite\OneDrive\Documents\Drivers.X\app.c
 [v i2_timer_increment timer_increment `(v  1 e 1 0 ]
 {
-"44
+"45
 } 0
 "87 C:\Users\xcite\OneDrive\Documents\Drivers.X\ECU_LAYER/Led/ecu_led.c
 [v i2_led_toggle_status led_toggle_status `(uc  1 e 1 0 ]

@@ -5482,7 +5482,10 @@ typedef enum {
     INTERRUPT_HIGH_PRIORITY
 } interrupt_priority_cfg;
 # 13 "./MCAL_LAYER/Interrupt/mcal_external_interrupt.h" 2
-# 70 "./MCAL_LAYER/Interrupt/mcal_external_interrupt.h"
+
+
+typedef void (*Interrupt_Handler)(void);
+# 71 "./MCAL_LAYER/Interrupt/mcal_external_interrupt.h"
 typedef enum {
     INTERRUPT_RISING_EDGE = 0,
     INTERRUPT_FALLING_EDGE,
@@ -5557,8 +5560,8 @@ Std_ReturnType EEPROM_Read_Byte(uint16 bAdd, uint8 *bData);
 
 
 extern lcd_4bit_mode lcd;
-extern Keypad_t key;
-extern button_t button;
+extern Seven_Segment_t segment;
+extern Led_t led;
 
 void Application_initialize(void);
 # 2 "app.c" 2
@@ -5570,60 +5573,26 @@ Std_ReturnType ret = (Std_ReturnType)0X01;
 
 
 void Application_initialize(void);
-void reset() {
 
-    __asm("goto 0x00");
-}
-
-Led_t led0 = {
-    .led_status = LED_OFF,
-    .port_index = PORTC_INDEX,
-    .pin_index = PIN0,
-};
-Led_t led1 = {
-    .led_status = LED_ON,
-    .port_index = PORTC_INDEX,
-    .pin_index = PIN1,
-};
-Led_t led2 = {
-    .led_status = LED_OFF,
-    .port_index = PORTC_INDEX,
-    .pin_index = PIN2,
-};
-Led_t led3 = {
-    .led_status = LED_OFF,
-    .port_index = PORTC_INDEX,
-    .pin_index = PIN3,
-};
-
-void High(void) {
-    ret=led_toggle_status(&led0);
-
-};
-
-void Low(void) {
- ret=led_toggle_status(&led1);
-
-};
-interrupt_RBx_t rb = {
-    .External_CallBack_High = High,
-    .External_CallBack_Low = Low,
+uint8 timer = 0;
+void timer_increment(void);
+interrupt_INTx_t clock = {
+    .Edge = INTERRUPT_RISING_EDGE,
     .Priority = INTERRUPT_HIGH_PRIORITY,
+    .Source = INTERRUPT_EXTERNAL_INT0,
     .mcu_pin.direction = GPIO_INPUT,
+    .mcu_pin.logic = GPIO_LOW,
+    .mcu_pin.pin = PIN0,
     .mcu_pin.port = PORTB_INDEX,
-    .mcu_pin.pin = PIN4,
+    .External_CallBack = timer_increment,
 };
-
 
 int main(void) {
 
-    ret = led_intialize(&led0);
-    ret = led_intialize(&led1);
-    ret = led_intialize(&led2);
-    ret = Interrupt_RBx_Init(&rb);
+
     Application_initialize();
     while (1) {
-
+        ret = Seven_Segm_Display_Number(&segment, timer);
     }
 
     return 0;
@@ -5632,4 +5601,10 @@ int main(void) {
 
 void Application_initialize(void) {
     ecu_layer_initailize();
+    ret = Interrupt_INTx_Init(&clock);
+}
+
+void timer_increment(void) {
+    timer++;
+    ret = led_toggle_status(&led);
 }
