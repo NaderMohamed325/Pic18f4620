@@ -16,7 +16,7 @@
 #include "button/ecu_button.h"
 #include "Chr_Lcd/ecu_chr_lcd.h"
 
-void ecu_layer_initailize(void);
+void ecu_layer_initialize(void);
 
 #endif	/* ECU_LAYER_INIT_H */
 

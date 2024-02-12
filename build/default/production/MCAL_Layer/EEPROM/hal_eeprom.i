@@ -5201,7 +5201,7 @@ Std_ReturnType EEPROM_Write_Byte(uint16 bAdd, uint8 bData) {
 
 
 
-    INTERRUPT_Global_Interrupt_Disable();
+    (INTCONbits.GIEH = 0);
 
 
     EECON2 = 0X55;

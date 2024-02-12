@@ -45,7 +45,7 @@
 
 #else
 #define INTERRUPT_Global_Interrupt_Enable()    (INTCONbits.GIEH = 1)
-#define INTERRUPT_Global_Interrupt_Disnable()  (INTCONbits.GIEH = 0)
+#define INTERRUPT_Global_Interrupt_Disable()  (INTCONbits.GIEH = 0)
 
 // Macros to enable/disable peripheral interrupts
 #define INTERRUPT_Peripheral_Interrupt_Enable()     (INTCONbits.PEIE = 1)
