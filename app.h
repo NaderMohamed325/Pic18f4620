@@ -20,8 +20,9 @@
 
 /*------------DATA_TYPES-------------------*/
 extern lcd_4bit_mode lcd;
-extern Keypad_t key;
-extern button_t button;
+extern Seven_Segment_t segment;
+extern Led_t led;
+extern Seven_Segment_t segment_10;
 /*------------FUNCTIONS_DECLARATION--------*/
 void Application_initialize(void);
 
