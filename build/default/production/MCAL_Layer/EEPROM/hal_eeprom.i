@@ -5215,7 +5215,7 @@ Std_ReturnType EEPROM_Write_Byte(uint16 bAdd, uint8 bData) {
     EECON1bits.WR = 0;
 
 
-    INTERRUPT_Global_Interrupt_Enable();
+    (INTCONbits.GIEH = 1);
 
     return ret;
 }

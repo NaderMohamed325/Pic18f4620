@@ -163,7 +163,7 @@ static Std_ReturnType Interrupt_INTx_Enable(const interrupt_INTx_t *obj) {
     } else {
         switch (obj->Source) {
             case (INTERRUPT_EXTERNAL_INT0):
-#if INTERRUPT_PRIORITY_ENABLE==INTERRUPT_FEATURE_ENABLE
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE==INTERRUPT_FEATURE_ENABLE
                 INTERRUPT_Global_Interrupt_High_Enable();
 #else
                 INTERRUPT_Global_Interrupt_Enable();
@@ -172,7 +172,7 @@ static Std_ReturnType Interrupt_INTx_Enable(const interrupt_INTx_t *obj) {
                 EXT_INT0_Interrupt_Enable();
                 break;
             case (INTERRUPT_EXTERNAL_INT1):
-#if INTERRUPT_PRIORITY_ENABLE==INTERRUPT_FEATURE_ENABLE
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE==INTERRUPT_FEATURE_ENABLE
                 INTERRUPT_Pirority_Level_Enable();
                 if (obj->Priority == INTERRUPT_HIGH_PRIORITY)
                     INTERRUPT_Global_Interrupt_High_Enable();
@@ -185,7 +185,7 @@ static Std_ReturnType Interrupt_INTx_Enable(const interrupt_INTx_t *obj) {
                 EXT_INT1_Interrupt_Enable();
                 break;
             case (INTERRUPT_EXTERNAL_INT2):
-#if INTERRUPT_PRIORITY_ENABLE==INTERRUPT_FEATURE_ENABLE
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE==INTERRUPT_FEATURE_ENABLE
                 INTERRUPT_Pirority_Level_Enable();
                 if (obj->Priority == INTERRUPT_HIGH_PRIORITY)
                     INTERRUPT_Global_Interrupt_High_Enable();

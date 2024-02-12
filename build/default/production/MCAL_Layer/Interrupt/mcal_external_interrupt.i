@@ -5272,7 +5272,7 @@ Std_ReturnType Interrupt_INTx_Init(const interrupt_INTx_t *obj) {
 
 
 
-        ret |= Interrupt_INTx_Priority_Init(obj);
+
 
 
 
@@ -5316,22 +5316,9 @@ Std_ReturnType Interrupt_RBx_Init(const interrupt_RBx_t *obj) {
 
         (INTCONbits.RBIE = 0);
         (INTCONbits.RBIF = 1);
-
-
-        (RCONbits.IPEN = 1);
-        if (INTERRUPT_LOW_PRIORITY == obj->Priority) {
-            (INTCONbits.GIEL = 1);
-            (INTCON2bits.RBIP = 0);
-        } else if (INTERRUPT_HIGH_PRIORITY == obj->Priority) {
-            (INTCONbits.GIEH = 1);
-            (INTCON2bits.RBIP = 1);
-        } else {
-
-        }
-
-
-
-
+# 113 "MCAL_LAYER/Interrupt/mcal_external_interrupt.c"
+        (INTCONbits.GIEH = 1);
+        (INTCONbits.PEIE = 1);
 
 
 
@@ -5374,36 +5361,36 @@ static Std_ReturnType Interrupt_INTx_Enable(const interrupt_INTx_t *obj) {
         switch (obj->Source) {
             case (INTERRUPT_EXTERNAL_INT0):
 
+
+
                 (INTCONbits.GIEH = 1);
-
-
-
+                (INTCONbits.PEIE = 1);
 
                 (INTCONbits.INT0IE = 1);
                 break;
             case (INTERRUPT_EXTERNAL_INT1):
 
-                (RCONbits.IPEN = 1);
-                if (obj->Priority == INTERRUPT_HIGH_PRIORITY)
-                    (INTCONbits.GIEH = 1);
-                else
-                    (INTCONbits.GIEL = 1);
 
 
 
+
+
+
+                (INTCONbits.GIEH = 1);
+                (INTCONbits.PEIE = 1);
 
                 (INTCON3bits.INT1IE = 1);
                 break;
             case (INTERRUPT_EXTERNAL_INT2):
 
-                (RCONbits.IPEN = 1);
-                if (obj->Priority == INTERRUPT_HIGH_PRIORITY)
-                    (INTCONbits.GIEH = 1);
-                else
-                    (INTCONbits.GIEL = 1);
 
 
 
+
+
+
+                (INTCONbits.GIEH = 1);
+                (INTCONbits.PEIE = 1);
 
                 (INTCON3bits.INT2IE = 1);
                 break;
@@ -5439,38 +5426,6 @@ static Std_ReturnType Interrupt_INTx_Disable(const interrupt_INTx_t *obj) {
             default:
                 ret = (Std_ReturnType)0X00;
                 break;
-        }
-    }
-    return ret;
-}
-# 251 "MCAL_LAYER/Interrupt/mcal_external_interrupt.c"
-static Std_ReturnType Interrupt_INTx_Priority_Init(const interrupt_INTx_t *obj) {
-    Std_ReturnType ret = (Std_ReturnType)0X01;
-
-    if (((void*)0) == obj) {
-        ret = (Std_ReturnType)0X00;
-    } else {
-
-        switch (obj->Priority) {
-            case INTERRUPT_HIGH_PRIORITY:
-
-                if (obj->Source == INTERRUPT_EXTERNAL_INT1) {
-                    (INTCON3bits.INT1IP = 1);
-                } else {
-                    (INTCON3bits.INT2IP = 1);
-                }
-                break;
-            case INTERRUPT_LOW_PRIORITY:
-
-                if (obj->Source == INTERRUPT_EXTERNAL_INT1) {
-                    (INTCON3bits.INT1IP = 0);
-                } else {
-                    (INTCON3bits.INT2IP = 0);
-                }
-                break;
-            default:
-
-                ret = (Std_ReturnType)0X00;
         }
     }
     return ret;
