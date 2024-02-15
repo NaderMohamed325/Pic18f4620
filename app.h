@@ -13,7 +13,8 @@
 #include "MCAL_LAYER/EEPROM/hal_eeprom.h"
 /*-----------------MACROS--------------------*/
 
-
+extern lcd_4bit_mode lcd;extern Seven_Segment_t seg2;
+extern Seven_Segment_t seg1;
 
 /*--------------MACROS_FUNCTIONS-----------*/
 

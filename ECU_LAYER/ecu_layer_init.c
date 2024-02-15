@@ -8,12 +8,9 @@
 #include "ecu_layer_init.h"
 
 
-
-
 void ecu_layer_initialize(void) {
     Std_ReturnType ret = E_OK;
 
 
-   
-
+    
 }
