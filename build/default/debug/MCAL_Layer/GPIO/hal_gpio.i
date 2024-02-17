@@ -4490,6 +4490,7 @@ unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "D:/IDE MCU/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 2 3
 # 15 "MCAL_Layer/GPIO/hal_gpio.h" 2
+
 # 1 "MCAL_Layer/GPIO/../mcal_std_types.h" 1
 # 13 "MCAL_Layer/GPIO/../mcal_std_types.h"
 # 1 "MCAL_Layer/GPIO/../std_lin.h" 1
@@ -5090,12 +5091,12 @@ typedef signed int sint32;
 typedef signed char sint8;
 typedef signed short sint16;
 typedef uint8 Std_ReturnType;
-# 16 "MCAL_Layer/GPIO/hal_gpio.h" 2
-# 1 "MCAL_Layer/GPIO/../decive_config.h" 1
 # 17 "MCAL_Layer/GPIO/hal_gpio.h" 2
-# 1 "MCAL_Layer/GPIO/hal_pio_cnfg.h" 1
+# 1 "MCAL_Layer/GPIO/../decive_config.h" 1
 # 18 "MCAL_Layer/GPIO/hal_gpio.h" 2
-# 38 "MCAL_Layer/GPIO/hal_gpio.h"
+# 1 "MCAL_Layer/GPIO/hal_pio_cnfg.h" 1
+# 19 "MCAL_Layer/GPIO/hal_gpio.h" 2
+# 39 "MCAL_Layer/GPIO/hal_gpio.h"
 typedef enum {
     GPIO_LOW = 0,
     GPIO_HIGH
@@ -5131,27 +5132,27 @@ typedef struct {
     uint8 direction : 1;
     uint8 logic : 1;
 } pin_config_t;
-# 85 "MCAL_Layer/GPIO/hal_gpio.h"
+# 86 "MCAL_Layer/GPIO/hal_gpio.h"
 Std_ReturnType gpio_pin_direction_intialize(const pin_config_t * _pin_config);
-# 96 "MCAL_Layer/GPIO/hal_gpio.h"
+# 97 "MCAL_Layer/GPIO/hal_gpio.h"
 Std_ReturnType gpio_pin_get_direction_status(const pin_config_t * _pin_config, direction_t *dic_status);
-# 107 "MCAL_Layer/GPIO/hal_gpio.h"
+# 108 "MCAL_Layer/GPIO/hal_gpio.h"
 Std_ReturnType gpio_pin_write_logic(const pin_config_t * _pin_config, logic_t logic_);
-# 118 "MCAL_Layer/GPIO/hal_gpio.h"
+# 119 "MCAL_Layer/GPIO/hal_gpio.h"
 Std_ReturnType gpio_pin_read_logic(const pin_config_t * _pin_config, logic_t *logic_);
-# 128 "MCAL_Layer/GPIO/hal_gpio.h"
+# 129 "MCAL_Layer/GPIO/hal_gpio.h"
 Std_ReturnType gpio_pin_toggle_logic(const pin_config_t * _pin_config);
-# 137 "MCAL_Layer/GPIO/hal_gpio.h"
+# 138 "MCAL_Layer/GPIO/hal_gpio.h"
 Std_ReturnType gpio_pin_initialize(const pin_config_t *_pin_config);
-# 148 "MCAL_Layer/GPIO/hal_gpio.h"
+# 149 "MCAL_Layer/GPIO/hal_gpio.h"
 Std_ReturnType gpio_port_direction_intialize(port_index_t port, uint8 direction);
-# 159 "MCAL_Layer/GPIO/hal_gpio.h"
+# 160 "MCAL_Layer/GPIO/hal_gpio.h"
 Std_ReturnType gpio_port_get_direction_status(port_index_t port, direction_t *dic_status);
-# 170 "MCAL_Layer/GPIO/hal_gpio.h"
+# 171 "MCAL_Layer/GPIO/hal_gpio.h"
 Std_ReturnType gpio_port_write_logic(port_index_t port, uint8 logic);
-# 181 "MCAL_Layer/GPIO/hal_gpio.h"
+# 182 "MCAL_Layer/GPIO/hal_gpio.h"
 Std_ReturnType gpio_port_read_logic(port_index_t port, uint8 *logic);
-# 191 "MCAL_Layer/GPIO/hal_gpio.h"
+# 192 "MCAL_Layer/GPIO/hal_gpio.h"
 Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 # 11 "MCAL_Layer/GPIO/hal_gpio.c" 2
 volatile uint8 *tris_registers[] = {&TRISA, &TRISB, &TRISC, &TRISD, &TRISE};

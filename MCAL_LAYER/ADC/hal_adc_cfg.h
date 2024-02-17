@@ -1,15 +1,16 @@
 /* 
- * File:   mcal_internal_interrupt.h
+ * File:   hal_adc_cfg.h
  * Author: xcite
  *
- * Created on February 1, 2024, 8:24 PM
+ * Created on February 17, 2024, 11:59 AM
  */
 
-#ifndef MCAL_INTERNAL_INTERRUPT_H
-#define	MCAL_INTERNAL_INTERRUPT_H
+#ifndef HAL_ADC_CFG_H
+#define	HAL_ADC_CFG_H
+
 /*----------------INCLUDES-------------------*/
-#include "mcal_interrupt_cfg.h"
-#include "../ADC/hal_adc.h"
+
+
 /*-----------------MACROS--------------------*/
 
 
@@ -21,9 +22,8 @@
 /*------------DATA_TYPES-------------------*/
 
 
-
 /*------------FUNCTIONS_DECLARATION--------*/
 
 
-#endif	/* MCAL_INTERNAL_INTERRUPT_H */
+#endif	/* HAL_ADC_CFG_H */
 

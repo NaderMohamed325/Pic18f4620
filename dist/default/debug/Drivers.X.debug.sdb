@@ -122,9 +122,45 @@ PIN7 7
 GPIO_LOW 0
 GPIO_HIGH 1
 ]
-"15 C:\Users\xcite\OneDrive\Documents\Drivers.X\app.c
+"21 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/ADC/hal_adc.c
+[e E3478 . `uc
+ADC_0_TAD 0
+ADC_2_TAD 1
+ADC_4_TAD 2
+ADC_6_TAD 3
+ADC_8_TAD 4
+ADC_12_TAD 5
+ADC_16_TAD 6
+ADC_20_TAD 7
+]
+[e E3488 . `uc
+ADC_CONVERSION_CLOCK_FOSC_DIV_2 0
+ADC_CONVERSION_CLOCK_FOSC_DIV_8 1
+ADC_CONVERSION_CLOCK_FOSC_DIV_32 2
+ADC_CONVERSION_CLOCK_FOSC_DIV_FRC 3
+ADC_CONVERSION_CLOCK_FOSC_DIV_4 4
+ADC_CONVERSION_CLOCK_FOSC_DIV_16 5
+ADC_CONVERSION_CLOCK_FOSC_DIV_64 6
+]
+[e E3462 . `uc
+ADC_CHANNEL_AN0 0
+ADC_CHANNEL_AN1 1
+ADC_CHANNEL_AN2 2
+ADC_CHANNEL_AN3 3
+ADC_CHANNEL_AN4 4
+ADC_CHANNEL_AN5 5
+ADC_CHANNEL_AN6 6
+ADC_CHANNEL_AN7 7
+ADC_CHANNEL_AN8 8
+ADC_CHANNEL_AN9 9
+ADC_CHANNEL_AN10 10
+ADC_CHANNEL_AN11 11
+ADC_CHANNEL_AN12 12
+ADC_CHANNEL_AN13 13
+]
+"10 C:\Users\xcite\OneDrive\Documents\Drivers.X\app.c
 [v _main main `(i  1 e 2 0 ]
-"26
+"21
 [v _Application_initialize Application_initialize `(v  1 e 1 0 ]
 "4 D:\IDE MCU\pic\sources\c99\common\fleq.c
 [v ___fleq __fleq `(b  1 e 0 0 ]
@@ -182,6 +218,20 @@ GPIO_HIGH 1
 [v _lcd_4bit_set_cursor lcd_4bit_set_cursor `(uc  1 s 1 lcd_4bit_set_cursor ]
 "11 C:\Users\xcite\OneDrive\Documents\Drivers.X\ECU_LAYER/ecu_layer_init.c
 [v _ecu_layer_initialize ecu_layer_initialize `(v  1 e 1 0 ]
+"77 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/ADC/hal_adc.c
+[v _ADC_Select_Channel ADC_Select_Channel `(uc  1 e 1 0 ]
+"98
+[v _ADC_Start_Conversion ADC_Start_Conversion `(uc  1 e 1 0 ]
+"119
+[v _ADC_Is_Conversion_Done ADC_Is_Conversion_Done `(uc  1 e 1 0 ]
+"140
+[v _ADC_Get_Conversion_Result ADC_Get_Conversion_Result `(uc  1 e 1 0 ]
+"197
+[v _adc_input_channel_port_configure adc_input_channel_port_configure `T(v  1 s 1 adc_input_channel_port_configure ]
+"235
+[v _adc_select_result_format adc_select_result_format `T(v  1 s 1 adc_select_result_format ]
+"249
+[v _adc_select_voltage_ref adc_select_voltage_ref `T(v  1 s 1 adc_select_voltage_ref ]
 "19 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_Layer/GPIO/hal_gpio.c
 [v _gpio_pin_direction_intialize gpio_pin_direction_intialize `(uc  1 e 1 0 ]
 "55
@@ -224,11 +274,11 @@ GPIO_HIGH 1
 [v _RB7_ISR RB7_ISR `(v  1 e 1 0 ]
 "36 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Interrupt/mcal_interrupt_manager.c
 [v _Interrupt_Manager_High Interrupt_Manager_High `IIH(v  1 e 1 0 ]
-"52 D:/IDE MCU/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
+"52 D:/IDE MCU/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include/proc/pic18f4620.h
 [v _PORTA PORTA `VEuc  1 e 1 @3968 ]
 "189
 [v _PORTB PORTB `VEuc  1 e 1 @3969 ]
-[s S1181 . 1 `uc 1 RB0 1 0 :1:0 
+[s S1261 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -238,7 +288,7 @@ GPIO_HIGH 1
 `uc 1 RB7 1 0 :1:7 
 ]
 "230
-[s S1190 . 1 `uc 1 INT0 1 0 :1:0 
+[s S1270 . 1 `uc 1 INT0 1 0 :1:0 
 `uc 1 INT1 1 0 :1:1 
 `uc 1 INT2 1 0 :1:2 
 `uc 1 CCP2 1 0 :1:3 
@@ -247,7 +297,7 @@ GPIO_HIGH 1
 `uc 1 KBI2 1 0 :1:6 
 `uc 1 KBI3 1 0 :1:7 
 ]
-[s S1199 . 1 `uc 1 AN12 1 0 :1:0 
+[s S1279 . 1 `uc 1 AN12 1 0 :1:0 
 `uc 1 AN10 1 0 :1:1 
 `uc 1 AN8 1 0 :1:2 
 `uc 1 AN9 1 0 :1:3 
@@ -256,11 +306,11 @@ GPIO_HIGH 1
 `uc 1 PGC 1 0 :1:6 
 `uc 1 PGD 1 0 :1:7 
 ]
-[s S1208 . 1 `uc 1 . 1 0 :3:0 
+[s S1288 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 CCP2_PA2 1 0 :1:3 
 ]
-[u S1211 . 1 `S1181 1 . 1 0 `S1190 1 . 1 0 `S1199 1 . 1 0 `S1208 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES1211  1 e 1 @3969 ]
+[u S1291 . 1 `S1261 1 . 1 0 `S1270 1 . 1 0 `S1279 1 . 1 0 `S1288 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES1291  1 e 1 @3969 ]
 "360
 [v _PORTC PORTC `VEuc  1 e 1 @3970 ]
 "535
@@ -287,7 +337,7 @@ GPIO_HIGH 1
 [v _TRISD TRISD `VEuc  1 e 1 @3989 ]
 "2268
 [v _TRISE TRISE `VEuc  1 e 1 @3990 ]
-[s S1321 . 1 `uc 1 RD 1 0 :1:0 
+[s S677 . 1 `uc 1 RD 1 0 :1:0 
 `uc 1 WR 1 0 :1:1 
 `uc 1 WREN 1 0 :1:2 
 `uc 1 WRERR 1 0 :1:3 
@@ -297,11 +347,11 @@ GPIO_HIGH 1
 `uc 1 EEPGD 1 0 :1:7 
 ]
 "2947
-[s S1330 . 1 `uc 1 . 1 0 :6:0 
+[s S686 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 EEFS 1 0 :1:6 
 ]
-[u S1333 . 1 `S1321 1 . 1 0 `S1330 1 . 1 0 ]
-[v _EECON1bits EECON1bits `VES1333  1 e 1 @4006 ]
+[u S689 . 1 `S677 1 . 1 0 `S686 1 . 1 0 ]
+[v _EECON1bits EECON1bits `VES689  1 e 1 @4006 ]
 "2992
 [v _EECON2 EECON2 `VEuc  1 e 1 @4007 ]
 "2999
@@ -310,7 +360,76 @@ GPIO_HIGH 1
 [v _EEADR EEADR `VEuc  1 e 1 @4009 ]
 "3013
 [v _EEADRH EEADRH `VEuc  1 e 1 @4010 ]
-[s S860 . 1 `uc 1 INT1IF 1 0 :1:0 
+[s S1480 . 1 `uc 1 ADCS 1 0 :3:0 
+`uc 1 ACQT 1 0 :3:3 
+`uc 1 . 1 0 :1:6 
+`uc 1 ADFM 1 0 :1:7 
+]
+"4394
+[s S1485 . 1 `uc 1 ADCS0 1 0 :1:0 
+`uc 1 ADCS1 1 0 :1:1 
+`uc 1 ADCS2 1 0 :1:2 
+`uc 1 ACQT0 1 0 :1:3 
+`uc 1 ACQT1 1 0 :1:4 
+`uc 1 ACQT2 1 0 :1:5 
+]
+[u S1492 . 1 `S1480 1 . 1 0 `S1485 1 . 1 0 ]
+[v _ADCON2bits ADCON2bits `VES1492  1 e 1 @4032 ]
+[s S1531 . 1 `uc 1 PCFG 1 0 :4:0 
+`uc 1 VCFG 1 0 :2:4 
+]
+"4469
+[s S1534 . 1 `uc 1 PCFG0 1 0 :1:0 
+`uc 1 PCFG1 1 0 :1:1 
+`uc 1 PCFG2 1 0 :1:2 
+`uc 1 PCFG3 1 0 :1:3 
+`uc 1 VCFG0 1 0 :1:4 
+`uc 1 VCFG1 1 0 :1:5 
+]
+[s S1541 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 CHSN3 1 0 :1:3 
+`uc 1 VCFG01 1 0 :1:4 
+`uc 1 VCFG11 1 0 :1:5 
+]
+[u S1546 . 1 `S1531 1 . 1 0 `S1534 1 . 1 0 `S1541 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES1546  1 e 1 @4033 ]
+[s S1412 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_NOT_DONE 1 0 :1:1 
+]
+"4573
+[s S1415 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :4:2 
+]
+[s S1419 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+]
+[s S1426 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 DONE 1 0 :1:1 
+]
+[s S1429 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 NOT_DONE 1 0 :1:1 
+]
+[s S1432 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 nDONE 1 0 :1:1 
+]
+[s S1435 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_DONE 1 0 :1:1 
+]
+[s S1438 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GODONE 1 0 :1:1 
+]
+[u S1441 . 1 `S1412 1 . 1 0 `S1415 1 . 1 0 `S1419 1 . 1 0 `S1426 1 . 1 0 `S1429 1 . 1 0 `S1432 1 . 1 0 `S1435 1 . 1 0 `S1438 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES1441  1 e 1 @4034 ]
+"4655
+[v _ADRESL ADRESL `VEuc  1 e 1 @4035 ]
+"4662
+[v _ADRESH ADRESH `VEuc  1 e 1 @4036 ]
+[s S951 . 1 `uc 1 INT1IF 1 0 :1:0 
 `uc 1 INT2IF 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 INT1IE 1 0 :1:3 
@@ -320,7 +439,7 @@ GPIO_HIGH 1
 `uc 1 INT2IP 1 0 :1:7 
 ]
 "6239
-[s S869 . 1 `uc 1 INT1F 1 0 :1:0 
+[s S960 . 1 `uc 1 INT1F 1 0 :1:0 
 `uc 1 INT2F 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 INT1E 1 0 :1:3 
@@ -329,13 +448,13 @@ GPIO_HIGH 1
 `uc 1 INT1P 1 0 :1:6 
 `uc 1 INT2P 1 0 :1:7 
 ]
-[u S878 . 1 `S860 1 . 1 0 `S869 1 . 1 0 ]
-[v _INTCON3bits INTCON3bits `VES878  1 e 1 @4080 ]
-[s S900 . 1 `uc 1 . 1 0 :7:0 
+[u S969 . 1 `S951 1 . 1 0 `S960 1 . 1 0 ]
+[v _INTCON3bits INTCON3bits `VES969  1 e 1 @4080 ]
+[s S991 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 NOT_RBPU 1 0 :1:7 
 ]
 "6329
-[s S903 . 1 `uc 1 RBIP 1 0 :1:0 
+[s S994 . 1 `uc 1 RBIP 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 TMR0IP 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -344,12 +463,12 @@ GPIO_HIGH 1
 `uc 1 INTEDG0 1 0 :1:6 
 `uc 1 nRBPU 1 0 :1:7 
 ]
-[s S912 . 1 `uc 1 . 1 0 :7:0 
+[s S1003 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 RBPU 1 0 :1:7 
 ]
-[u S915 . 1 `S900 1 . 1 0 `S903 1 . 1 0 `S912 1 . 1 0 ]
-[v _INTCON2bits INTCON2bits `VES915  1 e 1 @4081 ]
-[s S801 . 1 `uc 1 RBIF 1 0 :1:0 
+[u S1006 . 1 `S991 1 . 1 0 `S994 1 . 1 0 `S1003 1 . 1 0 ]
+[v _INTCON2bits INTCON2bits `VES1006  1 e 1 @4081 ]
+[s S625 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -359,7 +478,7 @@ GPIO_HIGH 1
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
 "6406
-[s S810 . 1 `uc 1 . 1 0 :1:0 
+[s S634 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -368,12 +487,12 @@ GPIO_HIGH 1
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S819 . 1 `uc 1 . 1 0 :6:0 
+[s S643 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[u S823 . 1 `S801 1 . 1 0 `S810 1 . 1 0 `S819 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES823  1 e 1 @4082 ]
+[u S647 . 1 `S625 1 . 1 0 `S634 1 . 1 0 `S643 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES647  1 e 1 @4082 ]
 "11 C:\Users\xcite\OneDrive\Documents\Drivers.X\ECU_LAYER/Keypad/ecu_keypad.c
 [v _btn_values btn_values `C[4][4]uc  1 s 16 btn_values ]
 "11 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_Layer/GPIO/hal_gpio.c
@@ -409,15 +528,15 @@ GPIO_HIGH 1
 [v _RB5_f RB5_f `VEuc  1 s 1 RB5_f ]
 [v _RB6_f RB6_f `VEuc  1 s 1 RB6_f ]
 [v _RB7_f RB7_f `VEuc  1 s 1 RB7_f ]
-"15 C:\Users\xcite\OneDrive\Documents\Drivers.X\app.c
+"10 C:\Users\xcite\OneDrive\Documents\Drivers.X\app.c
 [v _main main `(i  1 e 2 0 ]
 {
-"24
+"19
 } 0
-"26
+"21
 [v _Application_initialize Application_initialize `(v  1 e 1 0 ]
 {
-"28
+"24
 } 0
 "11 C:\Users\xcite\OneDrive\Documents\Drivers.X\ECU_LAYER/ecu_layer_init.c
 [v _ecu_layer_initialize ecu_layer_initialize `(v  1 e 1 0 ]

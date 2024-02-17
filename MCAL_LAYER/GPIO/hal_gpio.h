@@ -12,6 +12,7 @@
 
 /*-----------------------------------------------------------------INCLUDES-------------------------------------------------------*/
 #include <xc.h>
+#include "../proc/pic18f4620.h"
 #include "../mcal_std_types.h"
 #include "../decive_config.h"
 #include "hal_pio_cnfg.h"

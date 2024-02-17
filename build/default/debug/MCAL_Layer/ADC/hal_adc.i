@@ -1,4 +1,4 @@
-# 1 "ECU_LAYER/Keypad/ecu_keypad.c"
+# 1 "MCAL_LAYER/ADC/hal_adc.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "D:/IDE MCU/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "ECU_LAYER/Keypad/ecu_keypad.c" 2
+# 1 "MCAL_LAYER/ADC/hal_adc.c" 2
 
 
 
@@ -14,10 +14,13 @@
 
 
 
-# 1 "ECU_LAYER/Keypad/ecu_keypad.h" 1
-# 15 "ECU_LAYER/Keypad/ecu_keypad.h"
-# 1 "ECU_LAYER/Keypad/../../MCAL_LAYER/GPIO/hal_gpio.h" 1
-# 14 "ECU_LAYER/Keypad/../../MCAL_LAYER/GPIO/hal_gpio.h"
+# 1 "MCAL_LAYER/ADC/hal_adc.h" 1
+# 12 "MCAL_LAYER/ADC/hal_adc.h"
+# 1 "MCAL_LAYER/ADC/hal_adc_cfg.h" 1
+# 12 "MCAL_LAYER/ADC/hal_adc.h" 2
+
+# 1 "MCAL_LAYER/ADC/../GPIO/hal_gpio.h" 1
+# 14 "MCAL_LAYER/ADC/../GPIO/hal_gpio.h"
 # 1 "D:/IDE MCU/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 1 3
 # 18 "D:/IDE MCU/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -4497,12 +4500,12 @@ __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer suppo
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "D:/IDE MCU/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 2 3
-# 15 "ECU_LAYER/Keypad/../../MCAL_LAYER/GPIO/hal_gpio.h" 2
+# 15 "MCAL_LAYER/ADC/../GPIO/hal_gpio.h" 2
 
-# 1 "ECU_LAYER/Keypad/../../MCAL_LAYER/GPIO/../mcal_std_types.h" 1
-# 13 "ECU_LAYER/Keypad/../../MCAL_LAYER/GPIO/../mcal_std_types.h"
-# 1 "ECU_LAYER/Keypad/../../MCAL_LAYER/GPIO/../std_lin.h" 1
-# 13 "ECU_LAYER/Keypad/../../MCAL_LAYER/GPIO/../std_lin.h"
+# 1 "MCAL_LAYER/ADC/../GPIO/../mcal_std_types.h" 1
+# 13 "MCAL_LAYER/ADC/../GPIO/../mcal_std_types.h"
+# 1 "MCAL_LAYER/ADC/../GPIO/../std_lin.h" 1
+# 13 "MCAL_LAYER/ADC/../GPIO/../std_lin.h"
 # 1 "D:\\IDE MCU\\pic\\include\\c99\\stdio.h" 1 3
 # 24 "D:\\IDE MCU\\pic\\include\\c99\\stdio.h" 3
 # 1 "D:\\IDE MCU\\pic\\include\\c99\\bits/alltypes.h" 1 3
@@ -4655,7 +4658,7 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 14 "ECU_LAYER/Keypad/../../MCAL_LAYER/GPIO/../std_lin.h" 2
+# 14 "MCAL_LAYER/ADC/../GPIO/../std_lin.h" 2
 
 # 1 "D:\\IDE MCU\\pic\\include\\c99\\string.h" 1 3
 # 25 "D:\\IDE MCU\\pic\\include\\c99\\string.h" 3
@@ -4714,7 +4717,7 @@ size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
 
 
 void *memccpy (void *restrict, const void *restrict, int, size_t);
-# 16 "ECU_LAYER/Keypad/../../MCAL_LAYER/GPIO/../std_lin.h" 2
+# 16 "MCAL_LAYER/ADC/../GPIO/../std_lin.h" 2
 # 1 "D:\\IDE MCU\\pic\\include\\c99\\math.h" 1 3
 # 15 "D:\\IDE MCU\\pic\\include\\c99\\math.h" 3
 # 1 "D:\\IDE MCU\\pic\\include\\c99\\bits/alltypes.h" 1 3
@@ -5087,11 +5090,11 @@ double jn(int, double);
 double y0(double);
 double y1(double);
 double yn(int, double);
-# 17 "ECU_LAYER/Keypad/../../MCAL_LAYER/GPIO/../std_lin.h" 2
-# 14 "ECU_LAYER/Keypad/../../MCAL_LAYER/GPIO/../mcal_std_types.h" 2
-# 1 "ECU_LAYER/Keypad/../../MCAL_LAYER/GPIO/../compiler.h" 1
-# 15 "ECU_LAYER/Keypad/../../MCAL_LAYER/GPIO/../mcal_std_types.h" 2
-# 25 "ECU_LAYER/Keypad/../../MCAL_LAYER/GPIO/../mcal_std_types.h"
+# 17 "MCAL_LAYER/ADC/../GPIO/../std_lin.h" 2
+# 14 "MCAL_LAYER/ADC/../GPIO/../mcal_std_types.h" 2
+# 1 "MCAL_LAYER/ADC/../GPIO/../compiler.h" 1
+# 15 "MCAL_LAYER/ADC/../GPIO/../mcal_std_types.h" 2
+# 25 "MCAL_LAYER/ADC/../GPIO/../mcal_std_types.h"
 typedef unsigned char uint8;
 typedef unsigned short uint16;
 typedef unsigned int uint32;
@@ -5099,12 +5102,12 @@ typedef signed int sint32;
 typedef signed char sint8;
 typedef signed short sint16;
 typedef uint8 Std_ReturnType;
-# 17 "ECU_LAYER/Keypad/../../MCAL_LAYER/GPIO/hal_gpio.h" 2
-# 1 "ECU_LAYER/Keypad/../../MCAL_LAYER/GPIO/../decive_config.h" 1
-# 18 "ECU_LAYER/Keypad/../../MCAL_LAYER/GPIO/hal_gpio.h" 2
-# 1 "ECU_LAYER/Keypad/../../MCAL_LAYER/GPIO/hal_pio_cnfg.h" 1
-# 19 "ECU_LAYER/Keypad/../../MCAL_LAYER/GPIO/hal_gpio.h" 2
-# 39 "ECU_LAYER/Keypad/../../MCAL_LAYER/GPIO/hal_gpio.h"
+# 17 "MCAL_LAYER/ADC/../GPIO/hal_gpio.h" 2
+# 1 "MCAL_LAYER/ADC/../GPIO/../decive_config.h" 1
+# 18 "MCAL_LAYER/ADC/../GPIO/hal_gpio.h" 2
+# 1 "MCAL_LAYER/ADC/../GPIO/hal_pio_cnfg.h" 1
+# 19 "MCAL_LAYER/ADC/../GPIO/hal_gpio.h" 2
+# 39 "MCAL_LAYER/ADC/../GPIO/hal_gpio.h"
 typedef enum {
     GPIO_LOW = 0,
     GPIO_HIGH
@@ -5140,36 +5143,97 @@ typedef struct {
     uint8 direction : 1;
     uint8 logic : 1;
 } pin_config_t;
-# 86 "ECU_LAYER/Keypad/../../MCAL_LAYER/GPIO/hal_gpio.h"
+# 86 "MCAL_LAYER/ADC/../GPIO/hal_gpio.h"
 Std_ReturnType gpio_pin_direction_intialize(const pin_config_t * _pin_config);
-# 97 "ECU_LAYER/Keypad/../../MCAL_LAYER/GPIO/hal_gpio.h"
+# 97 "MCAL_LAYER/ADC/../GPIO/hal_gpio.h"
 Std_ReturnType gpio_pin_get_direction_status(const pin_config_t * _pin_config, direction_t *dic_status);
-# 108 "ECU_LAYER/Keypad/../../MCAL_LAYER/GPIO/hal_gpio.h"
+# 108 "MCAL_LAYER/ADC/../GPIO/hal_gpio.h"
 Std_ReturnType gpio_pin_write_logic(const pin_config_t * _pin_config, logic_t logic_);
-# 119 "ECU_LAYER/Keypad/../../MCAL_LAYER/GPIO/hal_gpio.h"
+# 119 "MCAL_LAYER/ADC/../GPIO/hal_gpio.h"
 Std_ReturnType gpio_pin_read_logic(const pin_config_t * _pin_config, logic_t *logic_);
-# 129 "ECU_LAYER/Keypad/../../MCAL_LAYER/GPIO/hal_gpio.h"
+# 129 "MCAL_LAYER/ADC/../GPIO/hal_gpio.h"
 Std_ReturnType gpio_pin_toggle_logic(const pin_config_t * _pin_config);
-# 138 "ECU_LAYER/Keypad/../../MCAL_LAYER/GPIO/hal_gpio.h"
+# 138 "MCAL_LAYER/ADC/../GPIO/hal_gpio.h"
 Std_ReturnType gpio_pin_initialize(const pin_config_t *_pin_config);
-# 149 "ECU_LAYER/Keypad/../../MCAL_LAYER/GPIO/hal_gpio.h"
+# 149 "MCAL_LAYER/ADC/../GPIO/hal_gpio.h"
 Std_ReturnType gpio_port_direction_intialize(port_index_t port, uint8 direction);
-# 160 "ECU_LAYER/Keypad/../../MCAL_LAYER/GPIO/hal_gpio.h"
+# 160 "MCAL_LAYER/ADC/../GPIO/hal_gpio.h"
 Std_ReturnType gpio_port_get_direction_status(port_index_t port, direction_t *dic_status);
-# 171 "ECU_LAYER/Keypad/../../MCAL_LAYER/GPIO/hal_gpio.h"
+# 171 "MCAL_LAYER/ADC/../GPIO/hal_gpio.h"
 Std_ReturnType gpio_port_write_logic(port_index_t port, uint8 logic);
-# 182 "ECU_LAYER/Keypad/../../MCAL_LAYER/GPIO/hal_gpio.h"
+# 182 "MCAL_LAYER/ADC/../GPIO/hal_gpio.h"
 Std_ReturnType gpio_port_read_logic(port_index_t port, uint8 *logic);
-# 192 "ECU_LAYER/Keypad/../../MCAL_LAYER/GPIO/hal_gpio.h"
+# 192 "MCAL_LAYER/ADC/../GPIO/hal_gpio.h"
 Std_ReturnType gpio_port_toggle_logic(port_index_t port);
-# 16 "ECU_LAYER/Keypad/ecu_keypad.h" 2
-# 1 "ECU_LAYER/Keypad/ecu_keypad_cfg.h" 1
-# 17 "ECU_LAYER/Keypad/ecu_keypad.h" 2
-# 27 "ECU_LAYER/Keypad/ecu_keypad.h"
+# 13 "MCAL_LAYER/ADC/hal_adc.h" 2
+# 70 "MCAL_LAYER/ADC/hal_adc.h"
+typedef enum {
+    ADC_CHANNEL_AN0 = 0,
+    ADC_CHANNEL_AN1,
+    ADC_CHANNEL_AN2,
+    ADC_CHANNEL_AN3,
+    ADC_CHANNEL_AN4,
+    ADC_CHANNEL_AN5,
+    ADC_CHANNEL_AN6,
+    ADC_CHANNEL_AN7,
+    ADC_CHANNEL_AN8,
+    ADC_CHANNEL_AN9,
+    ADC_CHANNEL_AN10,
+    ADC_CHANNEL_AN11,
+    ADC_CHANNEL_AN12,
+    ADC_CHANNEL_AN13,
+} adc_channel_select_t;
+
+
+typedef enum {
+    ADC_0_TAD = 0,
+    ADC_2_TAD,
+    ADC_4_TAD,
+    ADC_6_TAD,
+    ADC_8_TAD,
+    ADC_12_TAD,
+    ADC_16_TAD,
+    ADC_20_TAD,
+} adc_acquisition_time_t;
+
+typedef enum {
+    ADC_CONVERSION_CLOCK_FOSC_DIV_2 = 0,
+    ADC_CONVERSION_CLOCK_FOSC_DIV_8,
+    ADC_CONVERSION_CLOCK_FOSC_DIV_32,
+    ADC_CONVERSION_CLOCK_FOSC_DIV_FRC,
+    ADC_CONVERSION_CLOCK_FOSC_DIV_4,
+    ADC_CONVERSION_CLOCK_FOSC_DIV_16,
+    ADC_CONVERSION_CLOCK_FOSC_DIV_64,
+} adc_conversion_clock_t;
+
 typedef struct {
-    pin_config_t keypad_row_pins[4];
-    pin_config_t keypad_col_pins[4];
-} Keypad_t;
+    void (*ADC_Interrupt_Handler) (void);
+
+    adc_acquisition_time_t adc_acquisition;
+    adc_conversion_clock_t adc_conversion_clock;
+    adc_channel_select_t adc_channel;
+
+    uint8 voltage_ref : 1;
+    uint8 result_format : 1;
+    uint8 reserved_bits : 6;
+} adc_config_t;
+
+
+
+Std_ReturnType ADC_Init(const adc_config_t*adc);
+Std_ReturnType ADC_Denit(const adc_config_t*adc);
+Std_ReturnType ADC_Select_Channel(const adc_config_t*adc, adc_channel_select_t channel);
+Std_ReturnType ADC_Start_Conversion(const adc_config_t*adc);
+Std_ReturnType ADC_Is_Conversion_Done(const adc_config_t*adc, uint8 *conversion_status);
+Std_ReturnType ADC_Get_Conversion_Result(const adc_config_t*adc, uint16 *result);
+Std_ReturnType ADC_Get_Conversion(const adc_config_t*adc, adc_channel_select_t channel, uint16 *result);
+# 8 "MCAL_LAYER/ADC/hal_adc.c" 2
+
+
+
+static __attribute__((inline)) void adc_input_channel_port_configure(adc_channel_select_t channel);
+static __attribute__((inline)) void adc_select_result_format(const adc_config_t* adc);
+static __attribute__((inline)) void adc_select_voltage_ref(const adc_config_t* adc);
 
 
 
@@ -5177,46 +5241,30 @@ typedef struct {
 
 
 
-Std_ReturnType keypad_initialize(const Keypad_t *keypad);
-
-
-
-
-
-
-
-Std_ReturnType keypad_get_value(const Keypad_t *keypad, uint8 *value);
-# 9 "ECU_LAYER/Keypad/ecu_keypad.c" 2
-
-
-const static uint8 btn_values[4][4] = {
-    {'7', '8', '9', '/'},
-    {'4', '5', '6', '*'},
-    {'1', '2', '3', '-'},
-    {'#', '0', '=', '+'}
-};
-
-
-
-
-
-
-Std_ReturnType keypad_initialize(const Keypad_t *keypad) {
+Std_ReturnType ADC_Init(const adc_config_t* adc) {
     Std_ReturnType ret = (Std_ReturnType)0X01;
 
 
-    if (((void*)0) == keypad) {
+    if (((void*)0) == adc) {
         ret = (Std_ReturnType)0X00;
     } else {
 
-        for (int i = 0; i < 4; i++) {
-            ret = gpio_pin_initialize(&(keypad->keypad_row_pins[i]));
-        }
+        (ADCON0bits.ADON = 0);
 
 
-        for (int i = 0; i < 4; i++) {
-            ret = gpio_pin_initialize(&(keypad->keypad_col_pins[i]));
-        }
+        ADCON2bits.ACQT = adc->adc_acquisition;
+        ADCON2bits.ADCS = adc->adc_conversion_clock;
+
+
+        ADCON0bits.CHS = adc->adc_channel;
+        adc_input_channel_port_configure(adc->adc_channel);
+
+
+        adc_select_result_format(adc);
+        adc_select_voltage_ref(adc);
+
+
+        (ADCON0bits.ADON = 1);
     }
 
     return ret;
@@ -5228,38 +5276,176 @@ Std_ReturnType keypad_initialize(const Keypad_t *keypad) {
 
 
 
-Std_ReturnType keypad_get_value(const Keypad_t *keypad, uint8 *value) {
+Std_ReturnType ADC_Deinit(const adc_config_t* adc) {
     Std_ReturnType ret = (Std_ReturnType)0X01;
 
 
-    if ((((void*)0) == keypad) || (((void*)0) == value)) {
+    if (((void*)0) == adc) {
         ret = (Std_ReturnType)0X00;
     } else {
 
-        for (int i = 0; i < 4; i++) {
-            logic_t value_pin = 0;
+        (ADCON0bits.ADON = 0);
+    }
+
+    return ret;
+}
+# 77 "MCAL_LAYER/ADC/hal_adc.c"
+Std_ReturnType ADC_Select_Channel(const adc_config_t* adc, adc_channel_select_t channel) {
+    Std_ReturnType ret = (Std_ReturnType)0X01;
 
 
-            for (int j = 0; j < 4; j++) {
-                ret = gpio_pin_write_logic(&(keypad->keypad_row_pins[j]), GPIO_LOW);
-            }
+    if (((void*)0) == adc) {
+        ret = (Std_ReturnType)0X00;
+    } else {
+
+        ADCON0bits.CHS = channel;
+        adc_input_channel_port_configure(channel);
+    }
+
+    return ret;
+}
 
 
-            ret = gpio_pin_write_logic(&(keypad->keypad_row_pins[i]), GPIO_HIGH);
-            _delay((unsigned long)((30)*(8000000/4000.0)));
 
 
-            for (int j = 0; j < 4; j++) {
-                ret = gpio_pin_read_logic(&(keypad->keypad_col_pins[j]), &value_pin);
 
 
-                if (value_pin == GPIO_HIGH) {
-                    *value = btn_values[i][j];
-                    break;
-                }
-            }
+
+Std_ReturnType ADC_Start_Conversion(const adc_config_t* adc) {
+    Std_ReturnType ret = (Std_ReturnType)0X01;
+
+
+    if (((void*)0) == adc) {
+        ret = (Std_ReturnType)0X00;
+    } else {
+
+        (ADCON0bits.GO_nDONE=1);
+    }
+
+    return ret;
+}
+# 119 "MCAL_LAYER/ADC/hal_adc.c"
+Std_ReturnType ADC_Is_Conversion_Done(const adc_config_t* adc, uint8_t* conversion_status) {
+    Std_ReturnType ret = (Std_ReturnType)0X01;
+
+
+    if (((void*)0) == adc || ((void*)0) == conversion_status) {
+        ret = (Std_ReturnType)0X00;
+    } else {
+
+        *conversion_status = !(uint8) (ADCON0bits.GO_nDONE);
+    }
+
+    return ret;
+}
+# 140 "MCAL_LAYER/ADC/hal_adc.c"
+Std_ReturnType ADC_Get_Conversion_Result(const adc_config_t* adc, uint16_t* result) {
+    Std_ReturnType ret = (Std_ReturnType)0X01;
+
+
+    if (((void*)0) == adc || ((void*)0) == result) {
+        ret = (Std_ReturnType)0X00;
+    } else {
+
+        if (0X01U == adc->result_format) {
+            *result = (uint16_t) ((ADRESH << 8) + ADRESL);
+        } else if (0X00 == adc->result_format) {
+            *result = (uint16_t) (((ADRESH << 8) + ADRESL) >> 2);
+        } else {
+            *result = (uint16_t) ((ADRESH << 8) + ADRESL);
         }
     }
 
     return ret;
+}
+# 168 "MCAL_LAYER/ADC/hal_adc.c"
+Std_ReturnType ADC_Get_Conversion(const adc_config_t* adc, adc_channel_select_t channel, uint16_t* result) {
+    Std_ReturnType ret = (Std_ReturnType)0X01;
+    uint8_t conversion_status;
+
+
+    if (((void*)0) == adc || ((void*)0) == result) {
+        ret = (Std_ReturnType)0X00;
+    } else {
+
+        ret &= ADC_Select_Channel(adc, channel);
+        ret &= ADC_Start_Conversion(adc);
+        ret &= ADC_Is_Conversion_Done(adc, &conversion_status);
+
+
+        while (ADCON0bits.GO_nDONE);
+
+
+        ret &= ADC_Get_Conversion_Result(adc, result);
+    }
+
+    return ret;
+}
+
+
+
+
+
+
+
+static __attribute__((inline)) void adc_input_channel_port_configure(adc_channel_select_t channel) {
+    switch (channel) {
+        case ADC_CHANNEL_AN0: (TRISA |= ((uint8)1 << 0x0));
+            break;
+        case ADC_CHANNEL_AN1: (TRISA |= ((uint8)1 << 0x1));
+            break;
+        case ADC_CHANNEL_AN2: (TRISA |= ((uint8)1 << 0x2));
+            break;
+        case ADC_CHANNEL_AN3: (TRISA |= ((uint8)1 << 0x3));
+            break;
+        case ADC_CHANNEL_AN4: (TRISA |= ((uint8)1 << 0x5));
+            break;
+        case ADC_CHANNEL_AN5: (TRISE |= ((uint8)1 << 0x0));
+            break;
+        case ADC_CHANNEL_AN6: (TRISE |= ((uint8)1 << 0x1));
+            break;
+        case ADC_CHANNEL_AN7: (TRISE |= ((uint8)1 << 0x2));
+            break;
+        case ADC_CHANNEL_AN8: (TRISB |= ((uint8)1 << 0x2));
+            break;
+        case ADC_CHANNEL_AN9: (TRISB |= ((uint8)1 << 0x3));
+            break;
+        case ADC_CHANNEL_AN10: (TRISB |= ((uint8)1 << 0x1));
+            break;
+        case ADC_CHANNEL_AN11: (TRISB |= ((uint8)1 << 0x4));
+            break;
+        case ADC_CHANNEL_AN12: (TRISB |= ((uint8)1 << 0x0));
+            break;
+        default: ;
+    }
+}
+
+
+
+
+
+
+
+static __attribute__((inline)) void adc_select_result_format(const adc_config_t* adc) {
+    if (adc->result_format) {
+        (ADCON2bits.ADFM=1);
+    } else {
+        (ADCON2bits.ADFM=0);
+    }
+}
+
+
+
+
+
+
+
+static __attribute__((inline)) void adc_select_voltage_ref(const adc_config_t* adc) {
+    if (0X01U == adc->voltage_ref) {
+        do{ADCON1bits.VCFG1 = 1; ADCON1bits.VCFG0 = 1; } while(0);
+    } else if (0X00 == adc->voltage_ref) {
+        do{ADCON1bits.VCFG1 = 0; ADCON1bits.VCFG0 = 0; } while(0);
+    } else {
+        do{ADCON1bits.VCFG1 = 0; ADCON1bits.VCFG0 = 0; } while(0);
+    }
 }

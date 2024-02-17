@@ -5098,12 +5098,12 @@ typedef uint8 Std_ReturnType;
 # 1 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/mcal_interrupt_gen_cfg.h" 1
 # 15 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h" 2
 # 1 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h" 1
-# 16 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h"
+# 17 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h"
 # 1 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/../decive_config.h" 1
-# 17 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h" 2
-# 1 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_pio_cnfg.h" 1
 # 18 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h" 2
-# 38 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h"
+# 1 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_pio_cnfg.h" 1
+# 19 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h" 2
+# 39 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h"
 typedef enum {
     GPIO_LOW = 0,
     GPIO_HIGH
@@ -5139,27 +5139,27 @@ typedef struct {
     uint8 direction : 1;
     uint8 logic : 1;
 } pin_config_t;
-# 85 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h"
+# 86 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h"
 Std_ReturnType gpio_pin_direction_intialize(const pin_config_t * _pin_config);
-# 96 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h"
+# 97 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h"
 Std_ReturnType gpio_pin_get_direction_status(const pin_config_t * _pin_config, direction_t *dic_status);
-# 107 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h"
+# 108 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h"
 Std_ReturnType gpio_pin_write_logic(const pin_config_t * _pin_config, logic_t logic_);
-# 118 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h"
+# 119 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h"
 Std_ReturnType gpio_pin_read_logic(const pin_config_t * _pin_config, logic_t *logic_);
-# 128 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h"
+# 129 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h"
 Std_ReturnType gpio_pin_toggle_logic(const pin_config_t * _pin_config);
-# 137 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h"
+# 138 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h"
 Std_ReturnType gpio_pin_initialize(const pin_config_t *_pin_config);
-# 148 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h"
+# 149 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h"
 Std_ReturnType gpio_port_direction_intialize(port_index_t port, uint8 direction);
-# 159 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h"
+# 160 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h"
 Std_ReturnType gpio_port_get_direction_status(port_index_t port, direction_t *dic_status);
-# 170 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h"
+# 171 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h"
 Std_ReturnType gpio_port_write_logic(port_index_t port, uint8 logic);
-# 181 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h"
+# 182 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h"
 Std_ReturnType gpio_port_read_logic(port_index_t port, uint8 *logic);
-# 191 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h"
+# 192 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h"
 Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 # 16 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h" 2
 # 58 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h"
@@ -5168,6 +5168,72 @@ typedef enum {
     INTERRUPT_HIGH_PRIORITY
 } interrupt_priority_cfg;
 # 12 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 2
+# 1 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../ADC/hal_adc.h" 1
+# 12 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../ADC/hal_adc.h"
+# 1 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../ADC/hal_adc_cfg.h" 1
+# 12 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../ADC/hal_adc.h" 2
+# 70 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../ADC/hal_adc.h"
+typedef enum {
+    ADC_CHANNEL_AN0 = 0,
+    ADC_CHANNEL_AN1,
+    ADC_CHANNEL_AN2,
+    ADC_CHANNEL_AN3,
+    ADC_CHANNEL_AN4,
+    ADC_CHANNEL_AN5,
+    ADC_CHANNEL_AN6,
+    ADC_CHANNEL_AN7,
+    ADC_CHANNEL_AN8,
+    ADC_CHANNEL_AN9,
+    ADC_CHANNEL_AN10,
+    ADC_CHANNEL_AN11,
+    ADC_CHANNEL_AN12,
+    ADC_CHANNEL_AN13,
+} adc_channel_select_t;
+
+
+typedef enum {
+    ADC_0_TAD = 0,
+    ADC_2_TAD,
+    ADC_4_TAD,
+    ADC_6_TAD,
+    ADC_8_TAD,
+    ADC_12_TAD,
+    ADC_16_TAD,
+    ADC_20_TAD,
+} adc_acquisition_time_t;
+
+typedef enum {
+    ADC_CONVERSION_CLOCK_FOSC_DIV_2 = 0,
+    ADC_CONVERSION_CLOCK_FOSC_DIV_8,
+    ADC_CONVERSION_CLOCK_FOSC_DIV_32,
+    ADC_CONVERSION_CLOCK_FOSC_DIV_FRC,
+    ADC_CONVERSION_CLOCK_FOSC_DIV_4,
+    ADC_CONVERSION_CLOCK_FOSC_DIV_16,
+    ADC_CONVERSION_CLOCK_FOSC_DIV_64,
+} adc_conversion_clock_t;
+
+typedef struct {
+    void (*ADC_Interrupt_Handler) (void);
+
+    adc_acquisition_time_t adc_acquisition;
+    adc_conversion_clock_t adc_conversion_clock;
+    adc_channel_select_t adc_channel;
+
+    uint8 voltage_ref : 1;
+    uint8 result_format : 1;
+    uint8 reserved_bits : 6;
+} adc_config_t;
+
+
+
+Std_ReturnType ADC_Init(const adc_config_t*adc);
+Std_ReturnType ADC_Denit(const adc_config_t*adc);
+Std_ReturnType ADC_Select_Channel(const adc_config_t*adc, adc_channel_select_t channel);
+Std_ReturnType ADC_Start_Conversion(const adc_config_t*adc);
+Std_ReturnType ADC_Is_Conversion_Done(const adc_config_t*adc, uint8 *conversion_status);
+Std_ReturnType ADC_Get_Conversion_Result(const adc_config_t*adc, uint16 *result);
+Std_ReturnType ADC_Get_Conversion(const adc_config_t*adc, adc_channel_select_t channel, uint16 *result);
+# 13 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 2
 # 11 "MCAL_LAYER/EEPROM/hal_eeprom.h" 2
 # 33 "MCAL_LAYER/EEPROM/hal_eeprom.h"
 Std_ReturnType EEPROM_Write_Byte(uint16 bAdd, uint8 bData);
