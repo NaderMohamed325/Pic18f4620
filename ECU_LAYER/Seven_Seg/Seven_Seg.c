@@ -48,16 +48,16 @@ Std_ReturnType Seven_Segm_initailize(Seven_Segment_t * _Seven_Seg) {
  *   - Invalid pointer (_Seven_Seg is NULL).
  *   - Invalid number (not in the range 0-9).
  */
-Std_ReturnType Seven_Segm_Display_Number(Seven_Segment_t * _Seven_Seg, uint8 number) {
+Std_ReturnType Seven_Segm_Display_Number(Seven_Segment_t * _Seven_Seg, uint8_t number) {
     Std_ReturnType ret = E_OK;
 
-    if (NULL == _Seven_Seg || (number < 0 || number > 9)) {
+    if (NULL == _Seven_Seg || number > 9) {
         ret = E_NOT_OK;
     } else {
-        ret = gpio_pin_write_logic(&_Seven_Seg->segment_pins[SEGMENT_PIN0], (number >> 0) & BIT_MASK);
-        ret = gpio_pin_write_logic(&_Seven_Seg->segment_pins[SEGMENT_PIN1], (number >> 1) & BIT_MASK);
-        ret = gpio_pin_write_logic(&_Seven_Seg->segment_pins[SEGMENT_PIN2], (number >> 2) & BIT_MASK);
-        ret = gpio_pin_write_logic(&_Seven_Seg->segment_pins[SEGMENT_PIN3], (number >> 3) & BIT_MASK);
+        ret |= gpio_pin_write_logic(&_Seven_Seg->segment_pins[SEGMENT_PIN0], (number >> 0) & BIT_MASK);
+        ret |= gpio_pin_write_logic(&_Seven_Seg->segment_pins[SEGMENT_PIN1], (number >> 1) & BIT_MASK);
+        ret |= gpio_pin_write_logic(&_Seven_Seg->segment_pins[SEGMENT_PIN2], (number >> 2) & BIT_MASK);
+        ret |= gpio_pin_write_logic(&_Seven_Seg->segment_pins[SEGMENT_PIN3], (number >> 3) & BIT_MASK);
     }
 
     return ret;

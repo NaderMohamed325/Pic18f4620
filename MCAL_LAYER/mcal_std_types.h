@@ -32,7 +32,9 @@ typedef uint8 Std_ReturnType;
 #define     E_OK        (Std_ReturnType)0X01
 #define     E_NOT_OK    (Std_ReturnType)0X00
 
-
+typedef struct{
+    uint16 uint10:10;
+}uint10_t;
 
 
 /*------------FUNCTIONS_DECLARATION--------*/

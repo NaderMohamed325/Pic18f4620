@@ -5551,217 +5551,58 @@ Std_ReturnType EEPROM_Write_Byte(uint16 bAdd, uint8 bData);
 
 Std_ReturnType EEPROM_Read_Byte(uint16 bAdd, uint8 *bData);
 # 14 "./app.h" 2
-
-
-extern lcd_4bit_mode lcd;
-extern Seven_Segment_t seg2;
-extern Seven_Segment_t seg1;
-
-
-
-
-
-
-
+# 24 "./app.h"
 void Application_initialize(void);
 # 2 "app.c" 2
 
 
-Std_ReturnType ret = (Std_ReturnType)0X01;
+volatile Std_ReturnType ret = (Std_ReturnType)0X01;
 
 
 void Application_initialize(void);
-
-typedef enum {
-    Right = 0,
-    Left,
-} Ball_Direction_x;
-
-typedef enum {
-    Up = 0,
-    Down
-} Ball_Direction_y;
-
-static Ball_Direction_x xDirection = Right;
-static Ball_Direction_y yDirection = Up;
-
-
-void Player_one_move(void);
-void Player_two_move(void);
-void start_message(void);
-void ball_move(void);
-
-uint8 player_one_row = 2;
-uint8 player_two_row = 2;
-uint8 ball_x = 10;
-uint8 ball_y = 2;
-
-interrupt_INTx_t Player1 = {
-    .Edge = INTERRUPT_RISING_EDGE,
-    .Priority = INTERRUPT_HIGH_PRIORITY,
-    .Source = INTERRUPT_EXTERNAL_INT0,
-    .mcu_pin.direction = GPIO_INPUT,
-    .mcu_pin.logic = GPIO_LOW,
-    .mcu_pin.pin = PIN0,
-    .mcu_pin.port = PORTB_INDEX,
-    .External_CallBack = Player_one_move,
+Led_t led = {
+    .led_status = LED_OFF,
+    .pin_index = PIN1,
+    .port_index = PORTC_INDEX,
+};
+button_t b = {
+    .button_active = BUTTON_ACTVE_HIGH,
+    .button_state = BUTTON_RELEASED,
+    .pin_config.direction = GPIO_INPUT,
+    .pin_config.logic = GPIO_LOW,
+    .pin_config.pin = PIN0,
+    .pin_config.port = PORTC_INDEX,
 };
 
-interrupt_INTx_t Player2 = {
-    .Edge = INTERRUPT_RISING_EDGE,
+void f(void) {
+    ret = led_toggle_status(&led);
+}
+
+interrupt_RBx_t r = {
     .Priority = INTERRUPT_HIGH_PRIORITY,
-    .Source = INTERRUPT_EXTERNAL_INT1,
-    .mcu_pin.direction = GPIO_INPUT,
-    .mcu_pin.logic = GPIO_LOW,
-    .mcu_pin.pin = PIN1,
+    .mcu_pin.pin = PIN7,
     .mcu_pin.port = PORTB_INDEX,
-    .External_CallBack = Player_two_move,
+    .mcu_pin.logic = GPIO_LOW,
+    .mcu_pin.direction = GPIO_INPUT,
+    .External_CallBack_High = f,
+    .External_CallBack_Low = ((void*)0),
 };
+volatile button_state_t s = BUTTON_RELEASED;
 
 int main(void) {
 
     Application_initialize();
 
     while (1) {
-        ball_move();
+        ret = button_read_state(&b, &s);
     }
 
     return 0;
 }
 
-
-
-
-
 void Application_initialize(void) {
     ecu_layer_initialize();
-    ret = lcd_4bit_send_command(&lcd, 0X01);
-    ret = lcd_4bit_send_char_data_pos(&lcd, player_one_row, 1, '|');
-    ret = lcd_4bit_send_char_data_pos(&lcd, player_two_row, 20, '|');
-    ret = lcd_4bit_send_char_data_pos(&lcd, ball_y, ball_x, 'o');
-    ret = Seven_Segm_Display_Number(&seg2, player_two_row);
-    ret = Seven_Segm_Display_Number(&seg1, player_one_row);
-    ret = Interrupt_INTx_Init(&Player1);
-    ret = Interrupt_INTx_Init(&Player2);
-    start_message();
-}
-
-
-
-
-
-
-void Player_one_move(void) {
-    ret = lcd_4bit_send_char_data_pos(&lcd, player_one_row, 1, ' ');
-
-    if (player_one_row > 0 && player_one_row < 4) {
-        player_one_row++;
-    } else if (player_one_row == 4) {
-        player_one_row = 1;
-    }
-
-    ret = Seven_Segm_Display_Number(&seg1, player_one_row);
-    ret = lcd_4bit_send_char_data_pos(&lcd, player_one_row, 1, '|');
-}
-
-
-
-
-
-
-void Player_two_move(void) {
-    ret = lcd_4bit_send_char_data_pos(&lcd, player_two_row, 20, ' ');
-
-    if (player_two_row > 0 && player_two_row < 4) {
-        player_two_row++;
-    } else if (player_two_row == 4) {
-        player_two_row = 1;
-    }
-
-    ret = Seven_Segm_Display_Number(&seg2, player_two_row);
-    ret = lcd_4bit_send_char_data_pos(&lcd, player_two_row, 20, '|');
-}
-
-
-
-
-
-
-void start_message(void) {
-    for (int i = 3; i > 0; i--) {
-        char message[20];
-        sprintf(message, "Game starts in %d", i);
-        ret = lcd_4bit_send_string_pos(&lcd, 4, 4, (uint8*)message);
-        _delay((unsigned long)((1000)*(8000000/4000.0)));
-        ret = lcd_4bit_send_string_pos(&lcd, 4, 4, (uint8*)"                ");
-    }
-
-    ret = lcd_4bit_send_string_pos(&lcd, 4, 1, (uint8*)"         GO !     ");
-    _delay((unsigned long)((500)*(8000000/4000.0)));
-    ret = lcd_4bit_send_string_pos(&lcd, 4, 4, (uint8*)"                ");
-}
-
-
-
-
-
-
-void ball_move(void) {
-
-    ret = lcd_4bit_send_char_data_pos(&lcd, ball_y, ball_x, ' ');
-
-    if (ball_x == 10 && ball_y == 2) {
-
-        xDirection = rand() % 2 == 0 ? Left : Right;
-
-        yDirection = rand() % 2 == 0 ? Up : Down;
-    }
-
-
-    if (xDirection == Right) {
-        ball_x++;
-        if (ball_x == 20 && player_two_row == ball_y) {
-            xDirection = Left;
-            ball_x = 19;
-        } else if (ball_x == 20 && player_two_row != ball_y) {
-
-            ret = lcd_4bit_send_command(&lcd, 0x02);
-            ret = lcd_4bit_send_string_pos(&lcd, 2, 4, "                    ");
-            ret = lcd_4bit_send_string_pos(&lcd, 2, 4, "Player one won !");
-            _delay((unsigned long)((2000)*(8000000/4000.0)));
-            ret = lcd_4bit_send_command(&lcd, 0x02);
-            __asm(" reset");
-        }
-    } else {
-        ball_x--;
-        if (ball_x == 1 && player_one_row == ball_y) {
-            xDirection = Right;
-            ball_x = 2;
-        } else if (ball_x == 1 && player_one_row != ball_y) {
-
-            ret = lcd_4bit_send_command(&lcd, 0x02);
-            ret = lcd_4bit_send_string_pos(&lcd, 2, 4, "                    ");
-            ret = lcd_4bit_send_string_pos(&lcd, 2, 4, "Player two won !");
-            _delay((unsigned long)((2000)*(8000000/4000.0)));
-            ret = lcd_4bit_send_command(&lcd, 0x02);
-            __asm(" reset");
-        }
-    }
-
-
-    if (yDirection == Up) {
-        ball_y++;
-        if (ball_y == 4) {
-            yDirection = Down;
-        }
-    } else {
-        ball_y--;
-        if (ball_y == 1) {
-            yDirection = Up;
-        }
-    }
-
-
-    ret = lcd_4bit_send_char_data_pos(&lcd, ball_y, ball_x, 'o');
-    _delay((unsigned long)((300)*(8000000/4000.0)));
+    ret = led_intialize(&led);
+    ret = Interrupt_RBx_Init(&r);
+    ret = button_intialize(&b);
 }

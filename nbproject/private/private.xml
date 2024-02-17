@@ -14,14 +14,15 @@
         <group>
             <file>file:/C:/Users/xcite/OneDrive/Documents/Drivers.X/MCAL_LAYER/GPIO/hal_gpio.c</file>
             <file>file:/C:/Users/xcite/OneDrive/Documents/Drivers.X/MCAL_LAYER/Interrupt/mcal_external_interrupt.c</file>
-            <file>file:/C:/Users/xcite/OneDrive/Documents/Drivers.X/MCAL_LAYER/Interrupt/mcal_interrupt_gen_cfg.h</file>
+            <file>file:/C:/Users/xcite/OneDrive/Documents/Drivers.X/MCAL_LAYER/GPIO/hal_gpio.h</file>
+            <file>file:/C:/Users/xcite/OneDrive/Documents/Drivers.X/MCAL_LAYER/mcal_std_types.h</file>
             <file>file:/C:/Users/xcite/OneDrive/Documents/Drivers.X/ECU_LAYER/ecu_layer_init.c</file>
             <file>file:/C:/Users/xcite/OneDrive/Documents/Drivers.X/MCAL_LAYER/Interrupt/mcal_external_interrupt.h</file>
-            <file>file:/C:/Users/xcite/OneDrive/Documents/Drivers.X/MCAL_LAYER/Interrupt/mcal_interrupt_manager.c</file>
-            <file>file:/C:/Users/xcite/OneDrive/Documents/Drivers.X/MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h</file>
             <file>file:/C:/Users/xcite/OneDrive/Documents/Drivers.X/app.h</file>
+            <file>file:/C:/Users/xcite/OneDrive/Documents/Drivers.X/ECU_LAYER/button/ecu_button.h</file>
+            <file>file:/C:/Users/xcite/OneDrive/Documents/Drivers.X/ECU_LAYER/Dc_Motor/ecu_motor.h</file>
             <file>file:/C:/Users/xcite/OneDrive/Documents/Drivers.X/app.c</file>
-            <file>file:/C:/Users/xcite/OneDrive/Documents/Drivers.X/MCAL_LAYER/device_config.c</file>
+            <file>file:/C:/Users/xcite/OneDrive/Documents/Drivers.X/ECU_LAYER/button/ecu_button.c</file>
         </group>
     </open-files>
 </project-private>

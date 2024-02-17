@@ -19,7 +19,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [c E3466 0 1 2 3 .. ]
 [n E3466 . SEGMENT_PIN0 SEGMENT_PIN1 SEGMENT_PIN2 SEGMENT_PIN3  ]
 "57
-[; ;ECU_LAYER/Seven_Seg/Seven_Seg.c: 57:         ret = gpio_pin_write_logic(&_Seven_Seg->segment_pins[SEGMENT_PIN0], (number >> 0) & (uint8)1);
+[; ;ECU_LAYER/Seven_Seg/Seven_Seg.c: 57:         ret |= gpio_pin_write_logic(&_Seven_Seg->segment_pins[SEGMENT_PIN0], (number >> 0) & (uint8)1);
 [c E3402 0 1 .. ]
 [n E3402 . GPIO_LOW GPIO_HIGH  ]
 "107 ECU_LAYER/Seven_Seg/../../MCAL_LAYER/GPIO/hal_gpio.h
@@ -485,7 +485,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 275 ]
 }
 "51
-[; ;ECU_LAYER/Seven_Seg/Seven_Seg.c: 51: Std_ReturnType Seven_Segm_Display_Number(Seven_Segment_t * _Seven_Seg, uint8 number) {
+[; ;ECU_LAYER/Seven_Seg/Seven_Seg.c: 51: Std_ReturnType Seven_Segm_Display_Number(Seven_Segment_t * _Seven_Seg, uint8_t number) {
 [v _Seven_Segm_Display_Number `(uc ~T0 @X0 1 ef2`*S274`uc ]
 {
 [e :U _Seven_Segm_Display_Number ]
@@ -497,8 +497,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _ret `uc ~T0 @X0 1 a ]
 [e = _ret -> -> 1 `i `uc ]
 "54
-[; ;ECU_LAYER/Seven_Seg/Seven_Seg.c: 54:     if (((void*)0) == _Seven_Seg || (number < 0 || number > 9)) {
-[e $ ! || == -> -> -> 0 `i `*v `*S274 __Seven_Seg || < -> _number `i -> 0 `i > -> _number `i -> 9 `i 279  ]
+[; ;ECU_LAYER/Seven_Seg/Seven_Seg.c: 54:     if (((void*)0) == _Seven_Seg || number > 9) {
+[e $ ! || == -> -> -> 0 `i `*v `*S274 __Seven_Seg > -> _number `i -> 9 `i 279  ]
 {
 "55
 [; ;ECU_LAYER/Seven_Seg/Seven_Seg.c: 55:         ret = (Std_ReturnType)0X00;
@@ -510,17 +510,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 279 ]
 {
 "57
-[; ;ECU_LAYER/Seven_Seg/Seven_Seg.c: 57:         ret = gpio_pin_write_logic(&_Seven_Seg->segment_pins[SEGMENT_PIN0], (number >> 0) & (uint8)1);
-[e = _ret ( _gpio_pin_write_logic (2 , -> &U *U + &U . *U __Seven_Seg 0 * -> . `E3466 0 `ux -> -> # *U &U . *U __Seven_Seg 0 `ui `ux `*CS273 -> & >> -> _number `i -> 0 `i -> -> -> 1 `i `uc `i `E3402 ]
+[; ;ECU_LAYER/Seven_Seg/Seven_Seg.c: 57:         ret |= gpio_pin_write_logic(&_Seven_Seg->segment_pins[SEGMENT_PIN0], (number >> 0) & (uint8)1);
+[e =| _ret -> ( _gpio_pin_write_logic (2 , -> &U *U + &U . *U __Seven_Seg 0 * -> . `E3466 0 `ux -> -> # *U &U . *U __Seven_Seg 0 `ui `ux `*CS273 -> & >> -> _number `i -> 0 `i -> -> -> 1 `i `uc `i `E3402 `uc ]
 "58
-[; ;ECU_LAYER/Seven_Seg/Seven_Seg.c: 58:         ret = gpio_pin_write_logic(&_Seven_Seg->segment_pins[SEGMENT_PIN1], (number >> 1) & (uint8)1);
-[e = _ret ( _gpio_pin_write_logic (2 , -> &U *U + &U . *U __Seven_Seg 0 * -> . `E3466 1 `ux -> -> # *U &U . *U __Seven_Seg 0 `ui `ux `*CS273 -> & >> -> _number `i -> 1 `i -> -> -> 1 `i `uc `i `E3402 ]
+[; ;ECU_LAYER/Seven_Seg/Seven_Seg.c: 58:         ret |= gpio_pin_write_logic(&_Seven_Seg->segment_pins[SEGMENT_PIN1], (number >> 1) & (uint8)1);
+[e =| _ret -> ( _gpio_pin_write_logic (2 , -> &U *U + &U . *U __Seven_Seg 0 * -> . `E3466 1 `ux -> -> # *U &U . *U __Seven_Seg 0 `ui `ux `*CS273 -> & >> -> _number `i -> 1 `i -> -> -> 1 `i `uc `i `E3402 `uc ]
 "59
-[; ;ECU_LAYER/Seven_Seg/Seven_Seg.c: 59:         ret = gpio_pin_write_logic(&_Seven_Seg->segment_pins[SEGMENT_PIN2], (number >> 2) & (uint8)1);
-[e = _ret ( _gpio_pin_write_logic (2 , -> &U *U + &U . *U __Seven_Seg 0 * -> . `E3466 2 `ux -> -> # *U &U . *U __Seven_Seg 0 `ui `ux `*CS273 -> & >> -> _number `i -> 2 `i -> -> -> 1 `i `uc `i `E3402 ]
+[; ;ECU_LAYER/Seven_Seg/Seven_Seg.c: 59:         ret |= gpio_pin_write_logic(&_Seven_Seg->segment_pins[SEGMENT_PIN2], (number >> 2) & (uint8)1);
+[e =| _ret -> ( _gpio_pin_write_logic (2 , -> &U *U + &U . *U __Seven_Seg 0 * -> . `E3466 2 `ux -> -> # *U &U . *U __Seven_Seg 0 `ui `ux `*CS273 -> & >> -> _number `i -> 2 `i -> -> -> 1 `i `uc `i `E3402 `uc ]
 "60
-[; ;ECU_LAYER/Seven_Seg/Seven_Seg.c: 60:         ret = gpio_pin_write_logic(&_Seven_Seg->segment_pins[SEGMENT_PIN3], (number >> 3) & (uint8)1);
-[e = _ret ( _gpio_pin_write_logic (2 , -> &U *U + &U . *U __Seven_Seg 0 * -> . `E3466 3 `ux -> -> # *U &U . *U __Seven_Seg 0 `ui `ux `*CS273 -> & >> -> _number `i -> 3 `i -> -> -> 1 `i `uc `i `E3402 ]
+[; ;ECU_LAYER/Seven_Seg/Seven_Seg.c: 60:         ret |= gpio_pin_write_logic(&_Seven_Seg->segment_pins[SEGMENT_PIN3], (number >> 3) & (uint8)1);
+[e =| _ret -> ( _gpio_pin_write_logic (2 , -> &U *U + &U . *U __Seven_Seg 0 * -> . `E3466 3 `ux -> -> # *U &U . *U __Seven_Seg 0 `ui `ux `*CS273 -> & >> -> _number `i -> 3 `i -> -> -> 1 `i `uc `i `E3402 `uc ]
 "61
 [; ;ECU_LAYER/Seven_Seg/Seven_Seg.c: 61:     }
 }

@@ -5216,16 +5216,16 @@ Std_ReturnType Seven_Segm_initailize(Seven_Segment_t * _Seven_Seg) {
     return ret;
 }
 # 51 "ECU_LAYER/Seven_Seg/Seven_Seg.c"
-Std_ReturnType Seven_Segm_Display_Number(Seven_Segment_t * _Seven_Seg, uint8 number) {
+Std_ReturnType Seven_Segm_Display_Number(Seven_Segment_t * _Seven_Seg, uint8_t number) {
     Std_ReturnType ret = (Std_ReturnType)0X01;
 
-    if (((void*)0) == _Seven_Seg || (number < 0 || number > 9)) {
+    if (((void*)0) == _Seven_Seg || number > 9) {
         ret = (Std_ReturnType)0X00;
     } else {
-        ret = gpio_pin_write_logic(&_Seven_Seg->segment_pins[SEGMENT_PIN0], (number >> 0) & (uint8)1);
-        ret = gpio_pin_write_logic(&_Seven_Seg->segment_pins[SEGMENT_PIN1], (number >> 1) & (uint8)1);
-        ret = gpio_pin_write_logic(&_Seven_Seg->segment_pins[SEGMENT_PIN2], (number >> 2) & (uint8)1);
-        ret = gpio_pin_write_logic(&_Seven_Seg->segment_pins[SEGMENT_PIN3], (number >> 3) & (uint8)1);
+        ret |= gpio_pin_write_logic(&_Seven_Seg->segment_pins[SEGMENT_PIN0], (number >> 0) & (uint8)1);
+        ret |= gpio_pin_write_logic(&_Seven_Seg->segment_pins[SEGMENT_PIN1], (number >> 1) & (uint8)1);
+        ret |= gpio_pin_write_logic(&_Seven_Seg->segment_pins[SEGMENT_PIN2], (number >> 2) & (uint8)1);
+        ret |= gpio_pin_write_logic(&_Seven_Seg->segment_pins[SEGMENT_PIN3], (number >> 3) & (uint8)1);
     }
 
     return ret;
