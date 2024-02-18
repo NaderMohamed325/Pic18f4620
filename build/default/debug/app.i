@@ -5612,6 +5612,7 @@ Std_ReturnType ADC_Start_Conversion(const adc_config_t*adc);
 Std_ReturnType ADC_Is_Conversion_Done(const adc_config_t*adc, uint8 *conversion_status);
 Std_ReturnType ADC_Get_Conversion_Result(const adc_config_t*adc, uint16 *result);
 Std_ReturnType ADC_Get_Conversion_Blocking(const adc_config_t*adc, adc_channel_select_t channel, uint16 *result);
+Std_ReturnType ADC_Get_Conversion_Interrupt(const adc_config_t*adc, adc_channel_select_t channel);
 # 13 "./MCAL_LAYER/Interrupt/../ADC/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 2
 # 11 "./MCAL_LAYER/EEPROM/hal_eeprom.h" 2
 # 33 "./MCAL_LAYER/EEPROM/hal_eeprom.h"

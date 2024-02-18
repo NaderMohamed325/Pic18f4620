@@ -13,10 +13,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "110 ./MCAL_LAYER/ADC/hal_adc.h
 [s S284 `*F3707 1 `E3686 1 `E3696 1 `E3670 1 `E3633 1 :1 `uc 1 :1 `uc 1 :6 `uc 1 ]
 [n S284 . ADC_Interrupt_Handler adc_acquisition adc_conversion_clock adc_channel priority voltage_ref result_format reserved_bits ]
-[v F3749 `(v ~T0 @X0 0 tf ]
-[v F3751 `(v ~T0 @X0 0 tf ]
-[v F3753 `(v ~T0 @X0 0 tf ]
-[v F3755 `(v ~T0 @X0 0 tf ]
+[v F3752 `(v ~T0 @X0 0 tf ]
+[v F3754 `(v ~T0 @X0 0 tf ]
+[v F3756 `(v ~T0 @X0 0 tf ]
+[v F3758 `(v ~T0 @X0 0 tf ]
 [p mainexit ]
 "7 app.c
 [; ;app.c: 7: void Application_initialize(void);
@@ -320,7 +320,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _adc_1
 :U ..
 :U ..
--> -> -> 0 `i `*v `*F3749
+-> -> -> 0 `i `*v `*F3752
 . `E3686 5
 . `E3696 5
 . `E3670 0
@@ -336,7 +336,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _adc_2
 :U ..
 :U ..
--> -> -> 0 `i `*v `*F3751
+-> -> -> 0 `i `*v `*F3754
 . `E3686 5
 . `E3696 5
 . `E3670 1
@@ -352,7 +352,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _adc_3
 :U ..
 :U ..
--> -> -> 0 `i `*v `*F3753
+-> -> -> 0 `i `*v `*F3756
 . `E3686 5
 . `E3696 5
 . `E3670 2
@@ -368,7 +368,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _adc_4
 :U ..
 :U ..
--> -> -> 0 `i `*v `*F3755
+-> -> -> 0 `i `*v `*F3758
 . `E3686 5
 . `E3696 5
 . `E3670 3

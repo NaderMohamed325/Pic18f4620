@@ -5245,6 +5245,7 @@ Std_ReturnType ADC_Start_Conversion(const adc_config_t*adc);
 Std_ReturnType ADC_Is_Conversion_Done(const adc_config_t*adc, uint8 *conversion_status);
 Std_ReturnType ADC_Get_Conversion_Result(const adc_config_t*adc, uint16 *result);
 Std_ReturnType ADC_Get_Conversion_Blocking(const adc_config_t*adc, adc_channel_select_t channel, uint16 *result);
+Std_ReturnType ADC_Get_Conversion_Interrupt(const adc_config_t*adc, adc_channel_select_t channel);
 # 8 "MCAL_LAYER/ADC/hal_adc.c" 2
 
 
@@ -5280,8 +5281,10 @@ Std_ReturnType ADC_Init(const adc_config_t* adc) {
 
 
         (PIE1bits.ADIE = 1);
+        (INTCONbits.GIEH = 1);
+        (INTCONbits.PEIE = 1);
         (PIR1bits.ADIF = 0);
-# 59 "MCAL_LAYER/ADC/hal_adc.c"
+# 61 "MCAL_LAYER/ADC/hal_adc.c"
         _ADC_Interrupt_Handler = adc->ADC_Interrupt_Handler;
 
 
@@ -5324,7 +5327,7 @@ Std_ReturnType ADC_Deinit(const adc_config_t* adc) {
 
     return ret;
 }
-# 109 "MCAL_LAYER/ADC/hal_adc.c"
+# 111 "MCAL_LAYER/ADC/hal_adc.c"
 Std_ReturnType ADC_Select_Channel(const adc_config_t* adc, adc_channel_select_t channel) {
     Std_ReturnType ret = (Std_ReturnType)0X01;
 
@@ -5359,7 +5362,7 @@ Std_ReturnType ADC_Start_Conversion(const adc_config_t* adc) {
 
     return ret;
 }
-# 151 "MCAL_LAYER/ADC/hal_adc.c"
+# 153 "MCAL_LAYER/ADC/hal_adc.c"
 Std_ReturnType ADC_Is_Conversion_Done(const adc_config_t* adc, uint8_t* conversion_status) {
     Std_ReturnType ret = (Std_ReturnType)0X01;
 
@@ -5373,7 +5376,7 @@ Std_ReturnType ADC_Is_Conversion_Done(const adc_config_t* adc, uint8_t* conversi
 
     return ret;
 }
-# 172 "MCAL_LAYER/ADC/hal_adc.c"
+# 174 "MCAL_LAYER/ADC/hal_adc.c"
 Std_ReturnType ADC_Get_Conversion_Result(const adc_config_t* adc, uint16_t* result) {
     Std_ReturnType ret = (Std_ReturnType)0X01;
 
@@ -5393,7 +5396,7 @@ Std_ReturnType ADC_Get_Conversion_Result(const adc_config_t* adc, uint16_t* resu
 
     return ret;
 }
-# 200 "MCAL_LAYER/ADC/hal_adc.c"
+# 202 "MCAL_LAYER/ADC/hal_adc.c"
 Std_ReturnType ADC_Get_Conversion_Blocking(const adc_config_t* adc, adc_channel_select_t channel, uint16_t* result) {
     Std_ReturnType ret = (Std_ReturnType)0X01;
     uint8_t conversion_status;
@@ -5415,6 +5418,26 @@ Std_ReturnType ADC_Get_Conversion_Blocking(const adc_config_t* adc, adc_channel_
     }
 
     return ret;
+}
+
+Std_ReturnType ADC_Get_Conversion_Interrupt(const adc_config_t*adc, adc_channel_select_t channel) {
+
+    Std_ReturnType ret = (Std_ReturnType)0X01;
+    uint8_t conversion_status;
+
+
+    if (((void*)0) == adc) {
+        ret = (Std_ReturnType)0X00;
+    } else {
+
+        ret &= ADC_Select_Channel(adc, channel);
+        ret &= ADC_Start_Conversion(adc);
+
+    }
+
+    return ret;
+
+
 }
 
 
