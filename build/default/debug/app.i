@@ -5477,7 +5477,7 @@ void ecu_layer_initialize(void);
 # 14 "./MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h"
 # 1 "./MCAL_LAYER/Interrupt/mcal_interrupt_gen_cfg.h" 1
 # 15 "./MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h" 2
-# 58 "./MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h"
+# 57 "./MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h"
 typedef enum {
     INTERRUPT_LOW_PRIORITY = 0,
     INTERRUPT_HIGH_PRIORITY
@@ -5545,7 +5545,12 @@ Std_ReturnType Interrupt_RBx_Init(const interrupt_RBx_t *obj);
 # 12 "./MCAL_LAYER/Interrupt/../ADC/hal_adc.h"
 # 1 "./MCAL_LAYER/Interrupt/../ADC/hal_adc_cfg.h" 1
 # 12 "./MCAL_LAYER/Interrupt/../ADC/hal_adc.h" 2
-# 70 "./MCAL_LAYER/Interrupt/../ADC/hal_adc.h"
+
+
+
+# 1 "./MCAL_LAYER/Interrupt/../ADC/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 1
+# 15 "./MCAL_LAYER/Interrupt/../ADC/hal_adc.h" 2
+# 71 "./MCAL_LAYER/Interrupt/../ADC/hal_adc.h"
 typedef enum {
     ADC_CHANNEL_AN0 = 0,
     ADC_CHANNEL_AN1,
@@ -5586,12 +5591,13 @@ typedef enum {
 } adc_conversion_clock_t;
 
 typedef struct {
+
     void (*ADC_Interrupt_Handler) (void);
 
     adc_acquisition_time_t adc_acquisition;
     adc_conversion_clock_t adc_conversion_clock;
     adc_channel_select_t adc_channel;
-
+    interrupt_priority_cfg priority;
     uint8 voltage_ref : 1;
     uint8 result_format : 1;
     uint8 reserved_bits : 6;
@@ -5605,8 +5611,8 @@ Std_ReturnType ADC_Select_Channel(const adc_config_t*adc, adc_channel_select_t c
 Std_ReturnType ADC_Start_Conversion(const adc_config_t*adc);
 Std_ReturnType ADC_Is_Conversion_Done(const adc_config_t*adc, uint8 *conversion_status);
 Std_ReturnType ADC_Get_Conversion_Result(const adc_config_t*adc, uint16 *result);
-Std_ReturnType ADC_Get_Conversion(const adc_config_t*adc, adc_channel_select_t channel, uint16 *result);
-# 13 "./MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 2
+Std_ReturnType ADC_Get_Conversion_Blocking(const adc_config_t*adc, adc_channel_select_t channel, uint16 *result);
+# 13 "./MCAL_LAYER/Interrupt/../ADC/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 2
 # 11 "./MCAL_LAYER/EEPROM/hal_eeprom.h" 2
 # 33 "./MCAL_LAYER/EEPROM/hal_eeprom.h"
 Std_ReturnType EEPROM_Write_Byte(uint16 bAdd, uint8 bData);
@@ -5619,23 +5625,58 @@ Std_ReturnType EEPROM_Write_Byte(uint16 bAdd, uint8 bData);
 
 Std_ReturnType EEPROM_Read_Byte(uint16 bAdd, uint8 *bData);
 # 14 "./app.h" 2
-# 24 "./app.h"
+# 25 "./app.h"
 void Application_initialize(void);
 # 2 "app.c" 2
 
 
- Std_ReturnType ret = (Std_ReturnType)0X01;
+Std_ReturnType ret = (Std_ReturnType)0X01;
 
 
 void Application_initialize(void);
-
+uint16 re_1, re_2, re_3, re_4;
+adc_config_t adc_1 = {
+    .ADC_Interrupt_Handler = ((void*)0),
+    .adc_acquisition = ADC_12_TAD,
+    .adc_channel = ADC_CHANNEL_AN0,
+    .adc_conversion_clock = ADC_CONVERSION_CLOCK_FOSC_DIV_16,
+    .result_format = 0X01U ,
+    .voltage_ref = 0X00
+};
+adc_config_t adc_2 = {
+    .ADC_Interrupt_Handler = ((void*)0),
+    .adc_acquisition = ADC_12_TAD,
+    .adc_channel = ADC_CHANNEL_AN1,
+    .adc_conversion_clock = ADC_CONVERSION_CLOCK_FOSC_DIV_16,
+    .result_format = 0X01U ,
+    .voltage_ref = 0X00
+};
+adc_config_t adc_3 = {
+    .ADC_Interrupt_Handler = ((void*)0),
+    .adc_acquisition = ADC_12_TAD,
+    .adc_channel = ADC_CHANNEL_AN2,
+    .adc_conversion_clock = ADC_CONVERSION_CLOCK_FOSC_DIV_16,
+    .result_format = 0X01U ,
+    .voltage_ref = 0X00
+};
+adc_config_t adc_4 = {
+    .ADC_Interrupt_Handler = ((void*)0),
+    .adc_acquisition = ADC_12_TAD,
+    .adc_channel = ADC_CHANNEL_AN3,
+    .adc_conversion_clock = ADC_CONVERSION_CLOCK_FOSC_DIV_16,
+    .result_format = 0X01U ,
+    .voltage_ref = 0X00
+};
 
 int main(void) {
 
     Application_initialize();
 
     while (1) {
-
+        ret = ADC_Get_Conversion_Blocking(&adc_1, ADC_CHANNEL_AN0, &re_1);
+        ret = ADC_Get_Conversion_Blocking(&adc_2, ADC_CHANNEL_AN1, &re_2);
+        ret = ADC_Get_Conversion_Blocking(&adc_3, ADC_CHANNEL_AN2, &re_3);
+        ret = ADC_Get_Conversion_Blocking(&adc_4, ADC_CHANNEL_AN3, &re_4);
     }
 
     return 0;
@@ -5643,5 +5684,8 @@ int main(void) {
 
 void Application_initialize(void) {
     ecu_layer_initialize();
-
+    ret = ADC_Init(&adc_1);
+    ret = ADC_Init(&adc_2);
+    ret = ADC_Init(&adc_3);
+    ret = ADC_Init(&adc_4);
 }

@@ -12,6 +12,11 @@ static inline void adc_input_channel_port_configure(adc_channel_select_t channel
 static inline void adc_select_result_format(const adc_config_t* adc);
 static inline void adc_select_voltage_ref(const adc_config_t* adc);
 
+#if ADC_INTERRUPT_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
+static void (*_ADC_Interrupt_Handler)(void) = NULL;
+
+#endif
+
 /**
  * @brief Initializes the ADC module.
  *
@@ -27,11 +32,11 @@ Std_ReturnType ADC_Init(const adc_config_t* adc) {
     } else {
         // Disable ADC before configuration
         ADC_CONVERTER_DISABLE();
-        
+
         // Set acquisition time and conversion clock
         ADCON2bits.ACQT = adc->adc_acquisition;
         ADCON2bits.ADCS = adc->adc_conversion_clock;
-        
+
         // Select ADC channel and configure related port
         ADCON0bits.CHS = adc->adc_channel;
         adc_input_channel_port_configure(adc->adc_channel);
@@ -39,6 +44,23 @@ Std_ReturnType ADC_Init(const adc_config_t* adc) {
         // Select result format and voltage reference
         adc_select_result_format(adc);
         adc_select_voltage_ref(adc);
+        //interrupt features
+#if ADC_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
+        ADC_InterruptEnable();
+        INTERRUPT_Global_Interrupt_Enable();
+        INTERRUPT_Peripheral_Interrupt_Enable();
+        ADC_InterruptFlagClear();
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE==INTERRUPT_FEATURE_ENABLE
+        if (INTERRUPT_HIGH_PRIORITY == adc->priority) {
+            ADC_HighPrioritySet();
+        } else if (INTERRUPT_LOW_PRIORITY == adc->priority) {
+            ADC_LowPrioritySet();
+        }
+#endif
+
+        _ADC_Interrupt_Handler = adc->ADC_Interrupt_Handler;
+
+#endif
 
         // Enable ADC after configuration
         ADC_CONVERTER_ENABLE();
@@ -62,6 +84,18 @@ Std_ReturnType ADC_Deinit(const adc_config_t* adc) {
     } else {
         // Disable ADC
         ADC_CONVERTER_DISABLE();
+
+
+#if ADC_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
+
+        ADC_InterruptDisable();
+
+
+
+
+
+
+#endif
     }
 
     return ret;
@@ -165,7 +199,7 @@ Std_ReturnType ADC_Get_Conversion_Result(const adc_config_t* adc, uint16_t* resu
  * @param result Pointer to store the ADC conversion result.
  * @return Std_ReturnType E_OK if successful, E_NOT_OK if unsuccessful.
  */
-Std_ReturnType ADC_Get_Conversion(const adc_config_t* adc, adc_channel_select_t channel, uint16_t* result) {
+Std_ReturnType ADC_Get_Conversion_Blocking(const adc_config_t* adc, adc_channel_select_t channel, uint16_t* result) {
     Std_ReturnType ret = E_OK;
     uint8_t conversion_status;
 
@@ -177,15 +211,35 @@ Std_ReturnType ADC_Get_Conversion(const adc_config_t* adc, adc_channel_select_t 
         ret &= ADC_Select_Channel(adc, channel);
         ret &= ADC_Start_Conversion(adc);
         ret &= ADC_Is_Conversion_Done(adc, &conversion_status);
-        
+
         // Wait for conversion to complete
         while (ADCON0bits.GO_nDONE);
-        
+
         // Get the ADC conversion result
         ret &= ADC_Get_Conversion_Result(adc, result);
     }
 
     return ret;
+}
+
+Std_ReturnType ADC_Get_Conversion_Interrupt(const adc_config_t*adc, adc_channel_select_t channel) {
+
+    Std_ReturnType ret = E_OK;
+    uint8_t conversion_status;
+
+    // Check if the provided ADC configuration, channel, and result pointers are valid
+    if (NULL == adc) {
+        ret = E_NOT_OK;
+    } else {
+        // Select channel, start conversion, and check if conversion is done
+        ret &= ADC_Select_Channel(adc, channel);
+        ret &= ADC_Start_Conversion(adc);
+
+    }
+
+    return ret;
+
+
 }
 
 /**
@@ -244,7 +298,7 @@ static inline void adc_select_result_format(const adc_config_t* adc) {
  * @brief Selects the voltage reference for the ADC conversion.
  *
  * @param adc Pointer to the ADC configuration structure.
- * @return void
+ * @return void 
  */
 static inline void adc_select_voltage_ref(const adc_config_t* adc) {
     if (ADC_VOLTAGE_REFERENCE_ENABLED == adc->voltage_ref) {
@@ -253,5 +307,12 @@ static inline void adc_select_voltage_ref(const adc_config_t* adc) {
         ADC_DISABLE_VOLTAGE_REFERENCE();
     } else {
         ADC_DISABLE_VOLTAGE_REFERENCE();
+    }
+}
+
+void ADC_ISR(void) {
+    ADC_InterruptFlagClear();
+    if (_ADC_Interrupt_Handler) {
+        _ADC_Interrupt_Handler();
     }
 }

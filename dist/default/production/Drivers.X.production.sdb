@@ -74,6 +74,42 @@ SEGMENT_PIN3 3
 GPIO_LOW 0
 GPIO_HIGH 1
 ]
+"21 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/ADC/hal_adc.c
+[e E3478 . `uc
+ADC_0_TAD 0
+ADC_2_TAD 1
+ADC_4_TAD 2
+ADC_6_TAD 3
+ADC_8_TAD 4
+ADC_12_TAD 5
+ADC_16_TAD 6
+ADC_20_TAD 7
+]
+[e E3488 . `uc
+ADC_CONVERSION_CLOCK_FOSC_DIV_2 0
+ADC_CONVERSION_CLOCK_FOSC_DIV_8 1
+ADC_CONVERSION_CLOCK_FOSC_DIV_32 2
+ADC_CONVERSION_CLOCK_FOSC_DIV_FRC 3
+ADC_CONVERSION_CLOCK_FOSC_DIV_4 4
+ADC_CONVERSION_CLOCK_FOSC_DIV_16 5
+ADC_CONVERSION_CLOCK_FOSC_DIV_64 6
+]
+[e E3462 . `uc
+ADC_CHANNEL_AN0 0
+ADC_CHANNEL_AN1 1
+ADC_CHANNEL_AN2 2
+ADC_CHANNEL_AN3 3
+ADC_CHANNEL_AN4 4
+ADC_CHANNEL_AN5 5
+ADC_CHANNEL_AN6 6
+ADC_CHANNEL_AN7 7
+ADC_CHANNEL_AN8 8
+ADC_CHANNEL_AN9 9
+ADC_CHANNEL_AN10 10
+ADC_CHANNEL_AN11 11
+ADC_CHANNEL_AN12 12
+ADC_CHANNEL_AN13 13
+]
 "38 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_Layer/GPIO/hal_gpio.c
 [e E3406 . `uc
 GPIO_OUTPUT 0
@@ -122,55 +158,45 @@ PIN7 7
 GPIO_LOW 0
 GPIO_HIGH 1
 ]
-"8 C:\Users\xcite\OneDrive\Documents\Drivers.X\app.c
-[e E3410 . `uc
-PORTA_INDEX 0
-PORTB_INDEX 1
-PORTC_INDEX 2
-PORTD_INDEX 3
-PORTE_INDEX 4
+"9 C:\Users\xcite\OneDrive\Documents\Drivers.X\app.c
+[e E3686 . `uc
+ADC_0_TAD 0
+ADC_2_TAD 1
+ADC_4_TAD 2
+ADC_6_TAD 3
+ADC_8_TAD 4
+ADC_12_TAD 5
+ADC_16_TAD 6
+ADC_20_TAD 7
 ]
-[e E3417 . `uc
-PIN0 0
-PIN1 1
-PIN2 2
-PIN3 3
-PIN4 4
-PIN5 5
-PIN6 6
-PIN7 7
+[e E3696 . `uc
+ADC_CONVERSION_CLOCK_FOSC_DIV_2 0
+ADC_CONVERSION_CLOCK_FOSC_DIV_8 1
+ADC_CONVERSION_CLOCK_FOSC_DIV_32 2
+ADC_CONVERSION_CLOCK_FOSC_DIV_FRC 3
+ADC_CONVERSION_CLOCK_FOSC_DIV_4 4
+ADC_CONVERSION_CLOCK_FOSC_DIV_16 5
+ADC_CONVERSION_CLOCK_FOSC_DIV_64 6
 ]
-[e E3490 . `uc
-LED_OFF 0
-LED_ON 1
+[e E3670 . `uc
+ADC_CHANNEL_AN0 0
+ADC_CHANNEL_AN1 1
+ADC_CHANNEL_AN2 2
+ADC_CHANNEL_AN3 3
+ADC_CHANNEL_AN4 4
+ADC_CHANNEL_AN5 5
+ADC_CHANNEL_AN6 6
+ADC_CHANNEL_AN7 7
+ADC_CHANNEL_AN8 8
+ADC_CHANNEL_AN9 9
+ADC_CHANNEL_AN10 10
+ADC_CHANNEL_AN11 11
+ADC_CHANNEL_AN12 12
+ADC_CHANNEL_AN13 13
 ]
-"13
-[e E3545 . `uc
-BUTTON_ACTVE_HIGH 0
-BUTTON_ACTIVE_LOW 1
-]
-[e E3541 . `uc
-BUTTON_PRESSED 0
-BUTTON_RELEASED 1
-]
-[e E3406 . `uc
-GPIO_OUTPUT 0
-GPIO_INPUT 1
-]
-[e E3402 . `uc
-GPIO_LOW 0
-GPIO_HIGH 1
-]
-"26
-[e E3633 . `uc
-INTERRUPT_LOW_PRIORITY 0
-INTERRUPT_HIGH_PRIORITY 1
-]
-"22
-[v _f f `(v  1 e 1 0 ]
-"37
+"42
 [v _main main `(i  1 e 2 0 ]
-"48
+"56
 [v _Application_initialize Application_initialize `(v  1 e 1 0 ]
 "4 D:\IDE MCU\pic\sources\c99\common\fleq.c
 [v ___fleq __fleq `(b  1 e 0 0 ]
@@ -200,10 +226,6 @@ INTERRUPT_HIGH_PRIORITY 1
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 D:\IDE MCU\pic\sources\c99\common\Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
-"19 C:\Users\xcite\OneDrive\Documents\Drivers.X\ECU_LAYER/button/ecu_button.c
-[v _button_intialize button_intialize `(uc  1 e 1 0 ]
-"42
-[v _button_read_state button_read_state `(uc  1 e 1 0 ]
 "89 C:\Users\xcite\OneDrive\Documents\Drivers.X\ECU_LAYER/Chr_Lcd/ecu_chr_lcd.c
 [v _lcd_4bit_send_command lcd_4bit_send_command `(uc  1 e 1 0 ]
 "109
@@ -232,10 +254,24 @@ INTERRUPT_HIGH_PRIORITY 1
 [v _lcd_4bit_set_cursor lcd_4bit_set_cursor `(uc  1 s 1 lcd_4bit_set_cursor ]
 "11 C:\Users\xcite\OneDrive\Documents\Drivers.X\ECU_LAYER/ecu_layer_init.c
 [v _ecu_layer_initialize ecu_layer_initialize `(v  1 e 1 0 ]
-"12 C:\Users\xcite\OneDrive\Documents\Drivers.X\ECU_LAYER/Led/ecu_led.c
-[v _led_intialize led_intialize `(uc  1 e 1 0 ]
-"87
-[v _led_toggle_status led_toggle_status `(uc  1 e 1 0 ]
+"21 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/ADC/hal_adc.c
+[v _ADC_Init ADC_Init `(uc  1 e 1 0 ]
+"77
+[v _ADC_Select_Channel ADC_Select_Channel `(uc  1 e 1 0 ]
+"98
+[v _ADC_Start_Conversion ADC_Start_Conversion `(uc  1 e 1 0 ]
+"119
+[v _ADC_Is_Conversion_Done ADC_Is_Conversion_Done `(uc  1 e 1 0 ]
+"140
+[v _ADC_Get_Conversion_Result ADC_Get_Conversion_Result `(uc  1 e 1 0 ]
+"168
+[v _ADC_Get_Conversion_Blocking ADC_Get_Conversion_Blocking `(uc  1 e 1 0 ]
+"197
+[v _adc_input_channel_port_configure adc_input_channel_port_configure `T(v  1 s 1 adc_input_channel_port_configure ]
+"235
+[v _adc_select_result_format adc_select_result_format `T(v  1 s 1 adc_select_result_format ]
+"249
+[v _adc_select_voltage_ref adc_select_voltage_ref `T(v  1 s 1 adc_select_voltage_ref ]
 "19 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_Layer/GPIO/hal_gpio.c
 [v _gpio_pin_direction_intialize gpio_pin_direction_intialize `(uc  1 e 1 0 ]
 "55
@@ -246,9 +282,7 @@ INTERRUPT_HIGH_PRIORITY 1
 [v _gpio_pin_toggle_logic gpio_pin_toggle_logic `(uc  1 e 1 0 ]
 "101
 [v _gpio_pin_initialize gpio_pin_initialize `(uc  1 e 1 0 ]
-"91 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Interrupt/mcal_external_interrupt.c
-[v _Interrupt_RBx_Init Interrupt_RBx_Init `(uc  1 e 1 0 ]
-"159
+"159 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Interrupt/mcal_external_interrupt.c
 [v _Interrupt_INTx_Enable Interrupt_INTx_Enable `(uc  1 s 1 Interrupt_INTx_Enable ]
 "214
 [v _Interrupt_INTx_Disable Interrupt_INTx_Disable `(uc  1 s 1 Interrupt_INTx_Disable ]
@@ -281,31 +315,29 @@ INTERRUPT_HIGH_PRIORITY 1
 "36 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Interrupt/mcal_interrupt_manager.c
 [v _Interrupt_Manager_High Interrupt_Manager_High `IIH(v  1 e 1 0 ]
 "4 C:\Users\xcite\OneDrive\Documents\Drivers.X\app.c
-[v _ret ret `VEuc  1 e 1 0 ]
-[s S440 . 1 `uc 1 port_index 1 0 :3:0 
-`uc 1 pin_index 1 0 :3:3 
-`uc 1 led_status 1 0 :1:6 
-]
+[v _ret ret `uc  1 e 1 0 ]
 "8
-[v _led led `S440  1 e 1 0 ]
-[s S24 . 1 `uc 1 port 1 0 :3:0 
-`uc 1 pin 1 0 :3:3 
-`uc 1 direction 1 0 :1:6 
-`uc 1 logic 1 0 :1:7 
+[v _re_1 re_1 `us  1 e 2 0 ]
+[v _re_2 re_2 `us  1 e 2 0 ]
+[v _re_3 re_3 `us  1 e 2 0 ]
+[v _re_4 re_4 `us  1 e 2 0 ]
+[s S658 . 6 `*.37(v 1 ADC_Interrupt_Handler 2 0 `E3478 1 adc_acquisition 1 2 `E3488 1 adc_conversion_clock 1 3 `E3462 1 adc_channel 1 4 `uc 1 voltage_ref 1 5 :1:0 
+`uc 1 result_format 1 5 :1:1 
+`uc 1 reserved_bits 1 5 :6:2 
 ]
-"13
-[s S35 . 3 `S24 1 pin_config 1 0 `E3466 1 button_active 1 1 `E3462 1 button_state 1 2 ]
-[v _b b `S35  1 e 3 0 ]
-"26
-[s S796 . 6 `*.37(v 1 External_CallBack_High 2 0 `*.37(v 1 External_CallBack_Low 2 2 `E3462 1 Priority 1 4 `S24 1 mcu_pin 1 5 ]
-[v _r r `S796  1 e 6 0 ]
-"35
-[v _s s `VEE3541  1 e 1 0 ]
-"52 D:/IDE MCU/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
+"9
+[v _adc_1 adc_1 `S658  1 e 6 0 ]
+"17
+[v _adc_2 adc_2 `S658  1 e 6 0 ]
+"25
+[v _adc_3 adc_3 `S658  1 e 6 0 ]
+"33
+[v _adc_4 adc_4 `S658  1 e 6 0 ]
+"52 D:/IDE MCU/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include/proc/pic18f4620.h
 [v _PORTA PORTA `VEuc  1 e 1 @3968 ]
 "189
 [v _PORTB PORTB `VEuc  1 e 1 @3969 ]
-[s S1181 . 1 `uc 1 RB0 1 0 :1:0 
+[s S1537 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -315,7 +347,7 @@ INTERRUPT_HIGH_PRIORITY 1
 `uc 1 RB7 1 0 :1:7 
 ]
 "230
-[s S1190 . 1 `uc 1 INT0 1 0 :1:0 
+[s S1546 . 1 `uc 1 INT0 1 0 :1:0 
 `uc 1 INT1 1 0 :1:1 
 `uc 1 INT2 1 0 :1:2 
 `uc 1 CCP2 1 0 :1:3 
@@ -324,7 +356,7 @@ INTERRUPT_HIGH_PRIORITY 1
 `uc 1 KBI2 1 0 :1:6 
 `uc 1 KBI3 1 0 :1:7 
 ]
-[s S1199 . 1 `uc 1 AN12 1 0 :1:0 
+[s S1555 . 1 `uc 1 AN12 1 0 :1:0 
 `uc 1 AN10 1 0 :1:1 
 `uc 1 AN8 1 0 :1:2 
 `uc 1 AN9 1 0 :1:3 
@@ -333,11 +365,11 @@ INTERRUPT_HIGH_PRIORITY 1
 `uc 1 PGC 1 0 :1:6 
 `uc 1 PGD 1 0 :1:7 
 ]
-[s S1208 . 1 `uc 1 . 1 0 :3:0 
+[s S1564 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 CCP2_PA2 1 0 :1:3 
 ]
-[u S1211 . 1 `S1181 1 . 1 0 `S1190 1 . 1 0 `S1199 1 . 1 0 `S1208 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES1211  1 e 1 @3969 ]
+[u S1567 . 1 `S1537 1 . 1 0 `S1546 1 . 1 0 `S1555 1 . 1 0 `S1564 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES1567  1 e 1 @3969 ]
 "360
 [v _PORTC PORTC `VEuc  1 e 1 @3970 ]
 "535
@@ -364,7 +396,7 @@ INTERRUPT_HIGH_PRIORITY 1
 [v _TRISD TRISD `VEuc  1 e 1 @3989 ]
 "2268
 [v _TRISE TRISE `VEuc  1 e 1 @3990 ]
-[s S1408 . 1 `uc 1 RD 1 0 :1:0 
+[s S953 . 1 `uc 1 RD 1 0 :1:0 
 `uc 1 WR 1 0 :1:1 
 `uc 1 WREN 1 0 :1:2 
 `uc 1 WRERR 1 0 :1:3 
@@ -374,11 +406,11 @@ INTERRUPT_HIGH_PRIORITY 1
 `uc 1 EEPGD 1 0 :1:7 
 ]
 "2947
-[s S1417 . 1 `uc 1 . 1 0 :6:0 
+[s S962 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 EEFS 1 0 :1:6 
 ]
-[u S1420 . 1 `S1408 1 . 1 0 `S1417 1 . 1 0 ]
-[v _EECON1bits EECON1bits `VES1420  1 e 1 @4006 ]
+[u S965 . 1 `S953 1 . 1 0 `S962 1 . 1 0 ]
+[v _EECON1bits EECON1bits `VES965  1 e 1 @4006 ]
 "2992
 [v _EECON2 EECON2 `VEuc  1 e 1 @4007 ]
 "2999
@@ -387,7 +419,76 @@ INTERRUPT_HIGH_PRIORITY 1
 [v _EEADR EEADR `VEuc  1 e 1 @4009 ]
 "3013
 [v _EEADRH EEADRH `VEuc  1 e 1 @4010 ]
-[s S860 . 1 `uc 1 INT1IF 1 0 :1:0 
+[s S734 . 1 `uc 1 ADCS 1 0 :3:0 
+`uc 1 ACQT 1 0 :3:3 
+`uc 1 . 1 0 :1:6 
+`uc 1 ADFM 1 0 :1:7 
+]
+"4394
+[s S739 . 1 `uc 1 ADCS0 1 0 :1:0 
+`uc 1 ADCS1 1 0 :1:1 
+`uc 1 ADCS2 1 0 :1:2 
+`uc 1 ACQT0 1 0 :1:3 
+`uc 1 ACQT1 1 0 :1:4 
+`uc 1 ACQT2 1 0 :1:5 
+]
+[u S746 . 1 `S734 1 . 1 0 `S739 1 . 1 0 ]
+[v _ADCON2bits ADCON2bits `VES746  1 e 1 @4032 ]
+[s S785 . 1 `uc 1 PCFG 1 0 :4:0 
+`uc 1 VCFG 1 0 :2:4 
+]
+"4469
+[s S788 . 1 `uc 1 PCFG0 1 0 :1:0 
+`uc 1 PCFG1 1 0 :1:1 
+`uc 1 PCFG2 1 0 :1:2 
+`uc 1 PCFG3 1 0 :1:3 
+`uc 1 VCFG0 1 0 :1:4 
+`uc 1 VCFG1 1 0 :1:5 
+]
+[s S795 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 CHSN3 1 0 :1:3 
+`uc 1 VCFG01 1 0 :1:4 
+`uc 1 VCFG11 1 0 :1:5 
+]
+[u S800 . 1 `S785 1 . 1 0 `S788 1 . 1 0 `S795 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES800  1 e 1 @4033 ]
+[s S666 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_NOT_DONE 1 0 :1:1 
+]
+"4573
+[s S669 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :4:2 
+]
+[s S673 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+]
+[s S680 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 DONE 1 0 :1:1 
+]
+[s S683 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 NOT_DONE 1 0 :1:1 
+]
+[s S686 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 nDONE 1 0 :1:1 
+]
+[s S689 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_DONE 1 0 :1:1 
+]
+[s S692 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GODONE 1 0 :1:1 
+]
+[u S695 . 1 `S666 1 . 1 0 `S669 1 . 1 0 `S673 1 . 1 0 `S680 1 . 1 0 `S683 1 . 1 0 `S686 1 . 1 0 `S689 1 . 1 0 `S692 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES695  1 e 1 @4034 ]
+"4655
+[v _ADRESL ADRESL `VEuc  1 e 1 @4035 ]
+"4662
+[v _ADRESH ADRESH `VEuc  1 e 1 @4036 ]
+[s S1227 . 1 `uc 1 INT1IF 1 0 :1:0 
 `uc 1 INT2IF 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 INT1IE 1 0 :1:3 
@@ -397,7 +498,7 @@ INTERRUPT_HIGH_PRIORITY 1
 `uc 1 INT2IP 1 0 :1:7 
 ]
 "6239
-[s S869 . 1 `uc 1 INT1F 1 0 :1:0 
+[s S1236 . 1 `uc 1 INT1F 1 0 :1:0 
 `uc 1 INT2F 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 INT1E 1 0 :1:3 
@@ -406,13 +507,13 @@ INTERRUPT_HIGH_PRIORITY 1
 `uc 1 INT1P 1 0 :1:6 
 `uc 1 INT2P 1 0 :1:7 
 ]
-[u S878 . 1 `S860 1 . 1 0 `S869 1 . 1 0 ]
-[v _INTCON3bits INTCON3bits `VES878  1 e 1 @4080 ]
-[s S900 . 1 `uc 1 . 1 0 :7:0 
+[u S1245 . 1 `S1227 1 . 1 0 `S1236 1 . 1 0 ]
+[v _INTCON3bits INTCON3bits `VES1245  1 e 1 @4080 ]
+[s S1267 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 NOT_RBPU 1 0 :1:7 
 ]
 "6329
-[s S903 . 1 `uc 1 RBIP 1 0 :1:0 
+[s S1270 . 1 `uc 1 RBIP 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 TMR0IP 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -421,12 +522,12 @@ INTERRUPT_HIGH_PRIORITY 1
 `uc 1 INTEDG0 1 0 :1:6 
 `uc 1 nRBPU 1 0 :1:7 
 ]
-[s S912 . 1 `uc 1 . 1 0 :7:0 
+[s S1279 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 RBPU 1 0 :1:7 
 ]
-[u S915 . 1 `S900 1 . 1 0 `S903 1 . 1 0 `S912 1 . 1 0 ]
-[v _INTCON2bits INTCON2bits `VES915  1 e 1 @4081 ]
-[s S801 . 1 `uc 1 RBIF 1 0 :1:0 
+[u S1282 . 1 `S1267 1 . 1 0 `S1270 1 . 1 0 `S1279 1 . 1 0 ]
+[v _INTCON2bits INTCON2bits `VES1282  1 e 1 @4081 ]
+[s S901 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -436,7 +537,7 @@ INTERRUPT_HIGH_PRIORITY 1
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
 "6406
-[s S810 . 1 `uc 1 . 1 0 :1:0 
+[s S910 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -445,12 +546,12 @@ INTERRUPT_HIGH_PRIORITY 1
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S819 . 1 `uc 1 . 1 0 :6:0 
+[s S919 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[u S823 . 1 `S801 1 . 1 0 `S810 1 . 1 0 `S819 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES823  1 e 1 @4082 ]
+[u S923 . 1 `S901 1 . 1 0 `S910 1 . 1 0 `S919 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES923  1 e 1 @4082 ]
 "11 C:\Users\xcite\OneDrive\Documents\Drivers.X\ECU_LAYER/Keypad/ecu_keypad.c
 [v _btn_values btn_values `C[4][4]uc  1 s 16 btn_values ]
 "11 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_Layer/GPIO/hal_gpio.c
@@ -486,148 +587,133 @@ INTERRUPT_HIGH_PRIORITY 1
 [v _RB5_f RB5_f `VEuc  1 s 1 RB5_f ]
 [v _RB6_f RB6_f `VEuc  1 s 1 RB6_f ]
 [v _RB7_f RB7_f `VEuc  1 s 1 RB7_f ]
-"37 C:\Users\xcite\OneDrive\Documents\Drivers.X\app.c
+"42 C:\Users\xcite\OneDrive\Documents\Drivers.X\app.c
 [v _main main `(i  1 e 2 0 ]
 {
-"46
+"54
 } 0
-"42 C:\Users\xcite\OneDrive\Documents\Drivers.X\ECU_LAYER/button/ecu_button.c
-[v _button_read_state button_read_state `(uc  1 e 1 0 ]
-{
-"44
-[v button_read_state@Button_Logic Button_Logic `E3402  1 a 1 27 ]
-"43
-[v button_read_state@ret ret `uc  1 a 1 26 ]
-[s S24 . 1 `uc 1 port 1 0 :3:0 
-`uc 1 pin 1 0 :3:3 
-`uc 1 direction 1 0 :1:6 
-`uc 1 logic 1 0 :1:7 
-]
-"42
-[s S35 . 3 `S24 1 pin_config 1 0 `E3466 1 button_active 1 1 `E3462 1 button_state 1 2 ]
-[v button_read_state@button button `*.30CS35  1 p 1 23 ]
-[v button_read_state@button_state button_state `*.30E3462  1 p 1 24 ]
-"70
-} 0
-"80 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_Layer/GPIO/hal_gpio.c
-[v _gpio_pin_read_logic gpio_pin_read_logic `(uc  1 e 1 0 ]
-{
-"81
-[v gpio_pin_read_logic@ret ret `uc  1 a 1 22 ]
-[s S24 . 1 `uc 1 port 1 0 :3:0 
-`uc 1 pin 1 0 :3:3 
-`uc 1 direction 1 0 :1:6 
-`uc 1 logic 1 0 :1:7 
-]
-"80
-[v gpio_pin_read_logic@_pin_config _pin_config `*.30CS24  1 p 1 16 ]
-[v gpio_pin_read_logic@logic_ logic_ `*.30E3402  1 p 1 17 ]
-"89
-} 0
-"48 C:\Users\xcite\OneDrive\Documents\Drivers.X\app.c
+"56
 [v _Application_initialize Application_initialize `(v  1 e 1 0 ]
 {
-"53
-} 0
-"12 C:\Users\xcite\OneDrive\Documents\Drivers.X\ECU_LAYER/Led/ecu_led.c
-[v _led_intialize led_intialize `(uc  1 e 1 0 ]
-{
-[s S24 . 1 `uc 1 port 1 0 :3:0 
-`uc 1 pin 1 0 :3:3 
-`uc 1 direction 1 0 :1:6 
-`uc 1 logic 1 0 :1:7 
-]
-"18
-[v led_intialize@pin_obj pin_obj `S24  1 a 1 30 ]
-"13
-[v led_intialize@ret ret `uc  1 a 1 29 ]
-[s S440 . 1 `uc 1 port_index 1 0 :3:0 
-`uc 1 pin_index 1 0 :3:3 
-`uc 1 led_status 1 0 :1:6 
-]
-"12
-[v led_intialize@Led Led `*.30CS440  1 p 1 27 ]
-"16
-[v led_intialize@F3482 F3482 `S24  1 s 1 F3482 ]
-"27
+"62
 } 0
 "11 C:\Users\xcite\OneDrive\Documents\Drivers.X\ECU_LAYER/ecu_layer_init.c
 [v _ecu_layer_initialize ecu_layer_initialize `(v  1 e 1 0 ]
 {
 "16
 } 0
-"19 C:\Users\xcite\OneDrive\Documents\Drivers.X\ECU_LAYER/button/ecu_button.c
-[v _button_intialize button_intialize `(uc  1 e 1 0 ]
+"21 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/ADC/hal_adc.c
+[v _ADC_Init ADC_Init `(uc  1 e 1 0 ]
 {
-"20
-[v button_intialize@ret ret `uc  1 a 1 28 ]
-[s S24 . 1 `uc 1 port 1 0 :3:0 
-`uc 1 pin 1 0 :3:3 
-`uc 1 direction 1 0 :1:6 
-`uc 1 logic 1 0 :1:7 
+"22
+[v ADC_Init@ret ret `uc  1 a 1 6 ]
+[s S658 . 6 `*.37(v 1 ADC_Interrupt_Handler 2 0 `E3478 1 adc_acquisition 1 2 `E3488 1 adc_conversion_clock 1 3 `E3462 1 adc_channel 1 4 `uc 1 voltage_ref 1 5 :1:0 
+`uc 1 result_format 1 5 :1:1 
+`uc 1 reserved_bits 1 5 :6:2 
 ]
-"19
-[s S35 . 3 `S24 1 pin_config 1 0 `E3466 1 button_active 1 1 `E3462 1 button_state 1 2 ]
-[v button_intialize@button button `*.30CS35  1 p 1 27 ]
-"31
+"21
+[v ADC_Init@adc adc `*.30CS658  1 p 1 4 ]
+"48
 } 0
-"101 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_Layer/GPIO/hal_gpio.c
-[v _gpio_pin_initialize gpio_pin_initialize `(uc  1 e 1 0 ]
+"249
+[v _adc_select_voltage_ref adc_select_voltage_ref `T(v  1 s 1 adc_select_voltage_ref ]
 {
-"102
-[v gpio_pin_initialize@ret ret `uc  1 a 1 26 ]
-[s S24 . 1 `uc 1 port 1 0 :3:0 
-`uc 1 pin 1 0 :3:3 
-`uc 1 direction 1 0 :1:6 
-`uc 1 logic 1 0 :1:7 
+[s S658 . 6 `*.37(v 1 ADC_Interrupt_Handler 2 0 `E3478 1 adc_acquisition 1 2 `E3488 1 adc_conversion_clock 1 3 `E3462 1 adc_channel 1 4 `uc 1 voltage_ref 1 5 :1:0 
+`uc 1 result_format 1 5 :1:1 
+`uc 1 reserved_bits 1 5 :6:2 
 ]
-"101
-[v gpio_pin_initialize@_pin_config _pin_config `*.30CS24  1 p 1 24 ]
-"111
+[v adc_select_voltage_ref@adc adc `*.30CS658  1 p 1 1 ]
+"257
 } 0
-"55
-[v _gpio_pin_write_logic gpio_pin_write_logic `(uc  1 e 1 0 ]
+"235
+[v _adc_select_result_format adc_select_result_format `T(v  1 s 1 adc_select_result_format ]
 {
-"56
-[v gpio_pin_write_logic@ret ret `uc  1 a 1 23 ]
-[s S24 . 1 `uc 1 port 1 0 :3:0 
-`uc 1 pin 1 0 :3:3 
-`uc 1 direction 1 0 :1:6 
-`uc 1 logic 1 0 :1:7 
+[s S658 . 6 `*.37(v 1 ADC_Interrupt_Handler 2 0 `E3478 1 adc_acquisition 1 2 `E3488 1 adc_conversion_clock 1 3 `E3462 1 adc_channel 1 4 `uc 1 voltage_ref 1 5 :1:0 
+`uc 1 result_format 1 5 :1:1 
+`uc 1 reserved_bits 1 5 :6:2 
 ]
-"55
-[v gpio_pin_write_logic@_pin_config _pin_config `*.30CS24  1 p 1 16 ]
-[v gpio_pin_write_logic@logic_ logic_ `E3402  1 p 1 17 ]
+[v adc_select_result_format@adc adc `*.30CS658  1 p 1 1 ]
+"241
+} 0
+"168
+[v _ADC_Get_Conversion_Blocking ADC_Get_Conversion_Blocking `(uc  1 e 1 0 ]
+{
+"169
+[v ADC_Get_Conversion_Blocking@ret ret `uc  1 a 1 12 ]
+"170
+[v ADC_Get_Conversion_Blocking@conversion_status conversion_status `uc  1 a 1 11 ]
+[s S658 . 6 `*.37(v 1 ADC_Interrupt_Handler 2 0 `E3478 1 adc_acquisition 1 2 `E3488 1 adc_conversion_clock 1 3 `E3462 1 adc_channel 1 4 `uc 1 voltage_ref 1 5 :1:0 
+`uc 1 result_format 1 5 :1:1 
+`uc 1 reserved_bits 1 5 :6:2 
+]
+"168
+[v ADC_Get_Conversion_Blocking@adc adc `*.30CS658  1 p 1 8 ]
+[v ADC_Get_Conversion_Blocking@channel channel `E3462  1 p 1 9 ]
+[v ADC_Get_Conversion_Blocking@result result `*.30us  1 p 1 10 ]
+"189
+} 0
+"98
+[v _ADC_Start_Conversion ADC_Start_Conversion `(uc  1 e 1 0 ]
+{
+"99
+[v ADC_Start_Conversion@ret ret `uc  1 a 1 2 ]
+[s S658 . 6 `*.37(v 1 ADC_Interrupt_Handler 2 0 `E3478 1 adc_acquisition 1 2 `E3488 1 adc_conversion_clock 1 3 `E3462 1 adc_channel 1 4 `uc 1 voltage_ref 1 5 :1:0 
+`uc 1 result_format 1 5 :1:1 
+`uc 1 reserved_bits 1 5 :6:2 
+]
+"98
+[v ADC_Start_Conversion@adc adc `*.30CS658  1 p 1 1 ]
+"110
+} 0
+"77
+[v _ADC_Select_Channel ADC_Select_Channel `(uc  1 e 1 0 ]
+{
 "78
-} 0
-"91 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Interrupt/mcal_external_interrupt.c
-[v _Interrupt_RBx_Init Interrupt_RBx_Init `(uc  1 e 1 0 ]
-{
-"92
-[v Interrupt_RBx_Init@ret ret `uc  1 a 1 26 ]
-[s S24 . 1 `uc 1 port 1 0 :3:0 
-`uc 1 pin 1 0 :3:3 
-`uc 1 direction 1 0 :1:6 
-`uc 1 logic 1 0 :1:7 
+[v ADC_Select_Channel@ret ret `uc  1 a 1 7 ]
+[s S658 . 6 `*.37(v 1 ADC_Interrupt_Handler 2 0 `E3478 1 adc_acquisition 1 2 `E3488 1 adc_conversion_clock 1 3 `E3462 1 adc_channel 1 4 `uc 1 voltage_ref 1 5 :1:0 
+`uc 1 result_format 1 5 :1:1 
+`uc 1 reserved_bits 1 5 :6:2 
 ]
-"91
-[s S796 . 6 `*.37(v 1 External_CallBack_High 2 0 `*.37(v 1 External_CallBack_Low 2 2 `E3462 1 Priority 1 4 `S24 1 mcu_pin 1 5 ]
-[v Interrupt_RBx_Init@obj obj `*.30CS796  1 p 1 23 ]
-"147
+"77
+[v ADC_Select_Channel@adc adc `*.30CS658  1 p 1 4 ]
+[v ADC_Select_Channel@channel channel `E3462  1 p 1 5 ]
+"90
 } 0
-"19 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_Layer/GPIO/hal_gpio.c
-[v _gpio_pin_direction_intialize gpio_pin_direction_intialize `(uc  1 e 1 0 ]
+"197
+[v _adc_input_channel_port_configure adc_input_channel_port_configure `T(v  1 s 1 adc_input_channel_port_configure ]
 {
-"20
-[v gpio_pin_direction_intialize@ret ret `uc  1 a 1 22 ]
-[s S24 . 1 `uc 1 port 1 0 :3:0 
-`uc 1 pin 1 0 :3:3 
-`uc 1 direction 1 0 :1:6 
-`uc 1 logic 1 0 :1:7 
+[v adc_input_channel_port_configure@channel channel `E3462  1 a 1 wreg ]
+[v adc_input_channel_port_configure@channel channel `E3462  1 a 1 wreg ]
+[v adc_input_channel_port_configure@channel channel `E3462  1 a 1 3 ]
+"227
+} 0
+"119
+[v _ADC_Is_Conversion_Done ADC_Is_Conversion_Done `(uc  1 e 1 0 ]
+{
+"120
+[v ADC_Is_Conversion_Done@ret ret `uc  1 a 1 3 ]
+[s S658 . 6 `*.37(v 1 ADC_Interrupt_Handler 2 0 `E3478 1 adc_acquisition 1 2 `E3488 1 adc_conversion_clock 1 3 `E3462 1 adc_channel 1 4 `uc 1 voltage_ref 1 5 :1:0 
+`uc 1 result_format 1 5 :1:1 
+`uc 1 reserved_bits 1 5 :6:2 
 ]
-"19
-[v gpio_pin_direction_intialize@_pin_config _pin_config `*.30CS24  1 p 1 16 ]
-"42
+"119
+[v ADC_Is_Conversion_Done@adc adc `*.30CS658  1 p 1 1 ]
+[v ADC_Is_Conversion_Done@conversion_status conversion_status `*.30uc  1 p 1 2 ]
+"131
+} 0
+"140
+[v _ADC_Get_Conversion_Result ADC_Get_Conversion_Result `(uc  1 e 1 0 ]
+{
+"141
+[v ADC_Get_Conversion_Result@ret ret `uc  1 a 1 5 ]
+[s S658 . 6 `*.37(v 1 ADC_Interrupt_Handler 2 0 `E3478 1 adc_acquisition 1 2 `E3488 1 adc_conversion_clock 1 3 `E3462 1 adc_channel 1 4 `uc 1 voltage_ref 1 5 :1:0 
+`uc 1 result_format 1 5 :1:1 
+`uc 1 reserved_bits 1 5 :6:2 
+]
+"140
+[v ADC_Get_Conversion_Result@adc adc `*.30CS658  1 p 1 1 ]
+[v ADC_Get_Conversion_Result@result result `*.30us  1 p 1 2 ]
+"158
 } 0
 "36 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Interrupt/mcal_interrupt_manager.c
 [v _Interrupt_Manager_High Interrupt_Manager_High `IIH(v  1 e 1 0 ]
@@ -639,7 +725,7 @@ INTERRUPT_HIGH_PRIORITY 1
 {
 [v RB7_ISR@source source `uc  1 a 1 wreg ]
 [v RB7_ISR@source source `uc  1 a 1 wreg ]
-[v RB7_ISR@source source `uc  1 a 1 9 ]
+[v RB7_ISR@source source `uc  1 a 1 0 ]
 "526
 } 0
 "500
@@ -647,7 +733,7 @@ INTERRUPT_HIGH_PRIORITY 1
 {
 [v RB6_ISR@source source `uc  1 a 1 wreg ]
 [v RB6_ISR@source source `uc  1 a 1 wreg ]
-[v RB6_ISR@source source `uc  1 a 1 9 ]
+[v RB6_ISR@source source `uc  1 a 1 0 ]
 "512
 } 0
 "486
@@ -655,7 +741,7 @@ INTERRUPT_HIGH_PRIORITY 1
 {
 [v RB5_ISR@source source `uc  1 a 1 wreg ]
 [v RB5_ISR@source source `uc  1 a 1 wreg ]
-[v RB5_ISR@source source `uc  1 a 1 9 ]
+[v RB5_ISR@source source `uc  1 a 1 0 ]
 "498
 } 0
 "472
@@ -663,48 +749,10 @@ INTERRUPT_HIGH_PRIORITY 1
 {
 [v RB4_ISR@source source `uc  1 a 1 wreg ]
 [v RB4_ISR@source source `uc  1 a 1 wreg ]
-[v RB4_ISR@source source `uc  1 a 1 9 ]
+[v RB4_ISR@source source `uc  1 a 1 0 ]
 "484
 } 0
-"22 C:\Users\xcite\OneDrive\Documents\Drivers.X\app.c
-[v _f f `(v  1 e 1 0 ]
-{
-"24
-} 0
-"87 C:\Users\xcite\OneDrive\Documents\Drivers.X\ECU_LAYER/Led/ecu_led.c
-[v _led_toggle_status led_toggle_status `(uc  1 e 1 0 ]
-{
-[s S24 . 1 `uc 1 port 1 0 :3:0 
-`uc 1 pin 1 0 :3:3 
-`uc 1 direction 1 0 :1:6 
-`uc 1 logic 1 0 :1:7 
-]
-"93
-[v led_toggle_status@pin_obj pin_obj `S24  1 a 1 8 ]
-"88
-[v led_toggle_status@ret ret `uc  1 a 1 7 ]
-[s S440 . 1 `uc 1 port_index 1 0 :3:0 
-`uc 1 pin_index 1 0 :3:3 
-`uc 1 led_status 1 0 :1:6 
-]
-"87
-[v led_toggle_status@Led Led `*.30CS440  1 p 1 5 ]
-"91
-[v led_toggle_status@F3497 F3497 `S24  1 s 1 F3497 ]
-"102
-} 0
-"91 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_Layer/GPIO/hal_gpio.c
-[v _gpio_pin_toggle_logic gpio_pin_toggle_logic `(uc  1 e 1 0 ]
-{
-[s S24 . 1 `uc 1 port 1 0 :3:0 
-`uc 1 pin 1 0 :3:3 
-`uc 1 direction 1 0 :1:6 
-`uc 1 logic 1 0 :1:7 
-]
-[v gpio_pin_toggle_logic@_pin_config _pin_config `*.30CS24  1 p 1 0 ]
-"99
-} 0
-"466 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Interrupt/mcal_external_interrupt.c
+"466
 [v _INT2_ISR INT2_ISR `(v  1 e 1 0 ]
 {
 "470

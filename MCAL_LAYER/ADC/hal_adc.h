@@ -12,6 +12,7 @@
 #include "hal_adc_cfg.h"
 #include "../GPIO/hal_gpio.h"
 #include "../mcal_std_types.h"
+#include "../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h"
 
 /*-----------------MACROS--------------------*/
 #define ADC_AN0_ANALOG_FUNCTIONALITY  0X0E  /**< Macro to define analog functionality for AN0. */
@@ -107,12 +108,13 @@ typedef enum {
 } adc_conversion_clock_t;
 
 typedef struct {
+#if ADC_INTERRUPT_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
     void (*ADC_Interrupt_Handler) (void);
-
+#endif
     adc_acquisition_time_t adc_acquisition;
     adc_conversion_clock_t adc_conversion_clock;
     adc_channel_select_t adc_channel;
-
+    interrupt_priority_cfg priority;
     uint8 voltage_ref : 1;
     uint8 result_format : 1;
     uint8 reserved_bits : 6;
@@ -126,7 +128,7 @@ Std_ReturnType ADC_Select_Channel(const adc_config_t*adc, adc_channel_select_t c
 Std_ReturnType ADC_Start_Conversion(const adc_config_t*adc);
 Std_ReturnType ADC_Is_Conversion_Done(const adc_config_t*adc, uint8 *conversion_status);
 Std_ReturnType ADC_Get_Conversion_Result(const adc_config_t*adc, uint16 *result);
-Std_ReturnType ADC_Get_Conversion(const adc_config_t*adc, adc_channel_select_t channel, uint16 *result);
+Std_ReturnType ADC_Get_Conversion_Blocking(const adc_config_t*adc, adc_channel_select_t channel, uint16 *result);
 
 
 

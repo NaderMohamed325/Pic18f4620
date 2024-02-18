@@ -4495,6 +4495,7 @@ unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "D:/IDE MCU/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 2 3
 # 15 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/hal_gpio.h" 2
+
 # 1 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/../mcal_std_types.h" 1
 # 13 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/../mcal_std_types.h"
 # 1 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/../std_lin.h" 1
@@ -5095,12 +5096,12 @@ typedef signed int sint32;
 typedef signed char sint8;
 typedef signed short sint16;
 typedef uint8 Std_ReturnType;
-# 16 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/hal_gpio.h" 2
-# 1 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/../decive_config.h" 1
 # 17 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/hal_gpio.h" 2
-# 1 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/hal_pio_cnfg.h" 1
+# 1 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/../decive_config.h" 1
 # 18 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/hal_gpio.h" 2
-# 38 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/hal_gpio.h"
+# 1 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/hal_pio_cnfg.h" 1
+# 19 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/hal_gpio.h" 2
+# 39 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/hal_gpio.h"
 typedef enum {
     GPIO_LOW = 0,
     GPIO_HIGH
@@ -5136,27 +5137,27 @@ typedef struct {
     uint8 direction : 1;
     uint8 logic : 1;
 } pin_config_t;
-# 85 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/hal_gpio.h"
+# 86 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/hal_gpio.h"
 Std_ReturnType gpio_pin_direction_intialize(const pin_config_t * _pin_config);
-# 96 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/hal_gpio.h"
+# 97 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/hal_gpio.h"
 Std_ReturnType gpio_pin_get_direction_status(const pin_config_t * _pin_config, direction_t *dic_status);
-# 107 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/hal_gpio.h"
+# 108 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/hal_gpio.h"
 Std_ReturnType gpio_pin_write_logic(const pin_config_t * _pin_config, logic_t logic_);
-# 118 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/hal_gpio.h"
+# 119 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/hal_gpio.h"
 Std_ReturnType gpio_pin_read_logic(const pin_config_t * _pin_config, logic_t *logic_);
-# 128 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/hal_gpio.h"
+# 129 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/hal_gpio.h"
 Std_ReturnType gpio_pin_toggle_logic(const pin_config_t * _pin_config);
-# 137 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/hal_gpio.h"
+# 138 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/hal_gpio.h"
 Std_ReturnType gpio_pin_initialize(const pin_config_t *_pin_config);
-# 148 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/hal_gpio.h"
+# 149 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/hal_gpio.h"
 Std_ReturnType gpio_port_direction_intialize(port_index_t port, uint8 direction);
-# 159 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/hal_gpio.h"
+# 160 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/hal_gpio.h"
 Std_ReturnType gpio_port_get_direction_status(port_index_t port, direction_t *dic_status);
-# 170 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/hal_gpio.h"
+# 171 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/hal_gpio.h"
 Std_ReturnType gpio_port_write_logic(port_index_t port, uint8 logic);
-# 181 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/hal_gpio.h"
+# 182 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/hal_gpio.h"
 Std_ReturnType gpio_port_read_logic(port_index_t port, uint8 *logic);
-# 191 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/hal_gpio.h"
+# 192 "./ECU_LAYER/Dc_Motor/../../MCAL_LAYER/GPIO/hal_gpio.h"
 Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 # 13 "./ECU_LAYER/Dc_Motor/ecu_motor.h" 2
 # 1 "./ECU_LAYER/Dc_Motor/ecu_motor_cfg.h" 1
@@ -5539,6 +5540,73 @@ Std_ReturnType Interrupt_RBx_Init(const interrupt_RBx_t *obj);
 # 1 "./MCAL_LAYER/EEPROM/hal_eeprom.h" 1
 # 11 "./MCAL_LAYER/EEPROM/hal_eeprom.h"
 # 1 "./MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 1
+# 12 "./MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h"
+# 1 "./MCAL_LAYER/Interrupt/../ADC/hal_adc.h" 1
+# 12 "./MCAL_LAYER/Interrupt/../ADC/hal_adc.h"
+# 1 "./MCAL_LAYER/Interrupt/../ADC/hal_adc_cfg.h" 1
+# 12 "./MCAL_LAYER/Interrupt/../ADC/hal_adc.h" 2
+# 70 "./MCAL_LAYER/Interrupt/../ADC/hal_adc.h"
+typedef enum {
+    ADC_CHANNEL_AN0 = 0,
+    ADC_CHANNEL_AN1,
+    ADC_CHANNEL_AN2,
+    ADC_CHANNEL_AN3,
+    ADC_CHANNEL_AN4,
+    ADC_CHANNEL_AN5,
+    ADC_CHANNEL_AN6,
+    ADC_CHANNEL_AN7,
+    ADC_CHANNEL_AN8,
+    ADC_CHANNEL_AN9,
+    ADC_CHANNEL_AN10,
+    ADC_CHANNEL_AN11,
+    ADC_CHANNEL_AN12,
+    ADC_CHANNEL_AN13,
+} adc_channel_select_t;
+
+
+typedef enum {
+    ADC_0_TAD = 0,
+    ADC_2_TAD,
+    ADC_4_TAD,
+    ADC_6_TAD,
+    ADC_8_TAD,
+    ADC_12_TAD,
+    ADC_16_TAD,
+    ADC_20_TAD,
+} adc_acquisition_time_t;
+
+typedef enum {
+    ADC_CONVERSION_CLOCK_FOSC_DIV_2 = 0,
+    ADC_CONVERSION_CLOCK_FOSC_DIV_8,
+    ADC_CONVERSION_CLOCK_FOSC_DIV_32,
+    ADC_CONVERSION_CLOCK_FOSC_DIV_FRC,
+    ADC_CONVERSION_CLOCK_FOSC_DIV_4,
+    ADC_CONVERSION_CLOCK_FOSC_DIV_16,
+    ADC_CONVERSION_CLOCK_FOSC_DIV_64,
+} adc_conversion_clock_t;
+
+typedef struct {
+    void (*ADC_Interrupt_Handler) (void);
+
+    adc_acquisition_time_t adc_acquisition;
+    adc_conversion_clock_t adc_conversion_clock;
+    adc_channel_select_t adc_channel;
+
+    uint8 voltage_ref : 1;
+    uint8 result_format : 1;
+    uint8 reserved_bits : 6;
+} adc_config_t;
+
+
+
+Std_ReturnType ADC_Init(const adc_config_t*adc);
+Std_ReturnType ADC_Denit(const adc_config_t*adc);
+Std_ReturnType ADC_Select_Channel(const adc_config_t*adc, adc_channel_select_t channel);
+Std_ReturnType ADC_Start_Conversion(const adc_config_t*adc);
+Std_ReturnType ADC_Is_Conversion_Done(const adc_config_t*adc, uint8 *conversion_status);
+Std_ReturnType ADC_Get_Conversion_Result(const adc_config_t*adc, uint16 *result);
+Std_ReturnType ADC_Get_Conversion_Blocking(const adc_config_t*adc, adc_channel_select_t channel, uint16 *result);
+# 13 "./MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 2
 # 11 "./MCAL_LAYER/EEPROM/hal_eeprom.h" 2
 # 33 "./MCAL_LAYER/EEPROM/hal_eeprom.h"
 Std_ReturnType EEPROM_Write_Byte(uint16 bAdd, uint8 bData);
@@ -5551,50 +5619,58 @@ Std_ReturnType EEPROM_Write_Byte(uint16 bAdd, uint8 bData);
 
 Std_ReturnType EEPROM_Read_Byte(uint16 bAdd, uint8 *bData);
 # 14 "./app.h" 2
-# 24 "./app.h"
+# 25 "./app.h"
 void Application_initialize(void);
 # 2 "app.c" 2
 
 
-volatile Std_ReturnType ret = (Std_ReturnType)0X01;
+Std_ReturnType ret = (Std_ReturnType)0X01;
 
 
 void Application_initialize(void);
-Led_t led = {
-    .led_status = LED_OFF,
-    .pin_index = PIN1,
-    .port_index = PORTC_INDEX,
+uint16 re_1, re_2, re_3, re_4;
+adc_config_t adc_1 = {
+    .ADC_Interrupt_Handler = ((void*)0),
+    .adc_acquisition = ADC_12_TAD,
+    .adc_channel = ADC_CHANNEL_AN0,
+    .adc_conversion_clock = ADC_CONVERSION_CLOCK_FOSC_DIV_16,
+    .result_format = 0X01U ,
+    .voltage_ref = 0X00
 };
-button_t b = {
-    .button_active = BUTTON_ACTVE_HIGH,
-    .button_state = BUTTON_RELEASED,
-    .pin_config.direction = GPIO_INPUT,
-    .pin_config.logic = GPIO_LOW,
-    .pin_config.pin = PIN0,
-    .pin_config.port = PORTC_INDEX,
+adc_config_t adc_2 = {
+    .ADC_Interrupt_Handler = ((void*)0),
+    .adc_acquisition = ADC_12_TAD,
+    .adc_channel = ADC_CHANNEL_AN1,
+    .adc_conversion_clock = ADC_CONVERSION_CLOCK_FOSC_DIV_16,
+    .result_format = 0X01U ,
+    .voltage_ref = 0X00
 };
-
-void f(void) {
-    ret = led_toggle_status(&led);
-}
-
-interrupt_RBx_t r = {
-    .Priority = INTERRUPT_HIGH_PRIORITY,
-    .mcu_pin.pin = PIN7,
-    .mcu_pin.port = PORTB_INDEX,
-    .mcu_pin.logic = GPIO_LOW,
-    .mcu_pin.direction = GPIO_INPUT,
-    .External_CallBack_High = f,
-    .External_CallBack_Low = ((void*)0),
+adc_config_t adc_3 = {
+    .ADC_Interrupt_Handler = ((void*)0),
+    .adc_acquisition = ADC_12_TAD,
+    .adc_channel = ADC_CHANNEL_AN2,
+    .adc_conversion_clock = ADC_CONVERSION_CLOCK_FOSC_DIV_16,
+    .result_format = 0X01U ,
+    .voltage_ref = 0X00
 };
-volatile button_state_t s = BUTTON_RELEASED;
+adc_config_t adc_4 = {
+    .ADC_Interrupt_Handler = ((void*)0),
+    .adc_acquisition = ADC_12_TAD,
+    .adc_channel = ADC_CHANNEL_AN3,
+    .adc_conversion_clock = ADC_CONVERSION_CLOCK_FOSC_DIV_16,
+    .result_format = 0X01U ,
+    .voltage_ref = 0X00
+};
 
 int main(void) {
 
     Application_initialize();
 
     while (1) {
-        ret = button_read_state(&b, &s);
+        ret = ADC_Get_Conversion_Blocking(&adc_1, ADC_CHANNEL_AN0, &re_1);
+        ret = ADC_Get_Conversion_Blocking(&adc_2, ADC_CHANNEL_AN1, &re_2);
+        ret = ADC_Get_Conversion_Blocking(&adc_3, ADC_CHANNEL_AN2, &re_3);
+        ret = ADC_Get_Conversion_Blocking(&adc_4, ADC_CHANNEL_AN3, &re_4);
     }
 
     return 0;
@@ -5602,7 +5678,8 @@ int main(void) {
 
 void Application_initialize(void) {
     ecu_layer_initialize();
-    ret = led_intialize(&led);
-    ret = Interrupt_RBx_Init(&r);
-    ret = button_intialize(&b);
+    ret = ADC_Init(&adc_1);
+    ret = ADC_Init(&adc_2);
+    ret = ADC_Init(&adc_3);
+    ret = ADC_Init(&adc_4);
 }

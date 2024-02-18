@@ -42,8 +42,10 @@ Std_ReturnType EEPROM_Write_Byte(uint16 bAdd, uint8 bData) {
     EECON1bits.WREN = 1;
 
     // Disable global interrupts during write operation
-
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE!=INTERRUPT_FEATURE_ENABLE  
     INTERRUPT_Global_Interrupt_Disable();
+#endif
+
 
     // Enable write sequence
     EECON2 = 0X55;
@@ -57,7 +59,9 @@ Std_ReturnType EEPROM_Write_Byte(uint16 bAdd, uint8 bData) {
     EECON1bits.WR = 0;
 
     // Enable global interrupts
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE!=INTERRUPT_FEATURE_ENABLE  
     INTERRUPT_Global_Interrupt_Enable();
+#endif
 
     return ret;
 }

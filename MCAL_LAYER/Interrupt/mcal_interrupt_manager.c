@@ -11,6 +11,7 @@ static volatile uint8 RB4_f = 1, RB5_f = 1, RB6_f = 1, RB7_f = 1;
 #if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
 
 // High-priority interrupt service routine
+
 void __interrupt() Interrupt_Manager_High(void) {
     // Check and call INT0 ISR if enabled and flag is set
     if ((INTCONbits.INT0IE == INTERRUPT_ENABLE) && (INTCONbits.INT0IF == INTERRUPT_OCCUR)) {
@@ -23,6 +24,7 @@ void __interrupt() Interrupt_Manager_High(void) {
 }
 
 // Low-priority interrupt service routine
+
 void __interrupt(low_priority) Interrupt_Manager_Low(void) {
     // Check and call INT2 ISR if enabled and flag is set
     if ((INTCON3bits.INT2IE == INTERRUPT_ENABLE) && (INTCON3bits.INT2IF == INTERRUPT_OCCUR)) {
@@ -33,6 +35,7 @@ void __interrupt(low_priority) Interrupt_Manager_Low(void) {
 #else
 
 // Single interrupt service routine for all interrupts in non-priority mode
+
 void __interrupt() Interrupt_Manager_High(void) {
     // Check and call INT0 ISR if enabled and flag is set
     if ((INTCONbits.INT0IE == INTERRUPT_ENABLE) && (INTCONbits.INT0IF == INTERRUPT_OCCUR)) {
@@ -45,6 +48,9 @@ void __interrupt() Interrupt_Manager_High(void) {
     // Check and call INT2 ISR if enabled and flag is set
     if ((INTCON3bits.INT2IE == INTERRUPT_ENABLE) && (INTCON3bits.INT2IF == INTERRUPT_OCCUR)) {
         INT2_ISR();
+    }
+    if (INTERRUPT_ENABLE == PIE1bits.ADIE && INTERRUPT_OCCUR == PIR1bits.ADIF) {
+        ADC_ISR();
     }
 
     // Check and call RBx ISRs for pin change interrupts

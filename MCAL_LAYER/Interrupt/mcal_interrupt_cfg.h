@@ -54,7 +54,6 @@
 #endif
 
 /*------------DATA_TYPES-------------------*/
-
 typedef enum {
     INTERRUPT_LOW_PRIORITY = 0,
     INTERRUPT_HIGH_PRIORITY
