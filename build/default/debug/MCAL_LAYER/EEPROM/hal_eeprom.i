@@ -11,7 +11,7 @@
 # 1 "MCAL_LAYER/EEPROM/hal_eeprom.h" 1
 # 11 "MCAL_LAYER/EEPROM/hal_eeprom.h"
 # 1 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 1
-# 12 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h"
+# 11 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h"
 # 1 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h" 1
 # 12 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h"
 # 1 "D:/IDE MCU/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 1 3
@@ -5167,80 +5167,7 @@ typedef enum {
     INTERRUPT_LOW_PRIORITY = 0,
     INTERRUPT_HIGH_PRIORITY
 } interrupt_priority_cfg;
-# 13 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 2
-# 1 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../ADC/hal_adc.h" 1
-# 12 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../ADC/hal_adc.h"
-# 1 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../ADC/hal_adc_cfg.h" 1
-# 12 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../ADC/hal_adc.h" 2
-
-
-
-# 1 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../ADC/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 1
-# 15 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../ADC/hal_adc.h" 2
-# 71 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../ADC/hal_adc.h"
-typedef enum {
-    ADC_CHANNEL_AN0 = 0,
-    ADC_CHANNEL_AN1,
-    ADC_CHANNEL_AN2,
-    ADC_CHANNEL_AN3,
-    ADC_CHANNEL_AN4,
-    ADC_CHANNEL_AN5,
-    ADC_CHANNEL_AN6,
-    ADC_CHANNEL_AN7,
-    ADC_CHANNEL_AN8,
-    ADC_CHANNEL_AN9,
-    ADC_CHANNEL_AN10,
-    ADC_CHANNEL_AN11,
-    ADC_CHANNEL_AN12,
-    ADC_CHANNEL_AN13,
-} adc_channel_select_t;
-
-
-typedef enum {
-    ADC_0_TAD = 0,
-    ADC_2_TAD,
-    ADC_4_TAD,
-    ADC_6_TAD,
-    ADC_8_TAD,
-    ADC_12_TAD,
-    ADC_16_TAD,
-    ADC_20_TAD,
-} adc_acquisition_time_t;
-
-typedef enum {
-    ADC_CONVERSION_CLOCK_FOSC_DIV_2 = 0,
-    ADC_CONVERSION_CLOCK_FOSC_DIV_8,
-    ADC_CONVERSION_CLOCK_FOSC_DIV_32,
-    ADC_CONVERSION_CLOCK_FOSC_DIV_FRC,
-    ADC_CONVERSION_CLOCK_FOSC_DIV_4,
-    ADC_CONVERSION_CLOCK_FOSC_DIV_16,
-    ADC_CONVERSION_CLOCK_FOSC_DIV_64,
-} adc_conversion_clock_t;
-
-typedef struct {
-
-    void (*ADC_Interrupt_Handler) (void);
-
-    adc_acquisition_time_t adc_acquisition;
-    adc_conversion_clock_t adc_conversion_clock;
-    adc_channel_select_t adc_channel;
-    interrupt_priority_cfg priority;
-    uint8 voltage_ref : 1;
-    uint8 result_format : 1;
-    uint8 reserved_bits : 6;
-} adc_config_t;
-
-
-
-Std_ReturnType ADC_Init(const adc_config_t*adc);
-Std_ReturnType ADC_Denit(const adc_config_t*adc);
-Std_ReturnType ADC_Select_Channel(const adc_config_t*adc, adc_channel_select_t channel);
-Std_ReturnType ADC_Start_Conversion(const adc_config_t*adc);
-Std_ReturnType ADC_Is_Conversion_Done(const adc_config_t*adc, uint8 *conversion_status);
-Std_ReturnType ADC_Get_Conversion_Result(const adc_config_t*adc, uint16 *result);
-Std_ReturnType ADC_Get_Conversion_Blocking(const adc_config_t*adc, adc_channel_select_t channel, uint16 *result);
-Std_ReturnType ADC_Get_Conversion_Interrupt(const adc_config_t*adc, adc_channel_select_t channel);
-# 14 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/../ADC/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 2
+# 12 "MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 2
 # 11 "MCAL_LAYER/EEPROM/hal_eeprom.h" 2
 # 33 "MCAL_LAYER/EEPROM/hal_eeprom.h"
 Std_ReturnType EEPROM_Write_Byte(uint16 bAdd, uint8 bData);
@@ -5271,14 +5198,7 @@ Std_ReturnType EEPROM_Write_Byte(uint16 bAdd, uint8 bData) {
     EECON1bits.EEPGD = 0;
     EECON1bits.CFGS = 0;
     EECON1bits.WREN = 1;
-
-
-
-    (INTCONbits.GIEH = 0);
-
-
-
-
+# 51 "MCAL_LAYER/EEPROM/hal_eeprom.c"
     EECON2 = 0X55;
     EECON2 = 0XAA;
     EECON1bits.WR = 1;
@@ -5291,7 +5211,7 @@ Std_ReturnType EEPROM_Write_Byte(uint16 bAdd, uint8 bData) {
 
 
 
-    (INTCONbits.GIEH = 1);
+
 
 
     return ret;

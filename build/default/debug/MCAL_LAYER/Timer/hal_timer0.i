@@ -10,7 +10,7 @@
 # 1 "MCAL_LAYER/Timer/hal_timer0.h" 1
 # 12 "MCAL_LAYER/Timer/hal_timer0.h"
 # 1 "MCAL_LAYER/Timer/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 1
-# 12 "MCAL_LAYER/Timer/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h"
+# 11 "MCAL_LAYER/Timer/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h"
 # 1 "MCAL_LAYER/Timer/../../MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h" 1
 # 12 "MCAL_LAYER/Timer/../../MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h"
 # 1 "D:/IDE MCU/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 1 3
@@ -5166,82 +5166,9 @@ typedef enum {
     INTERRUPT_LOW_PRIORITY = 0,
     INTERRUPT_HIGH_PRIORITY
 } interrupt_priority_cfg;
-# 13 "MCAL_LAYER/Timer/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 2
-# 1 "MCAL_LAYER/Timer/../../MCAL_LAYER/Interrupt/../ADC/hal_adc.h" 1
-# 12 "MCAL_LAYER/Timer/../../MCAL_LAYER/Interrupt/../ADC/hal_adc.h"
-# 1 "MCAL_LAYER/Timer/../../MCAL_LAYER/Interrupt/../ADC/hal_adc_cfg.h" 1
-# 12 "MCAL_LAYER/Timer/../../MCAL_LAYER/Interrupt/../ADC/hal_adc.h" 2
-
-
-
-# 1 "MCAL_LAYER/Timer/../../MCAL_LAYER/Interrupt/../ADC/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 1
-# 15 "MCAL_LAYER/Timer/../../MCAL_LAYER/Interrupt/../ADC/hal_adc.h" 2
-# 71 "MCAL_LAYER/Timer/../../MCAL_LAYER/Interrupt/../ADC/hal_adc.h"
-typedef enum {
-    ADC_CHANNEL_AN0 = 0,
-    ADC_CHANNEL_AN1,
-    ADC_CHANNEL_AN2,
-    ADC_CHANNEL_AN3,
-    ADC_CHANNEL_AN4,
-    ADC_CHANNEL_AN5,
-    ADC_CHANNEL_AN6,
-    ADC_CHANNEL_AN7,
-    ADC_CHANNEL_AN8,
-    ADC_CHANNEL_AN9,
-    ADC_CHANNEL_AN10,
-    ADC_CHANNEL_AN11,
-    ADC_CHANNEL_AN12,
-    ADC_CHANNEL_AN13,
-} adc_channel_select_t;
-
-
-typedef enum {
-    ADC_0_TAD = 0,
-    ADC_2_TAD,
-    ADC_4_TAD,
-    ADC_6_TAD,
-    ADC_8_TAD,
-    ADC_12_TAD,
-    ADC_16_TAD,
-    ADC_20_TAD,
-} adc_acquisition_time_t;
-
-typedef enum {
-    ADC_CONVERSION_CLOCK_FOSC_DIV_2 = 0,
-    ADC_CONVERSION_CLOCK_FOSC_DIV_8,
-    ADC_CONVERSION_CLOCK_FOSC_DIV_32,
-    ADC_CONVERSION_CLOCK_FOSC_DIV_FRC,
-    ADC_CONVERSION_CLOCK_FOSC_DIV_4,
-    ADC_CONVERSION_CLOCK_FOSC_DIV_16,
-    ADC_CONVERSION_CLOCK_FOSC_DIV_64,
-} adc_conversion_clock_t;
-
-typedef struct {
-
-    void (*ADC_Interrupt_Handler) (void);
-
-    adc_acquisition_time_t adc_acquisition;
-    adc_conversion_clock_t adc_conversion_clock;
-    adc_channel_select_t adc_channel;
-    interrupt_priority_cfg priority;
-    uint8 voltage_ref : 1;
-    uint8 result_format : 1;
-    uint8 reserved_bits : 6;
-} adc_config_t;
-
-
-
-Std_ReturnType ADC_Init(const adc_config_t*adc);
-Std_ReturnType ADC_Denit(const adc_config_t*adc);
-Std_ReturnType ADC_Select_Channel(const adc_config_t*adc, adc_channel_select_t channel);
-Std_ReturnType ADC_Start_Conversion(const adc_config_t*adc);
-Std_ReturnType ADC_Is_Conversion_Done(const adc_config_t*adc, uint8 *conversion_status);
-Std_ReturnType ADC_Get_Conversion_Result(const adc_config_t*adc, uint16 *result);
-Std_ReturnType ADC_Get_Conversion_Blocking(const adc_config_t*adc, adc_channel_select_t channel, uint16 *result);
-Std_ReturnType ADC_Get_Conversion_Interrupt(const adc_config_t*adc, adc_channel_select_t channel);
-# 14 "MCAL_LAYER/Timer/../../MCAL_LAYER/Interrupt/../ADC/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 2
+# 12 "MCAL_LAYER/Timer/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 2
 # 12 "MCAL_LAYER/Timer/hal_timer0.h" 2
-# 55 "MCAL_LAYER/Timer/hal_timer0.h"
+# 56 "MCAL_LAYER/Timer/hal_timer0.h"
 typedef enum {
     TIMER0_PRESCALER_DIV_BY_2 = 0,
     TIMER0_PRESCALER_DIV_BY_4,
@@ -5254,43 +5181,177 @@ typedef enum {
 } timer0_prescaler_select_t;
 
 
+
 typedef struct {
+
+    void (*Timer0_Interrupt_Handler)(void);
+    interrupt_priority_cfg priority;
+
     timer0_prescaler_select_t prescaler_value;
+    uint16 timer0_preload_value;
     uint8 prescaler_enable : 1;
     uint8 timer0_counter_edge : 1;
     uint8 timer0_mode : 1;
     uint8 timer0_register_size : 1;
+    uint8 _reserved : 4;
 } timer0_t;
 
 
 Std_ReturnType Timer0_Init(timer0_t const *timer);
 Std_ReturnType Timer0_DeInit(timer0_t const *timer);
-Std_ReturnType Timer0_Write_Value(timer0_t const *timer,uint16 value);
-Std_ReturnType Timer0_Read_Value(timer0_t const *timer,uint16 *value);
+Std_ReturnType Timer0_Write_Value(timer0_t const *timer, uint16 value);
+Std_ReturnType Timer0_Read_Value(timer0_t const *timer, uint16 *value);
 # 1 "MCAL_LAYER/Timer/hal_timer0.c" 2
 
 
+
+
+static void (*Timer0_Interrupt_Handler)(void) = ((void*)0);
+
+
+
+static __attribute__((inline)) void Timer0_Prescaler_Config(timer0_t const *timer);
+static __attribute__((inline)) void Timer0_Mode_Config(timer0_t const *timer);
+static __attribute__((inline)) void Timer0_Reg_Size_Config(timer0_t const *timer);
+
+
+
+
+
 Std_ReturnType Timer0_Init(timer0_t const *timer) {
+    Std_ReturnType ret = (Std_ReturnType)0X01;
+
+
+    if (((void*)0) == timer) {
+        ret = (Std_ReturnType)0X00;
+    } else {
+
+        (T0CONbits.TMR0ON=0);
+
+
+        Timer0_Prescaler_Config(timer);
+        Timer0_Mode_Config(timer);
+        Timer0_Reg_Size_Config(timer);
+
+
+        (INTCONbits.TMR0IE = 1);
+
+        (INTCONbits.TMR0IF = 0);
+        Timer0_Interrupt_Handler = timer->Timer0_Interrupt_Handler;
 
 
 
+        if (INTERRUPT_HIGH_PRIORITY == timer->priority) {
+            (INTCON2bits.TMR0IP = 1);
+            (INTCONbits.GIEH = 1);
+        } else if (INTERRUPT_LOW_PRIORITY == timer->priority) {
+            (INTCON2bits.TMR0IP = 0);
+            (INTCONbits.GIEL = 1);
+        }
+
+
+
+
+
+
+
+        (T0CONbits.TMR0ON=1);
+    }
+
+    return ret;
 }
+
+
 
 Std_ReturnType Timer0_DeInit(timer0_t const *timer) {
+    Std_ReturnType ret = (Std_ReturnType)0X01;
+
+
+    if (((void*)0) == timer) {
+        ret = (Std_ReturnType)0X00;
+    } else {
 
 
 
+    }
+
+    return ret;
 }
+
+
 
 Std_ReturnType Timer0_Write_Value(timer0_t const *timer, uint16 value) {
+    Std_ReturnType ret = (Std_ReturnType)0X01;
 
 
+    if (((void*)0) == timer) {
+        ret = (Std_ReturnType)0X00;
+    } else {
 
+    }
 
+    return ret;
 }
 
+
+
 Std_ReturnType Timer0_Read_Value(timer0_t const *timer, uint16 *value) {
+    Std_ReturnType ret = (Std_ReturnType)0X01;
+
+
+    if (((void*)0) == timer || ((void*)0) == value) {
+        ret = (Std_ReturnType)0X00;
+    } else {
+
+    }
+
+    return ret;
+}
 
 
 
+void TIMER0_ISR(void) {
+
+    (INTCONbits.TMR0IF = 0);
+
+
+    if (Timer0_Interrupt_Handler) {
+        Timer0_Interrupt_Handler();
+    }
+}
+
+
+
+static __attribute__((inline)) void Timer0_Prescaler_Config(timer0_t const *timer) {
+
+    if (1 == timer->prescaler_enable) {
+
+        (T0CONbits.PSA=0);
+        T0CONbits.T0PS = timer->prescaler_value;
+    } else {
+
+        (T0CONbits.PSA=1);
+    }
+}
+
+static __attribute__((inline)) void Timer0_Mode_Config(timer0_t const *timer) {
+
+    if (1 == timer->timer0_mode) {
+        (T0CONbits.T0CS=0);
+        if (timer->timer0_counter_edge == 1) {
+            (T0CONbits.T0SE=0);
+        } else if (timer->timer0_counter_edge == 0) {
+            (T0CONbits.T0SE=1);
+        }
+    } else if (1 == timer->timer0_mode) {
+        (T0CONbits.T0CS=0);
+    }
+}
+
+static __attribute__((inline)) void Timer0_Reg_Size_Config(timer0_t const *timer) {
+    if (1 == timer->timer0_register_size) {
+        (T0CONbits.T08BIT=1);
+    } else if (0 == timer->timer0_register_size) {
+        (T0CONbits.T08BIT=0);
+    }
 }

@@ -5169,7 +5169,7 @@ Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 
 
 # 1 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 1
-# 12 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h"
+# 11 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h"
 # 1 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h" 1
 # 14 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h"
 # 1 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/mcal_interrupt_gen_cfg.h" 1
@@ -5179,11 +5179,9 @@ typedef enum {
     INTERRUPT_LOW_PRIORITY = 0,
     INTERRUPT_HIGH_PRIORITY
 } interrupt_priority_cfg;
-# 13 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 2
-# 1 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/../ADC/hal_adc.h" 1
-# 14 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 2
-# 15 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/../ADC/hal_adc.h" 2
-# 71 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/../ADC/hal_adc.h"
+# 12 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 2
+# 15 "MCAL_LAYER/ADC/hal_adc.h" 2
+# 71 "MCAL_LAYER/ADC/hal_adc.h"
 typedef enum {
     ADC_CHANNEL_AN0 = 0,
     ADC_CHANNEL_AN1,
@@ -5233,7 +5231,7 @@ typedef struct {
     interrupt_priority_cfg priority;
     uint8 voltage_ref : 1;
     uint8 result_format : 1;
-    uint8 reserved_bits : 6;
+    uint8 _reserved_bits : 6;
 } adc_config_t;
 
 
@@ -5281,10 +5279,19 @@ Std_ReturnType ADC_Init(const adc_config_t* adc) {
 
 
         (PIE1bits.ADIE = 1);
-        (INTCONbits.GIEH = 1);
-        (INTCONbits.PEIE = 1);
+
+
+
+
         (PIR1bits.ADIF = 0);
-# 61 "MCAL_LAYER/ADC/hal_adc.c"
+
+        if (INTERRUPT_HIGH_PRIORITY == adc->priority) {
+            (IPR1bits.ADIP = 1);
+        } else if (INTERRUPT_LOW_PRIORITY == adc->priority) {
+            (IPR1bits.ADIP = 0);
+        }
+
+
         _ADC_Interrupt_Handler = adc->ADC_Interrupt_Handler;
 
 
@@ -5327,7 +5334,7 @@ Std_ReturnType ADC_Deinit(const adc_config_t* adc) {
 
     return ret;
 }
-# 111 "MCAL_LAYER/ADC/hal_adc.c"
+# 113 "MCAL_LAYER/ADC/hal_adc.c"
 Std_ReturnType ADC_Select_Channel(const adc_config_t* adc, adc_channel_select_t channel) {
     Std_ReturnType ret = (Std_ReturnType)0X01;
 
@@ -5362,7 +5369,7 @@ Std_ReturnType ADC_Start_Conversion(const adc_config_t* adc) {
 
     return ret;
 }
-# 153 "MCAL_LAYER/ADC/hal_adc.c"
+# 155 "MCAL_LAYER/ADC/hal_adc.c"
 Std_ReturnType ADC_Is_Conversion_Done(const adc_config_t* adc, uint8_t* conversion_status) {
     Std_ReturnType ret = (Std_ReturnType)0X01;
 
@@ -5376,7 +5383,7 @@ Std_ReturnType ADC_Is_Conversion_Done(const adc_config_t* adc, uint8_t* conversi
 
     return ret;
 }
-# 174 "MCAL_LAYER/ADC/hal_adc.c"
+# 176 "MCAL_LAYER/ADC/hal_adc.c"
 Std_ReturnType ADC_Get_Conversion_Result(const adc_config_t* adc, uint16_t* result) {
     Std_ReturnType ret = (Std_ReturnType)0X01;
 
@@ -5396,7 +5403,7 @@ Std_ReturnType ADC_Get_Conversion_Result(const adc_config_t* adc, uint16_t* resu
 
     return ret;
 }
-# 202 "MCAL_LAYER/ADC/hal_adc.c"
+# 204 "MCAL_LAYER/ADC/hal_adc.c"
 Std_ReturnType ADC_Get_Conversion_Blocking(const adc_config_t* adc, adc_channel_select_t channel, uint16_t* result) {
     Std_ReturnType ret = (Std_ReturnType)0X01;
     uint8_t conversion_status;

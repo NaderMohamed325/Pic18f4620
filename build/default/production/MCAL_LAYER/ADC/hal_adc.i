@@ -5166,7 +5166,24 @@ Std_ReturnType gpio_port_read_logic(port_index_t port, uint8 *logic);
 # 192 "MCAL_LAYER/ADC/../GPIO/hal_gpio.h"
 Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 # 13 "MCAL_LAYER/ADC/hal_adc.h" 2
-# 70 "MCAL_LAYER/ADC/hal_adc.h"
+
+
+# 1 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 1
+# 11 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h"
+# 1 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h" 1
+# 14 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h"
+# 1 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/mcal_interrupt_gen_cfg.h" 1
+# 15 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h" 2
+# 57 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h"
+typedef enum {
+    INTERRUPT_LOW_PRIORITY = 0,
+    INTERRUPT_HIGH_PRIORITY
+} interrupt_priority_cfg;
+# 12 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 2
+# 1 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/../ADC/hal_adc.h" 1
+# 13 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 2
+# 15 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/../ADC/hal_adc.h" 2
+# 71 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/../ADC/hal_adc.h"
 typedef enum {
     ADC_CHANNEL_AN0 = 0,
     ADC_CHANNEL_AN1,
@@ -5207,12 +5224,13 @@ typedef enum {
 } adc_conversion_clock_t;
 
 typedef struct {
+
     void (*ADC_Interrupt_Handler) (void);
 
     adc_acquisition_time_t adc_acquisition;
     adc_conversion_clock_t adc_conversion_clock;
     adc_channel_select_t adc_channel;
-
+    interrupt_priority_cfg priority;
     uint8 voltage_ref : 1;
     uint8 result_format : 1;
     uint8 reserved_bits : 6;
@@ -5227,6 +5245,7 @@ Std_ReturnType ADC_Start_Conversion(const adc_config_t*adc);
 Std_ReturnType ADC_Is_Conversion_Done(const adc_config_t*adc, uint8 *conversion_status);
 Std_ReturnType ADC_Get_Conversion_Result(const adc_config_t*adc, uint16 *result);
 Std_ReturnType ADC_Get_Conversion_Blocking(const adc_config_t*adc, adc_channel_select_t channel, uint16 *result);
+Std_ReturnType ADC_Get_Conversion_Interrupt(const adc_config_t*adc, adc_channel_select_t channel);
 # 8 "MCAL_LAYER/ADC/hal_adc.c" 2
 
 
@@ -5236,11 +5255,8 @@ static __attribute__((inline)) void adc_select_result_format(const adc_config_t*
 static __attribute__((inline)) void adc_select_voltage_ref(const adc_config_t* adc);
 
 
-
-
-
-
-
+static void (*_ADC_Interrupt_Handler)(void) = ((void*)0);
+# 26 "MCAL_LAYER/ADC/hal_adc.c"
 Std_ReturnType ADC_Init(const adc_config_t* adc) {
     Std_ReturnType ret = (Std_ReturnType)0X01;
 
@@ -5264,6 +5280,16 @@ Std_ReturnType ADC_Init(const adc_config_t* adc) {
         adc_select_voltage_ref(adc);
 
 
+        (PIE1bits.ADIE = 1);
+        (INTCONbits.GIEH = 1);
+        (INTCONbits.PEIE = 1);
+        (PIR1bits.ADIF = 0);
+# 61 "MCAL_LAYER/ADC/hal_adc.c"
+        _ADC_Interrupt_Handler = adc->ADC_Interrupt_Handler;
+
+
+
+
         (ADCON0bits.ADON = 1);
     }
 
@@ -5285,11 +5311,23 @@ Std_ReturnType ADC_Deinit(const adc_config_t* adc) {
     } else {
 
         (ADCON0bits.ADON = 0);
+
+
+
+
+        (PIE1bits.ADIE = 0);
+
+
+
+
+
+
+
     }
 
     return ret;
 }
-# 77 "MCAL_LAYER/ADC/hal_adc.c"
+# 111 "MCAL_LAYER/ADC/hal_adc.c"
 Std_ReturnType ADC_Select_Channel(const adc_config_t* adc, adc_channel_select_t channel) {
     Std_ReturnType ret = (Std_ReturnType)0X01;
 
@@ -5324,7 +5362,7 @@ Std_ReturnType ADC_Start_Conversion(const adc_config_t* adc) {
 
     return ret;
 }
-# 119 "MCAL_LAYER/ADC/hal_adc.c"
+# 153 "MCAL_LAYER/ADC/hal_adc.c"
 Std_ReturnType ADC_Is_Conversion_Done(const adc_config_t* adc, uint8_t* conversion_status) {
     Std_ReturnType ret = (Std_ReturnType)0X01;
 
@@ -5338,7 +5376,7 @@ Std_ReturnType ADC_Is_Conversion_Done(const adc_config_t* adc, uint8_t* conversi
 
     return ret;
 }
-# 140 "MCAL_LAYER/ADC/hal_adc.c"
+# 174 "MCAL_LAYER/ADC/hal_adc.c"
 Std_ReturnType ADC_Get_Conversion_Result(const adc_config_t* adc, uint16_t* result) {
     Std_ReturnType ret = (Std_ReturnType)0X01;
 
@@ -5358,7 +5396,7 @@ Std_ReturnType ADC_Get_Conversion_Result(const adc_config_t* adc, uint16_t* resu
 
     return ret;
 }
-# 168 "MCAL_LAYER/ADC/hal_adc.c"
+# 202 "MCAL_LAYER/ADC/hal_adc.c"
 Std_ReturnType ADC_Get_Conversion_Blocking(const adc_config_t* adc, adc_channel_select_t channel, uint16_t* result) {
     Std_ReturnType ret = (Std_ReturnType)0X01;
     uint8_t conversion_status;
@@ -5380,6 +5418,26 @@ Std_ReturnType ADC_Get_Conversion_Blocking(const adc_config_t* adc, adc_channel_
     }
 
     return ret;
+}
+
+Std_ReturnType ADC_Get_Conversion_Interrupt(const adc_config_t*adc, adc_channel_select_t channel) {
+
+    Std_ReturnType ret = (Std_ReturnType)0X01;
+    uint8_t conversion_status;
+
+
+    if (((void*)0) == adc) {
+        ret = (Std_ReturnType)0X00;
+    } else {
+
+        ret &= ADC_Select_Channel(adc, channel);
+        ret &= ADC_Start_Conversion(adc);
+
+    }
+
+    return ret;
+
+
 }
 
 
@@ -5447,5 +5505,12 @@ static __attribute__((inline)) void adc_select_voltage_ref(const adc_config_t* a
         do{ADCON1bits.VCFG1 = 0; ADCON1bits.VCFG0 = 0; } while(0);
     } else {
         do{ADCON1bits.VCFG1 = 0; ADCON1bits.VCFG0 = 0; } while(0);
+    }
+}
+
+void ADC_ISR(void) {
+    (PIR1bits.ADIF = 0);
+    if (_ADC_Interrupt_Handler) {
+        _ADC_Interrupt_Handler();
     }
 }

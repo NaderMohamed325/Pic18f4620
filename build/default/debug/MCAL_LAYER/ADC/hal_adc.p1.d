@@ -10,5 +10,4 @@ MCAL_LAYER/ADC/../GPIO/../decive_config.h  \
 MCAL_LAYER/ADC/../GPIO/hal_pio_cnfg.h  \
 MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h  \
 MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h  \
-MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/mcal_interrupt_gen_cfg.h  \
-MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/../ADC/hal_adc.h 
+MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/mcal_interrupt_gen_cfg.h 

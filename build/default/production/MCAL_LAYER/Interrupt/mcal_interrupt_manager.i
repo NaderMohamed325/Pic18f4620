@@ -5166,7 +5166,7 @@ Std_ReturnType gpio_port_read_logic(port_index_t port, uint8 *logic);
 # 192 "MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h"
 Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 # 16 "MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h" 2
-# 58 "MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h"
+# 57 "MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h"
 typedef enum {
     INTERRUPT_LOW_PRIORITY = 0,
     INTERRUPT_HIGH_PRIORITY
@@ -5180,9 +5180,10 @@ void RB4_ISR(uint8 source);
 void RB5_ISR(uint8 source);
 void RB6_ISR(uint8 source);
 void RB7_ISR(uint8 source);
+void ADC_ISR(void);
 # 9 "MCAL_LAYER/Interrupt/mcal_interrupt_manager.c" 2
 static volatile uint8 RB4_f = 1, RB5_f = 1, RB6_f = 1, RB7_f = 1;
-# 36 "MCAL_LAYER/Interrupt/mcal_interrupt_manager.c"
+# 39 "MCAL_LAYER/Interrupt/mcal_interrupt_manager.c"
 void __attribute__((picinterrupt(("")))) Interrupt_Manager_High(void) {
 
     if ((INTCONbits.INT0IE == 1) && (INTCONbits.INT0IF == 1)) {
@@ -5195,6 +5196,9 @@ void __attribute__((picinterrupt(("")))) Interrupt_Manager_High(void) {
 
     if ((INTCON3bits.INT2IE == 1) && (INTCON3bits.INT2IF == 1)) {
         INT2_ISR();
+    }
+    if (1 == PIE1bits.ADIE && 1 == PIR1bits.ADIF) {
+        ADC_ISR();
     }
 
 

@@ -5166,7 +5166,7 @@ Std_ReturnType gpio_port_read_logic(port_index_t port, uint8 *logic);
 # 192 "MCAL_LAYER/Interrupt/../GPIO/hal_gpio.h"
 Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 # 16 "MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h" 2
-# 58 "MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h"
+# 57 "MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h"
 typedef enum {
     INTERRUPT_LOW_PRIORITY = 0,
     INTERRUPT_HIGH_PRIORITY
@@ -5176,7 +5176,12 @@ typedef enum {
 # 12 "MCAL_LAYER/Interrupt/../ADC/hal_adc.h"
 # 1 "MCAL_LAYER/Interrupt/../ADC/hal_adc_cfg.h" 1
 # 12 "MCAL_LAYER/Interrupt/../ADC/hal_adc.h" 2
-# 70 "MCAL_LAYER/Interrupt/../ADC/hal_adc.h"
+
+
+
+# 1 "MCAL_LAYER/Interrupt/../ADC/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 1
+# 15 "MCAL_LAYER/Interrupt/../ADC/hal_adc.h" 2
+# 71 "MCAL_LAYER/Interrupt/../ADC/hal_adc.h"
 typedef enum {
     ADC_CHANNEL_AN0 = 0,
     ADC_CHANNEL_AN1,
@@ -5217,12 +5222,13 @@ typedef enum {
 } adc_conversion_clock_t;
 
 typedef struct {
+
     void (*ADC_Interrupt_Handler) (void);
 
     adc_acquisition_time_t adc_acquisition;
     adc_conversion_clock_t adc_conversion_clock;
     adc_channel_select_t adc_channel;
-
+    interrupt_priority_cfg priority;
     uint8 voltage_ref : 1;
     uint8 result_format : 1;
     uint8 reserved_bits : 6;
@@ -5237,6 +5243,7 @@ Std_ReturnType ADC_Start_Conversion(const adc_config_t*adc);
 Std_ReturnType ADC_Is_Conversion_Done(const adc_config_t*adc, uint8 *conversion_status);
 Std_ReturnType ADC_Get_Conversion_Result(const adc_config_t*adc, uint16 *result);
 Std_ReturnType ADC_Get_Conversion_Blocking(const adc_config_t*adc, adc_channel_select_t channel, uint16 *result);
-# 13 "MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 2
+Std_ReturnType ADC_Get_Conversion_Interrupt(const adc_config_t*adc, adc_channel_select_t channel);
+# 13 "MCAL_LAYER/Interrupt/../ADC/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 2
 # 8 "MCAL_LAYER/Interrupt/mcal_internal_inturrupt.c" 2
 

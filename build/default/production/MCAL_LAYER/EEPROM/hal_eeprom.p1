@@ -346,94 +346,94 @@ Version 4.0 HI-TECH Software Intermediate Code
 "46
 [; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 46:     (INTCONbits.GIEH = 0);
 [e = . . _INTCONbits 2 2 -> -> 0 `i `uc ]
-"49
-[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 49:     EECON2 = 0X55;
-[e = _EECON2 -> -> 85 `i `uc ]
-"50
-[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 50:     EECON2 = 0XAA;
-[e = _EECON2 -> -> 170 `i `uc ]
 "51
-[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 51:     EECON1bits.WR = 1;
+[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 51:     EECON2 = 0X55;
+[e = _EECON2 -> -> 85 `i `uc ]
+"52
+[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 52:     EECON2 = 0XAA;
+[e = _EECON2 -> -> 170 `i `uc ]
+"53
+[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 53:     EECON1bits.WR = 1;
 [e = . . _EECON1bits 0 1 -> -> 1 `i `uc ]
-"54
-[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 54:     while (EECON1bits.WR);
+"56
+[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 56:     while (EECON1bits.WR);
 [e $U 276  ]
 [e :U 277 ]
 [e :U 276 ]
 [e $ != -> . . _EECON1bits 0 1 `i -> 0 `i 277  ]
 [e :U 278 ]
-"57
-[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 57:     EECON1bits.WR = 0;
+"59
+[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 59:     EECON1bits.WR = 0;
 [e = . . _EECON1bits 0 1 -> -> 0 `i `uc ]
-"60
-[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 60:     (INTCONbits.GIEH = 1);
+"63
+[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 63:     (INTCONbits.GIEH = 1);
 [e = . . _INTCONbits 2 2 -> -> 1 `i `uc ]
-"62
-[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 62:     return ret;
+"66
+[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 66:     return ret;
 [e ) _ret ]
 [e $UE 275  ]
-"63
-[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 63: }
+"67
+[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 67: }
 [e :UE 275 ]
 }
-"71
-[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 71: Std_ReturnType EEPROM_Read_Byte(uint16 bAdd, uint8 *bData) {
+"75
+[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 75: Std_ReturnType EEPROM_Read_Byte(uint16 bAdd, uint8 *bData) {
 [v _EEPROM_Read_Byte `(uc ~T0 @X0 1 ef2`us`*uc ]
 {
 [e :U _EEPROM_Read_Byte ]
 [v _bAdd `us ~T0 @X0 1 r1 ]
 [v _bData `*uc ~T0 @X0 1 r2 ]
 [f ]
-"72
-[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 72:     Std_ReturnType ret = (Std_ReturnType)0X01;
+"76
+[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 76:     Std_ReturnType ret = (Std_ReturnType)0X01;
 [v _ret `uc ~T0 @X0 1 a ]
 [e = _ret -> -> 1 `i `uc ]
-"75
-[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 75:     if (((void*)0) == bData) {
+"79
+[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 79:     if (((void*)0) == bData) {
 [e $ ! == -> -> -> 0 `i `*v `*uc _bData 280  ]
 {
-"76
-[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 76:         ret = (Std_ReturnType)0X00;
+"80
+[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 80:         ret = (Std_ReturnType)0X00;
 [e = _ret -> -> 0 `i `uc ]
-"77
-[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 77:     } else {
+"81
+[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 81:     } else {
 }
 [e $U 281  ]
 [e :U 280 ]
 {
-"79
-[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 79:         EEADRH = (uint8) ((bAdd >> 8) & (0b11111111));
-[e = _EEADRH -> & >> -> _bAdd `ui -> 8 `i -> -> 255 `i `ui `uc ]
-"80
-[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 80:         EEADR = (uint8) (bAdd & 0b000000011);
-[e = _EEADR -> & -> _bAdd `ui -> -> 3 `i `ui `uc ]
 "83
-[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 83:         EECON1bits.EEPGD = 0;
-[e = . . _EECON1bits 0 7 -> -> 0 `i `uc ]
+[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 83:         EEADRH = (uint8) ((bAdd >> 8) & (0b11111111));
+[e = _EEADRH -> & >> -> _bAdd `ui -> 8 `i -> -> 255 `i `ui `uc ]
 "84
-[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 84:         EECON1bits.CFGS = 0;
-[e = . . _EECON1bits 0 6 -> -> 0 `i `uc ]
-"85
-[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 85:         EECON1bits.RD = 1;
-[e = . . _EECON1bits 0 0 -> -> 1 `i `uc ]
+[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 84:         EEADR = (uint8) (bAdd & 0b000000011);
+[e = _EEADR -> & -> _bAdd `ui -> -> 3 `i `ui `uc ]
+"87
+[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 87:         EECON1bits.EEPGD = 0;
+[e = . . _EECON1bits 0 7 -> -> 0 `i `uc ]
 "88
-[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 88:         __nop();
-[e ( ___nop ..  ]
+[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 88:         EECON1bits.CFGS = 0;
+[e = . . _EECON1bits 0 6 -> -> 0 `i `uc ]
 "89
-[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 89:         __nop();
-[e ( ___nop ..  ]
+[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 89:         EECON1bits.RD = 1;
+[e = . . _EECON1bits 0 0 -> -> 1 `i `uc ]
 "92
-[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 92:         *bData = EEDATA;
-[e = *U _bData _EEDATA ]
+[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 92:         __nop();
+[e ( ___nop ..  ]
 "93
-[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 93:     }
+[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 93:         __nop();
+[e ( ___nop ..  ]
+"96
+[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 96:         *bData = EEDATA;
+[e = *U _bData _EEDATA ]
+"97
+[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 97:     }
 }
 [e :U 281 ]
-"95
-[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 95:     return ret;
+"99
+[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 99:     return ret;
 [e ) _ret ]
 [e $UE 279  ]
-"96
-[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 96: }
+"100
+[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 100: }
 [e :UE 279 ]
 }

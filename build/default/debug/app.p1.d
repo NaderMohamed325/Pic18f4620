@@ -26,6 +26,5 @@ MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h  \
 MCAL_LAYER/Interrupt/mcal_interrupt_gen_cfg.h  \
 MCAL_LAYER/EEPROM/hal_eeprom.h  \
 MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h  \
-MCAL_LAYER/Interrupt/../ADC/hal_adc.h  \
-MCAL_LAYER/Interrupt/../ADC/hal_adc_cfg.h  \
-MCAL_LAYER/Interrupt/../ADC/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h 
+MCAL_LAYER/ADC/hal_adc.h  \
+MCAL_LAYER/ADC/hal_adc_cfg.h 

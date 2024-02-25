@@ -7,60 +7,55 @@
 
 #ifndef MCAL_INTERNAL_INTERRUPT_H
 #define	MCAL_INTERNAL_INTERRUPT_H
-
 /*----------------INCLUDES-------------------*/
 #include "mcal_interrupt_cfg.h"
-#include "../ADC/hal_adc.h"
 
 /*-----------------MACROS--------------------*/
 
-/* Macros for Timer0 Interrupt Control */
-#if TIMER0_INTERRUPT_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
 
-// Disable Timer0 Interrupt
-#define TIMER0_InterruptDisable()         (PIE1bits.TMR0IE = 0)
-// Enable Timer0 Interrupt
-#define TIMER0_InterruptEnable()          (PIE1bits.TMR0IE = 1)
-// Clear Timer0 Interrupt Flag
-#define TIMER0_InterruptFlagClear()       (PIR1bits.TMR0IF = 0)
-
-#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
-
-// Set Timer0 Interrupt Priority to High
-#define TIMER0_HighPrioritySet()          (IPR1bits.TMR0IP = 1)
-// Set Timer0 Interrupt Priority to Low
-#define TIMER0_LowPrioritySet()           (IPR1bits.TMR0IP = 0)
-
-#endif
-#endif
-
-/* Macros for ADC Interrupt Control */
-#if ADC_INTERRUPT_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
-
-// Disable ADC Interrupt
+#if ADC_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
+/* This routine clears the interrupt enable for the ADC Module */
 #define ADC_InterruptDisable()         (PIE1bits.ADIE = 0)
-// Enable ADC Interrupt
+/* This routine sets the interrupt enable for the ADC Module */
 #define ADC_InterruptEnable()          (PIE1bits.ADIE = 1)
-// Clear ADC Interrupt Flag
+/* This routine clears the interrupt flag for the ADC Module */
 #define ADC_InterruptFlagClear()       (PIR1bits.ADIF = 0)
-
-#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
-
-// Set ADC Interrupt Priority to High
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE==INTERRUPT_FEATURE_ENABLE 
+/* This routine set the ADC Module Interrupt Priority to be High priority */
 #define ADC_HighPrioritySet()          (IPR1bits.ADIP = 1)
-// Set ADC Interrupt Priority to Low
+/* This routine set the ADC Module Interrupt Priority to be Low priority */
 #define ADC_LowPrioritySet()           (IPR1bits.ADIP = 0)
-
+#endif
 #endif
 
+#if TIMER0_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
+/* This routine clears the interrupt enable for the TIMER0 Module */
+#define TIMER0_InterruptDisable()         (INTCONbits.TMR0IE = 0)
+/* This routine sets the interrupt enable for the TIMER0 Module */
+#define TIMER0_InterruptEnable()          (INTCONbits.TMR0IE = 1)
+/* This routine clears the interrupt flag for the TIMER0 Module */
+#define TIMER0_InterruptFlagClear()       (INTCONbits.TMR0IF = 0)
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE==INTERRUPT_FEATURE_ENABLE 
+/* This routine set the TIMER0 Module Interrupt Priority to be High priority */
+#define TIMER0_HighPrioritySet()          (INTCON2bits.TMR0IP = 1)
+/* This routine set the TIMER0 Module Interrupt Priority to be Low priority */
+#define TIMER0_LowPrioritySet()           (INTCON2bits.TMR0IP = 0)
 #endif
+#endif
+
+
+
+
+
+
+
 
 /*------------DATA_TYPES-------------------*/
 
-// Data types can be added here if needed
+
 
 /*------------FUNCTIONS_DECLARATION--------*/
 
-// Function declarations can be added here if needed
 
 #endif	/* MCAL_INTERNAL_INTERRUPT_H */
+

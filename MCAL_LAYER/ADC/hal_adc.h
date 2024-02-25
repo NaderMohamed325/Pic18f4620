@@ -117,7 +117,7 @@ typedef struct {
     interrupt_priority_cfg priority;
     uint8 voltage_ref : 1;
     uint8 result_format : 1;
-    uint8 reserved_bits : 6;
+    uint8 _reserved_bits : 6;
 } adc_config_t;
 
 

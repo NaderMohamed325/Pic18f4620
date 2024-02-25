@@ -47,8 +47,10 @@ Std_ReturnType ADC_Init(const adc_config_t* adc) {
         //interrupt features
 #if ADC_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
         ADC_InterruptEnable();
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE!=INTERRUPT_FEATURE_ENABLE   
         INTERRUPT_Global_Interrupt_Enable();
         INTERRUPT_Peripheral_Interrupt_Enable();
+#endif
         ADC_InterruptFlagClear();
 #if INTERRUPT_PRIORITY_LEVELS_ENABLE==INTERRUPT_FEATURE_ENABLE
         if (INTERRUPT_HIGH_PRIORITY == adc->priority) {

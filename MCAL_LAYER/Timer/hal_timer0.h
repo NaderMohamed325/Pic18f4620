@@ -32,7 +32,7 @@
 // Macros to enable/disable Timer0 prescaler
 #define TIMER0_PRESCALER_ENABLE()        (T0CONbits.PSA=0)
 #define TIMER0_PRESCALER_DISABLE()       (T0CONbits.PSA=1)
- 
+
 // Macros to enable rising/falling edge configuration for Timer0
 #define TIMER0_RISING_EDGE_ENABLE()      (T0CONbits.T0SE=0)
 #define TIMER0_FALLING_EDGE_ENABLE()     (T0CONbits.T0SE=1)
@@ -52,6 +52,7 @@
 /*------------DATA_TYPES-------------------*/
 
 // Enum to specify Timer0 prescaler values
+
 typedef enum {
     TIMER0_PRESCALER_DIV_BY_2 = 0,
     TIMER0_PRESCALER_DIV_BY_4,
@@ -64,18 +65,25 @@ typedef enum {
 } timer0_prescaler_select_t;
 
 // Structure to hold Timer0 configuration settings
+
 typedef struct {
+#if TIMER0_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
+    void (*Timer0_Interrupt_Handler)(void);
+    interrupt_priority_cfg priority;
+#endif
     timer0_prescaler_select_t prescaler_value;
+    uint16 timer0_preload_value;
     uint8 prescaler_enable : 1;
     uint8 timer0_counter_edge : 1;
     uint8 timer0_mode : 1;
     uint8 timer0_register_size : 1;
+    uint8 _reserved : 4;
 } timer0_t;
 
 /*------------FUNCTIONS_DECLARATION--------*/
 Std_ReturnType Timer0_Init(timer0_t const *timer);
 Std_ReturnType Timer0_DeInit(timer0_t const *timer);
-Std_ReturnType Timer0_Write_Value(timer0_t const *timer,uint16 value);
-Std_ReturnType Timer0_Read_Value(timer0_t const *timer,uint16 *value);
+Std_ReturnType Timer0_Write_Value(timer0_t const *timer, uint16 value);
+Std_ReturnType Timer0_Read_Value(timer0_t const *timer, uint16 *value);
 
 #endif	/* HAL_TIMER0_H */
