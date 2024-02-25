@@ -357,11 +357,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _EECON1bits 0 1 -> -> 1 `i `uc ]
 "56
 [; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 56:     while (EECON1bits.WR);
-[e $U 276  ]
-[e :U 277 ]
+[e $U 275  ]
 [e :U 276 ]
-[e $ != -> . . _EECON1bits 0 1 `i -> 0 `i 277  ]
-[e :U 278 ]
+[e :U 275 ]
+[e $ != -> . . _EECON1bits 0 1 `i -> 0 `i 276  ]
+[e :U 277 ]
 "59
 [; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 59:     EECON1bits.WR = 0;
 [e = . . _EECON1bits 0 1 -> -> 0 `i `uc ]
@@ -371,10 +371,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "66
 [; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 66:     return ret;
 [e ) _ret ]
-[e $UE 275  ]
+[e $UE 274  ]
 "67
 [; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 67: }
-[e :UE 275 ]
+[e :UE 274 ]
 }
 "75
 [; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 75: Std_ReturnType EEPROM_Read_Byte(uint16 bAdd, uint8 *bData) {
@@ -390,7 +390,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _ret -> -> 1 `i `uc ]
 "79
 [; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 79:     if (((void*)0) == bData) {
-[e $ ! == -> -> -> 0 `i `*v `*uc _bData 280  ]
+[e $ ! == -> -> -> 0 `i `*v `*uc _bData 279  ]
 {
 "80
 [; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 80:         ret = (Std_ReturnType)0X00;
@@ -398,8 +398,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "81
 [; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 81:     } else {
 }
-[e $U 281  ]
-[e :U 280 ]
+[e $U 280  ]
+[e :U 279 ]
 {
 "83
 [; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 83:         EEADRH = (uint8) ((bAdd >> 8) & (0b11111111));
@@ -428,12 +428,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "97
 [; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 97:     }
 }
-[e :U 281 ]
+[e :U 280 ]
 "99
 [; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 99:     return ret;
 [e ) _ret ]
-[e $UE 279  ]
+[e $UE 278  ]
 "100
 [; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 100: }
-[e :UE 279 ]
+[e :UE 278 ]
 }

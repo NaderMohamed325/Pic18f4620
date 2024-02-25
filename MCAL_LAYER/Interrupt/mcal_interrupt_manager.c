@@ -13,23 +13,13 @@ static volatile uint8 RB4_f = 1, RB5_f = 1, RB6_f = 1, RB7_f = 1;
 // High-priority interrupt service routine
 
 void __interrupt() Interrupt_Manager_High(void) {
-    // Check and call INT0 ISR if enabled and flag is set
-    if ((INTCONbits.INT0IE == INTERRUPT_ENABLE) && (INTCONbits.INT0IF == INTERRUPT_OCCUR)) {
-        INT0_ISR();
-    }
-    // Check and call INT1 ISR if enabled and flag is set
-    if ((INTCON3bits.INT1IE == INTERRUPT_ENABLE) && (INTCON3bits.INT1IF == INTERRUPT_OCCUR)) {
-        INT1_ISR();
-    }
+ 
 }
 
 // Low-priority interrupt service routine
 
 void __interrupt(low_priority) Interrupt_Manager_Low(void) {
-    // Check and call INT2 ISR if enabled and flag is set
-    if ((INTCON3bits.INT2IE == INTERRUPT_ENABLE) && (INTCON3bits.INT2IF == INTERRUPT_OCCUR)) {
-        INT2_ISR();
-    }
+  
 }
 
 #else
@@ -51,6 +41,9 @@ void __interrupt() Interrupt_Manager_High(void) {
     }
     if (INTERRUPT_ENABLE == PIE1bits.ADIE && INTERRUPT_OCCUR == PIR1bits.ADIF) {
         ADC_ISR();
+    }
+    if (INTERRUPT_ENABLE == INTCONbits.TMR0IE && INTERRUPT_OCCUR == INTCONbits.TMR0IF) {
+        TIMER0_ISR();
     }
 
     // Check and call RBx ISRs for pin change interrupts

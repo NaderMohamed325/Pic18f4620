@@ -5198,7 +5198,14 @@ Std_ReturnType EEPROM_Write_Byte(uint16 bAdd, uint8 bData) {
     EECON1bits.EEPGD = 0;
     EECON1bits.CFGS = 0;
     EECON1bits.WREN = 1;
-# 51 "MCAL_LAYER/EEPROM/hal_eeprom.c"
+
+
+
+    (INTCONbits.GIEH = 0);
+
+
+
+
     EECON2 = 0X55;
     EECON2 = 0XAA;
     EECON1bits.WR = 1;
@@ -5211,7 +5218,7 @@ Std_ReturnType EEPROM_Write_Byte(uint16 bAdd, uint8 bData) {
 
 
 
-
+    (INTCONbits.GIEH = 1);
 
 
     return ret;

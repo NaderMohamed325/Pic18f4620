@@ -5540,17 +5540,23 @@ Std_ReturnType Interrupt_RBx_Init(const interrupt_RBx_t *obj);
 # 1 "./MCAL_LAYER/EEPROM/hal_eeprom.h" 1
 # 11 "./MCAL_LAYER/EEPROM/hal_eeprom.h"
 # 1 "./MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 1
-# 12 "./MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h"
-# 1 "./MCAL_LAYER/Interrupt/../ADC/hal_adc.h" 1
-# 12 "./MCAL_LAYER/Interrupt/../ADC/hal_adc.h"
-# 1 "./MCAL_LAYER/Interrupt/../ADC/hal_adc_cfg.h" 1
-# 12 "./MCAL_LAYER/Interrupt/../ADC/hal_adc.h" 2
+# 11 "./MCAL_LAYER/EEPROM/hal_eeprom.h" 2
+# 33 "./MCAL_LAYER/EEPROM/hal_eeprom.h"
+Std_ReturnType EEPROM_Write_Byte(uint16 bAdd, uint8 bData);
 
 
 
-# 1 "./MCAL_LAYER/Interrupt/../ADC/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 1
-# 15 "./MCAL_LAYER/Interrupt/../ADC/hal_adc.h" 2
-# 71 "./MCAL_LAYER/Interrupt/../ADC/hal_adc.h"
+
+
+
+
+Std_ReturnType EEPROM_Read_Byte(uint16 bAdd, uint8 *bData);
+# 14 "./app.h" 2
+# 1 "./MCAL_LAYER/ADC/hal_adc.h" 1
+# 12 "./MCAL_LAYER/ADC/hal_adc.h"
+# 1 "./MCAL_LAYER/ADC/hal_adc_cfg.h" 1
+# 12 "./MCAL_LAYER/ADC/hal_adc.h" 2
+# 71 "./MCAL_LAYER/ADC/hal_adc.h"
 typedef enum {
     ADC_CHANNEL_AN0 = 0,
     ADC_CHANNEL_AN1,
@@ -5600,7 +5606,7 @@ typedef struct {
     interrupt_priority_cfg priority;
     uint8 voltage_ref : 1;
     uint8 result_format : 1;
-    uint8 reserved_bits : 6;
+    uint8 _reserved_bits : 6;
 } adc_config_t;
 
 
@@ -5613,20 +5619,43 @@ Std_ReturnType ADC_Is_Conversion_Done(const adc_config_t*adc, uint8 *conversion_
 Std_ReturnType ADC_Get_Conversion_Result(const adc_config_t*adc, uint16 *result);
 Std_ReturnType ADC_Get_Conversion_Blocking(const adc_config_t*adc, adc_channel_select_t channel, uint16 *result);
 Std_ReturnType ADC_Get_Conversion_Interrupt(const adc_config_t*adc, adc_channel_select_t channel);
-# 13 "./MCAL_LAYER/Interrupt/../ADC/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 2
-# 11 "./MCAL_LAYER/EEPROM/hal_eeprom.h" 2
-# 33 "./MCAL_LAYER/EEPROM/hal_eeprom.h"
-Std_ReturnType EEPROM_Write_Byte(uint16 bAdd, uint8 bData);
+# 15 "./app.h" 2
+# 1 "./MCAL_LAYER/Timer/hal_timer0.h" 1
+# 56 "./MCAL_LAYER/Timer/hal_timer0.h"
+typedef enum {
+    TIMER0_PRESCALER_DIV_BY_2 = 0,
+    TIMER0_PRESCALER_DIV_BY_4,
+    TIMER0_PRESCALER_DIV_BY_8,
+    TIMER0_PRESCALER_DIV_BY_16,
+    TIMER0_PRESCALER_DIV_BY_32,
+    TIMER0_PRESCALER_DIV_BY_64,
+    TIMER0_PRESCALER_DIV_BY_128,
+    TIMER0_PRESCALER_DIV_BY_256,
+} timer0_prescaler_select_t;
 
 
 
+typedef struct {
+
+    void (*Timer0_Interrupt_Handler)(void);
+    interrupt_priority_cfg priority;
+
+    timer0_prescaler_select_t prescaler_value;
+    uint16 timer0_preload_value;
+    uint8 prescaler_enable : 1;
+    uint8 timer0_counter_edge : 1;
+    uint8 timer0_mode : 1;
+    uint8 timer0_register_size : 1;
+    uint8 _reserved : 4;
+} timer0_t;
 
 
-
-
-Std_ReturnType EEPROM_Read_Byte(uint16 bAdd, uint8 *bData);
-# 14 "./app.h" 2
-# 25 "./app.h"
+Std_ReturnType Timer0_Init(timer0_t const *timer);
+Std_ReturnType Timer0_DeInit(timer0_t const *timer);
+Std_ReturnType Timer0_Write_Value(timer0_t const *timer, uint16 value);
+Std_ReturnType Timer0_Read_Value(timer0_t const *timer, uint16 *value);
+# 16 "./app.h" 2
+# 26 "./app.h"
 void Application_initialize(void);
 # 2 "app.c" 2
 
@@ -5635,6 +5664,21 @@ Std_ReturnType ret = (Std_ReturnType)0X01;
 
 
 void Application_initialize(void);
+volatile uint16 freq = 0;
+
+
+
+void Isr(void) {
+
+}
+
+
+timer0_t timer = {
+    .Timer0_Interrupt_Handler = Isr,
+    .timer0_counter_edge = 1,
+    .timer0_register_size = 0,
+    .timer0_mode = 0
+};
 
 int main(void) {
 
@@ -5642,12 +5686,19 @@ int main(void) {
 
     while (1) {
 
+        Timer0_Read_Value(&timer, &freq);
+          Timer0_Write_Value(&timer, 0);
+        _delay((unsigned long)((1000)*(8000000/4000.0)));
+
     }
 
     return 0;
 }
 
 void Application_initialize(void) {
+
     ecu_layer_initialize();
 
+
+    Timer0_Init(&timer);
 }

@@ -79,6 +79,20 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n S90 . . . ]
 "2519
 [v _PIE1bits `VS90 ~T0 @X0 0 e@3997 ]
+"6380
+[s S263 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S263 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
+"6390
+[s S264 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S264 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+"6400
+[s S265 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S265 . . GIEL GIEH ]
+"6379
+[u S262 `S263 1 `S264 1 `S265 1 ]
+[n S262 . . . . ]
+"6406
+[v _INTCONbits `VS262 ~T0 @X0 0 e@4082 ]
 "2580
 [s S94 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S94 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF PSPIF ]
@@ -90,17 +104,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n S93 . . . ]
 "2596
 [v _PIR1bits `VS93 ~T0 @X0 0 e@3998 ]
-"2657
-[s S97 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S97 . TMR1IP TMR2IP CCP1IP SSPIP TXIP RCIP ADIP PSPIP ]
-"2667
-[s S98 :4 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S98 . . TX1IP RC1IP ]
-"2656
-[u S96 `S97 1 `S98 1 ]
-[n S96 . . . ]
-"2673
-[v _IPR1bits `VS96 ~T0 @X0 0 e@3999 ]
 "4662
 [v _ADRESH `Vuc ~T0 @X0 0 e@4036 ]
 "4655
@@ -454,31 +457,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 "49
 [; ;MCAL_LAYER/ADC/hal_adc.c: 49:         (PIE1bits.ADIE = 1);
 [e = . . _PIE1bits 0 6 -> -> 1 `i `uc ]
+"51
+[; ;MCAL_LAYER/ADC/hal_adc.c: 51:         (INTCONbits.GIEH = 1);
+[e = . . _INTCONbits 2 2 -> -> 1 `i `uc ]
+"52
+[; ;MCAL_LAYER/ADC/hal_adc.c: 52:         (INTCONbits.PEIE = 1);
+[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
 "54
 [; ;MCAL_LAYER/ADC/hal_adc.c: 54:         (PIR1bits.ADIF = 0);
 [e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
-"56
-[; ;MCAL_LAYER/ADC/hal_adc.c: 56:         if (INTERRUPT_HIGH_PRIORITY == adc->priority) {
-[e $ ! == -> . `E3462 1 `ui -> . *U _adc 4 `ui 278  ]
-{
-"57
-[; ;MCAL_LAYER/ADC/hal_adc.c: 57:             (IPR1bits.ADIP = 1);
-[e = . . _IPR1bits 0 6 -> -> 1 `i `uc ]
-"58
-[; ;MCAL_LAYER/ADC/hal_adc.c: 58:         } else if (INTERRUPT_LOW_PRIORITY == adc->priority) {
-}
-[e $U 279  ]
-[e :U 278 ]
-[e $ ! == -> . `E3462 0 `ui -> . *U _adc 4 `ui 280  ]
-{
-"59
-[; ;MCAL_LAYER/ADC/hal_adc.c: 59:             (IPR1bits.ADIP = 0);
-[e = . . _IPR1bits 0 6 -> -> 0 `i `uc ]
-"60
-[; ;MCAL_LAYER/ADC/hal_adc.c: 60:         }
-}
-[e :U 280 ]
-[e :U 279 ]
 "63
 [; ;MCAL_LAYER/ADC/hal_adc.c: 63:         _ADC_Interrupt_Handler = adc->ADC_Interrupt_Handler;
 [e = __ADC_Interrupt_Handler . *U _adc 0 ]
@@ -510,7 +497,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _ret -> -> 1 `i `uc ]
 "84
 [; ;MCAL_LAYER/ADC/hal_adc.c: 84:     if (((void*)0) == adc) {
-[e $ ! == -> -> -> 0 `i `*v `*CS274 _adc 282  ]
+[e $ ! == -> -> -> 0 `i `*v `*CS274 _adc 279  ]
 {
 "85
 [; ;MCAL_LAYER/ADC/hal_adc.c: 85:         ret = (Std_ReturnType)0X00;
@@ -518,8 +505,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "86
 [; ;MCAL_LAYER/ADC/hal_adc.c: 86:     } else {
 }
-[e $U 283  ]
-[e :U 282 ]
+[e $U 280  ]
+[e :U 279 ]
 {
 "88
 [; ;MCAL_LAYER/ADC/hal_adc.c: 88:         (ADCON0bits.ADON = 0);
@@ -530,14 +517,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "101
 [; ;MCAL_LAYER/ADC/hal_adc.c: 101:     }
 }
-[e :U 283 ]
+[e :U 280 ]
 "103
 [; ;MCAL_LAYER/ADC/hal_adc.c: 103:     return ret;
 [e ) _ret ]
-[e $UE 281  ]
+[e $UE 278  ]
 "104
 [; ;MCAL_LAYER/ADC/hal_adc.c: 104: }
-[e :UE 281 ]
+[e :UE 278 ]
 }
 "113
 [; ;MCAL_LAYER/ADC/hal_adc.c: 113: Std_ReturnType ADC_Select_Channel(const adc_config_t* adc, adc_channel_select_t channel) {
@@ -553,7 +540,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _ret -> -> 1 `i `uc ]
 "117
 [; ;MCAL_LAYER/ADC/hal_adc.c: 117:     if (((void*)0) == adc) {
-[e $ ! == -> -> -> 0 `i `*v `*CS274 _adc 285  ]
+[e $ ! == -> -> -> 0 `i `*v `*CS274 _adc 282  ]
 {
 "118
 [; ;MCAL_LAYER/ADC/hal_adc.c: 118:         ret = (Std_ReturnType)0X00;
@@ -561,8 +548,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "119
 [; ;MCAL_LAYER/ADC/hal_adc.c: 119:     } else {
 }
-[e $U 286  ]
-[e :U 285 ]
+[e $U 283  ]
+[e :U 282 ]
 {
 "121
 [; ;MCAL_LAYER/ADC/hal_adc.c: 121:         ADCON0bits.CHS = channel;
@@ -573,14 +560,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "123
 [; ;MCAL_LAYER/ADC/hal_adc.c: 123:     }
 }
-[e :U 286 ]
+[e :U 283 ]
 "125
 [; ;MCAL_LAYER/ADC/hal_adc.c: 125:     return ret;
 [e ) _ret ]
-[e $UE 284  ]
+[e $UE 281  ]
 "126
 [; ;MCAL_LAYER/ADC/hal_adc.c: 126: }
-[e :UE 284 ]
+[e :UE 281 ]
 }
 "134
 [; ;MCAL_LAYER/ADC/hal_adc.c: 134: Std_ReturnType ADC_Start_Conversion(const adc_config_t* adc) {
@@ -595,7 +582,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _ret -> -> 1 `i `uc ]
 "138
 [; ;MCAL_LAYER/ADC/hal_adc.c: 138:     if (((void*)0) == adc) {
-[e $ ! == -> -> -> 0 `i `*v `*CS274 _adc 288  ]
+[e $ ! == -> -> -> 0 `i `*v `*CS274 _adc 285  ]
 {
 "139
 [; ;MCAL_LAYER/ADC/hal_adc.c: 139:         ret = (Std_ReturnType)0X00;
@@ -603,8 +590,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "140
 [; ;MCAL_LAYER/ADC/hal_adc.c: 140:     } else {
 }
-[e $U 289  ]
-[e :U 288 ]
+[e $U 286  ]
+[e :U 285 ]
 {
 "142
 [; ;MCAL_LAYER/ADC/hal_adc.c: 142:         (ADCON0bits.GO_nDONE=1);
@@ -612,14 +599,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "143
 [; ;MCAL_LAYER/ADC/hal_adc.c: 143:     }
 }
-[e :U 289 ]
+[e :U 286 ]
 "145
 [; ;MCAL_LAYER/ADC/hal_adc.c: 145:     return ret;
 [e ) _ret ]
-[e $UE 287  ]
+[e $UE 284  ]
 "146
 [; ;MCAL_LAYER/ADC/hal_adc.c: 146: }
-[e :UE 287 ]
+[e :UE 284 ]
 }
 "155
 [; ;MCAL_LAYER/ADC/hal_adc.c: 155: Std_ReturnType ADC_Is_Conversion_Done(const adc_config_t* adc, uint8_t* conversion_status) {
@@ -635,7 +622,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _ret -> -> 1 `i `uc ]
 "159
 [; ;MCAL_LAYER/ADC/hal_adc.c: 159:     if (((void*)0) == adc || ((void*)0) == conversion_status) {
-[e $ ! || == -> -> -> 0 `i `*v `*CS274 _adc == -> -> -> 0 `i `*v `*uc _conversion_status 291  ]
+[e $ ! || == -> -> -> 0 `i `*v `*CS274 _adc == -> -> -> 0 `i `*v `*uc _conversion_status 288  ]
 {
 "160
 [; ;MCAL_LAYER/ADC/hal_adc.c: 160:         ret = (Std_ReturnType)0X00;
@@ -643,8 +630,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "161
 [; ;MCAL_LAYER/ADC/hal_adc.c: 161:     } else {
 }
-[e $U 292  ]
-[e :U 291 ]
+[e $U 289  ]
+[e :U 288 ]
 {
 "163
 [; ;MCAL_LAYER/ADC/hal_adc.c: 163:         *conversion_status = !(uint8) (ADCON0bits.GO_nDONE);
@@ -652,14 +639,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "164
 [; ;MCAL_LAYER/ADC/hal_adc.c: 164:     }
 }
-[e :U 292 ]
+[e :U 289 ]
 "166
 [; ;MCAL_LAYER/ADC/hal_adc.c: 166:     return ret;
 [e ) _ret ]
-[e $UE 290  ]
+[e $UE 287  ]
 "167
 [; ;MCAL_LAYER/ADC/hal_adc.c: 167: }
-[e :UE 290 ]
+[e :UE 287 ]
 }
 "176
 [; ;MCAL_LAYER/ADC/hal_adc.c: 176: Std_ReturnType ADC_Get_Conversion_Result(const adc_config_t* adc, uint16_t* result) {
@@ -675,7 +662,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _ret -> -> 1 `i `uc ]
 "180
 [; ;MCAL_LAYER/ADC/hal_adc.c: 180:     if (((void*)0) == adc || ((void*)0) == result) {
-[e $ ! || == -> -> -> 0 `i `*v `*CS274 _adc == -> -> -> 0 `i `*v `*us _result 294  ]
+[e $ ! || == -> -> -> 0 `i `*v `*CS274 _adc == -> -> -> 0 `i `*v `*us _result 291  ]
 {
 "181
 [; ;MCAL_LAYER/ADC/hal_adc.c: 181:         ret = (Std_ReturnType)0X00;
@@ -683,12 +670,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "182
 [; ;MCAL_LAYER/ADC/hal_adc.c: 182:     } else {
 }
-[e $U 295  ]
-[e :U 294 ]
+[e $U 292  ]
+[e :U 291 ]
 {
 "184
 [; ;MCAL_LAYER/ADC/hal_adc.c: 184:         if (0X01U == adc->result_format) {
-[e $ ! == -> 1 `ui -> . *U _adc 6 `ui 296  ]
+[e $ ! == -> 1 `ui -> . *U _adc 6 `ui 293  ]
 {
 "185
 [; ;MCAL_LAYER/ADC/hal_adc.c: 185:             *result = (uint16_t) ((ADRESH << 8) + ADRESL);
@@ -696,9 +683,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "186
 [; ;MCAL_LAYER/ADC/hal_adc.c: 186:         } else if (0X00 == adc->result_format) {
 }
-[e $U 297  ]
-[e :U 296 ]
-[e $ ! == -> 0 `i -> . *U _adc 6 `i 298  ]
+[e $U 294  ]
+[e :U 293 ]
+[e $ ! == -> 0 `i -> . *U _adc 6 `i 295  ]
 {
 "187
 [; ;MCAL_LAYER/ADC/hal_adc.c: 187:             *result = (uint16_t) (((ADRESH << 8) + ADRESL) >> 2);
@@ -706,8 +693,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "188
 [; ;MCAL_LAYER/ADC/hal_adc.c: 188:         } else {
 }
-[e $U 299  ]
-[e :U 298 ]
+[e $U 296  ]
+[e :U 295 ]
 {
 "189
 [; ;MCAL_LAYER/ADC/hal_adc.c: 189:             *result = (uint16_t) ((ADRESH << 8) + ADRESL);
@@ -715,19 +702,19 @@ Version 4.0 HI-TECH Software Intermediate Code
 "190
 [; ;MCAL_LAYER/ADC/hal_adc.c: 190:         }
 }
-[e :U 299 ]
-[e :U 297 ]
+[e :U 296 ]
+[e :U 294 ]
 "191
 [; ;MCAL_LAYER/ADC/hal_adc.c: 191:     }
 }
-[e :U 295 ]
+[e :U 292 ]
 "193
 [; ;MCAL_LAYER/ADC/hal_adc.c: 193:     return ret;
 [e ) _ret ]
-[e $UE 293  ]
+[e $UE 290  ]
 "194
 [; ;MCAL_LAYER/ADC/hal_adc.c: 194: }
-[e :UE 293 ]
+[e :UE 290 ]
 }
 "204
 [; ;MCAL_LAYER/ADC/hal_adc.c: 204: Std_ReturnType ADC_Get_Conversion_Blocking(const adc_config_t* adc, adc_channel_select_t channel, uint16_t* result) {
@@ -747,7 +734,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _conversion_status `uc ~T0 @X0 1 a ]
 "209
 [; ;MCAL_LAYER/ADC/hal_adc.c: 209:     if (((void*)0) == adc || ((void*)0) == result) {
-[e $ ! || == -> -> -> 0 `i `*v `*CS274 _adc == -> -> -> 0 `i `*v `*us _result 301  ]
+[e $ ! || == -> -> -> 0 `i `*v `*CS274 _adc == -> -> -> 0 `i `*v `*us _result 298  ]
 {
 "210
 [; ;MCAL_LAYER/ADC/hal_adc.c: 210:         ret = (Std_ReturnType)0X00;
@@ -755,8 +742,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "211
 [; ;MCAL_LAYER/ADC/hal_adc.c: 211:     } else {
 }
-[e $U 302  ]
-[e :U 301 ]
+[e $U 299  ]
+[e :U 298 ]
 {
 "213
 [; ;MCAL_LAYER/ADC/hal_adc.c: 213:         ret &= ADC_Select_Channel(adc, channel);
@@ -769,25 +756,25 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e =& _ret -> ( _ADC_Is_Conversion_Done (2 , _adc &U _conversion_status `uc ]
 "218
 [; ;MCAL_LAYER/ADC/hal_adc.c: 218:         while (ADCON0bits.GO_nDONE);
-[e $U 303  ]
-[e :U 304 ]
-[e :U 303 ]
-[e $ != -> . . _ADCON0bits 1 1 `i -> 0 `i 304  ]
-[e :U 305 ]
+[e $U 300  ]
+[e :U 301 ]
+[e :U 300 ]
+[e $ != -> . . _ADCON0bits 1 1 `i -> 0 `i 301  ]
+[e :U 302 ]
 "221
 [; ;MCAL_LAYER/ADC/hal_adc.c: 221:         ret &= ADC_Get_Conversion_Result(adc, result);
 [e =& _ret -> ( _ADC_Get_Conversion_Result (2 , _adc _result `uc ]
 "222
 [; ;MCAL_LAYER/ADC/hal_adc.c: 222:     }
 }
-[e :U 302 ]
+[e :U 299 ]
 "224
 [; ;MCAL_LAYER/ADC/hal_adc.c: 224:     return ret;
 [e ) _ret ]
-[e $UE 300  ]
+[e $UE 297  ]
 "225
 [; ;MCAL_LAYER/ADC/hal_adc.c: 225: }
-[e :UE 300 ]
+[e :UE 297 ]
 }
 "227
 [; ;MCAL_LAYER/ADC/hal_adc.c: 227: Std_ReturnType ADC_Get_Conversion_Interrupt(const adc_config_t*adc, adc_channel_select_t channel) {
@@ -806,7 +793,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _conversion_status `uc ~T0 @X0 1 a ]
 "233
 [; ;MCAL_LAYER/ADC/hal_adc.c: 233:     if (((void*)0) == adc) {
-[e $ ! == -> -> -> 0 `i `*v `*CS274 _adc 307  ]
+[e $ ! == -> -> -> 0 `i `*v `*CS274 _adc 304  ]
 {
 "234
 [; ;MCAL_LAYER/ADC/hal_adc.c: 234:         ret = (Std_ReturnType)0X00;
@@ -814,8 +801,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "235
 [; ;MCAL_LAYER/ADC/hal_adc.c: 235:     } else {
 }
-[e $U 308  ]
-[e :U 307 ]
+[e $U 305  ]
+[e :U 304 ]
 {
 "237
 [; ;MCAL_LAYER/ADC/hal_adc.c: 237:         ret &= ADC_Select_Channel(adc, channel);
@@ -826,14 +813,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "240
 [; ;MCAL_LAYER/ADC/hal_adc.c: 240:     }
 }
-[e :U 308 ]
+[e :U 305 ]
 "242
 [; ;MCAL_LAYER/ADC/hal_adc.c: 242:     return ret;
 [e ) _ret ]
-[e $UE 306  ]
+[e $UE 303  ]
 "245
 [; ;MCAL_LAYER/ADC/hal_adc.c: 245: }
-[e :UE 306 ]
+[e :UE 303 ]
 }
 [v F3582 `(v ~T0 @X0 1 tf1`E3466 ]
 "253
@@ -845,125 +832,125 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "254
 [; ;MCAL_LAYER/ADC/hal_adc.c: 254:     switch (channel) {
-[e $U 311  ]
+[e $U 308  ]
 {
 "255
 [; ;MCAL_LAYER/ADC/hal_adc.c: 255:         case ADC_CHANNEL_AN0: (TRISA |= ((uint8)1 << 0x0));
-[e :U 312 ]
+[e :U 309 ]
 [e =| _TRISA -> << -> -> -> 1 `i `uc `i -> 0 `i `Vuc ]
 "256
 [; ;MCAL_LAYER/ADC/hal_adc.c: 256:             break;
-[e $U 310  ]
+[e $U 307  ]
 "257
 [; ;MCAL_LAYER/ADC/hal_adc.c: 257:         case ADC_CHANNEL_AN1: (TRISA |= ((uint8)1 << 0x1));
-[e :U 313 ]
+[e :U 310 ]
 [e =| _TRISA -> << -> -> -> 1 `i `uc `i -> 1 `i `Vuc ]
 "258
 [; ;MCAL_LAYER/ADC/hal_adc.c: 258:             break;
-[e $U 310  ]
+[e $U 307  ]
 "259
 [; ;MCAL_LAYER/ADC/hal_adc.c: 259:         case ADC_CHANNEL_AN2: (TRISA |= ((uint8)1 << 0x2));
-[e :U 314 ]
+[e :U 311 ]
 [e =| _TRISA -> << -> -> -> 1 `i `uc `i -> 2 `i `Vuc ]
 "260
 [; ;MCAL_LAYER/ADC/hal_adc.c: 260:             break;
-[e $U 310  ]
+[e $U 307  ]
 "261
 [; ;MCAL_LAYER/ADC/hal_adc.c: 261:         case ADC_CHANNEL_AN3: (TRISA |= ((uint8)1 << 0x3));
-[e :U 315 ]
+[e :U 312 ]
 [e =| _TRISA -> << -> -> -> 1 `i `uc `i -> 3 `i `Vuc ]
 "262
 [; ;MCAL_LAYER/ADC/hal_adc.c: 262:             break;
-[e $U 310  ]
+[e $U 307  ]
 "263
 [; ;MCAL_LAYER/ADC/hal_adc.c: 263:         case ADC_CHANNEL_AN4: (TRISA |= ((uint8)1 << 0x5));
-[e :U 316 ]
+[e :U 313 ]
 [e =| _TRISA -> << -> -> -> 1 `i `uc `i -> 5 `i `Vuc ]
 "264
 [; ;MCAL_LAYER/ADC/hal_adc.c: 264:             break;
-[e $U 310  ]
+[e $U 307  ]
 "265
 [; ;MCAL_LAYER/ADC/hal_adc.c: 265:         case ADC_CHANNEL_AN5: (TRISE |= ((uint8)1 << 0x0));
-[e :U 317 ]
+[e :U 314 ]
 [e =| _TRISE -> << -> -> -> 1 `i `uc `i -> 0 `i `Vuc ]
 "266
 [; ;MCAL_LAYER/ADC/hal_adc.c: 266:             break;
-[e $U 310  ]
+[e $U 307  ]
 "267
 [; ;MCAL_LAYER/ADC/hal_adc.c: 267:         case ADC_CHANNEL_AN6: (TRISE |= ((uint8)1 << 0x1));
-[e :U 318 ]
+[e :U 315 ]
 [e =| _TRISE -> << -> -> -> 1 `i `uc `i -> 1 `i `Vuc ]
 "268
 [; ;MCAL_LAYER/ADC/hal_adc.c: 268:             break;
-[e $U 310  ]
+[e $U 307  ]
 "269
 [; ;MCAL_LAYER/ADC/hal_adc.c: 269:         case ADC_CHANNEL_AN7: (TRISE |= ((uint8)1 << 0x2));
-[e :U 319 ]
+[e :U 316 ]
 [e =| _TRISE -> << -> -> -> 1 `i `uc `i -> 2 `i `Vuc ]
 "270
 [; ;MCAL_LAYER/ADC/hal_adc.c: 270:             break;
-[e $U 310  ]
+[e $U 307  ]
 "271
 [; ;MCAL_LAYER/ADC/hal_adc.c: 271:         case ADC_CHANNEL_AN8: (TRISB |= ((uint8)1 << 0x2));
-[e :U 320 ]
+[e :U 317 ]
 [e =| _TRISB -> << -> -> -> 1 `i `uc `i -> 2 `i `Vuc ]
 "272
 [; ;MCAL_LAYER/ADC/hal_adc.c: 272:             break;
-[e $U 310  ]
+[e $U 307  ]
 "273
 [; ;MCAL_LAYER/ADC/hal_adc.c: 273:         case ADC_CHANNEL_AN9: (TRISB |= ((uint8)1 << 0x3));
-[e :U 321 ]
+[e :U 318 ]
 [e =| _TRISB -> << -> -> -> 1 `i `uc `i -> 3 `i `Vuc ]
 "274
 [; ;MCAL_LAYER/ADC/hal_adc.c: 274:             break;
-[e $U 310  ]
+[e $U 307  ]
 "275
 [; ;MCAL_LAYER/ADC/hal_adc.c: 275:         case ADC_CHANNEL_AN10: (TRISB |= ((uint8)1 << 0x1));
-[e :U 322 ]
+[e :U 319 ]
 [e =| _TRISB -> << -> -> -> 1 `i `uc `i -> 1 `i `Vuc ]
 "276
 [; ;MCAL_LAYER/ADC/hal_adc.c: 276:             break;
-[e $U 310  ]
+[e $U 307  ]
 "277
 [; ;MCAL_LAYER/ADC/hal_adc.c: 277:         case ADC_CHANNEL_AN11: (TRISB |= ((uint8)1 << 0x4));
-[e :U 323 ]
+[e :U 320 ]
 [e =| _TRISB -> << -> -> -> 1 `i `uc `i -> 4 `i `Vuc ]
 "278
 [; ;MCAL_LAYER/ADC/hal_adc.c: 278:             break;
-[e $U 310  ]
+[e $U 307  ]
 "279
 [; ;MCAL_LAYER/ADC/hal_adc.c: 279:         case ADC_CHANNEL_AN12: (TRISB |= ((uint8)1 << 0x0));
-[e :U 324 ]
+[e :U 321 ]
 [e =| _TRISB -> << -> -> -> 1 `i `uc `i -> 0 `i `Vuc ]
 "280
 [; ;MCAL_LAYER/ADC/hal_adc.c: 280:             break;
-[e $U 310  ]
+[e $U 307  ]
 "281
 [; ;MCAL_LAYER/ADC/hal_adc.c: 281:         default: ;
-[e :U 325 ]
+[e :U 322 ]
 "282
 [; ;MCAL_LAYER/ADC/hal_adc.c: 282:     }
 }
-[e $U 310  ]
-[e :U 311 ]
-[e [\ -> _channel `ui , $ -> . `E3466 0 `ui 312
- , $ -> . `E3466 1 `ui 313
- , $ -> . `E3466 2 `ui 314
- , $ -> . `E3466 3 `ui 315
- , $ -> . `E3466 4 `ui 316
- , $ -> . `E3466 5 `ui 317
- , $ -> . `E3466 6 `ui 318
- , $ -> . `E3466 7 `ui 319
- , $ -> . `E3466 8 `ui 320
- , $ -> . `E3466 9 `ui 321
- , $ -> . `E3466 10 `ui 322
- , $ -> . `E3466 11 `ui 323
- , $ -> . `E3466 12 `ui 324
- 325 ]
-[e :U 310 ]
+[e $U 307  ]
+[e :U 308 ]
+[e [\ -> _channel `ui , $ -> . `E3466 0 `ui 309
+ , $ -> . `E3466 1 `ui 310
+ , $ -> . `E3466 2 `ui 311
+ , $ -> . `E3466 3 `ui 312
+ , $ -> . `E3466 4 `ui 313
+ , $ -> . `E3466 5 `ui 314
+ , $ -> . `E3466 6 `ui 315
+ , $ -> . `E3466 7 `ui 316
+ , $ -> . `E3466 8 `ui 317
+ , $ -> . `E3466 9 `ui 318
+ , $ -> . `E3466 10 `ui 319
+ , $ -> . `E3466 11 `ui 320
+ , $ -> . `E3466 12 `ui 321
+ 322 ]
+[e :U 307 ]
 "283
 [; ;MCAL_LAYER/ADC/hal_adc.c: 283: }
-[e :UE 309 ]
+[e :UE 306 ]
 }
 [v F3585 `(v ~T0 @X0 1 tf1`*CS274 ]
 "291
@@ -975,7 +962,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "292
 [; ;MCAL_LAYER/ADC/hal_adc.c: 292:     if (adc->result_format) {
-[e $ ! != -> . *U _adc 6 `i -> 0 `i 327  ]
+[e $ ! != -> . *U _adc 6 `i -> 0 `i 324  ]
 {
 "293
 [; ;MCAL_LAYER/ADC/hal_adc.c: 293:         (ADCON2bits.ADFM=1);
@@ -983,8 +970,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "294
 [; ;MCAL_LAYER/ADC/hal_adc.c: 294:     } else {
 }
-[e $U 328  ]
-[e :U 327 ]
+[e $U 325  ]
+[e :U 324 ]
 {
 "295
 [; ;MCAL_LAYER/ADC/hal_adc.c: 295:         (ADCON2bits.ADFM=0);
@@ -992,10 +979,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "296
 [; ;MCAL_LAYER/ADC/hal_adc.c: 296:     }
 }
-[e :U 328 ]
+[e :U 325 ]
 "297
 [; ;MCAL_LAYER/ADC/hal_adc.c: 297: }
-[e :UE 326 ]
+[e :UE 323 ]
 }
 [v F3588 `(v ~T0 @X0 1 tf1`*CS274 ]
 "305
@@ -1007,53 +994,53 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "306
 [; ;MCAL_LAYER/ADC/hal_adc.c: 306:     if (0X01U == adc->voltage_ref) {
-[e $ ! == -> 1 `ui -> . *U _adc 5 `ui 330  ]
+[e $ ! == -> 1 `ui -> . *U _adc 5 `ui 327  ]
 {
 "307
 [; ;MCAL_LAYER/ADC/hal_adc.c: 307:         do{ADCON1bits.VCFG1 = 1; ADCON1bits.VCFG0 = 1; } while(0);
-[e :U 333 ]
+[e :U 330 ]
 {
 [e = . . _ADCON1bits 1 5 -> -> 1 `i `uc ]
 [e = . . _ADCON1bits 1 4 -> -> 1 `i `uc ]
 }
-[e :U 332 ]
+[e :U 329 ]
 "308
 [; ;MCAL_LAYER/ADC/hal_adc.c: 308:     } else if (0X00 == adc->voltage_ref) {
 }
-[e $U 334  ]
-[e :U 330 ]
-[e $ ! == -> 0 `i -> . *U _adc 5 `i 335  ]
+[e $U 331  ]
+[e :U 327 ]
+[e $ ! == -> 0 `i -> . *U _adc 5 `i 332  ]
 {
 "309
 [; ;MCAL_LAYER/ADC/hal_adc.c: 309:         do{ADCON1bits.VCFG1 = 0; ADCON1bits.VCFG0 = 0; } while(0);
-[e :U 338 ]
+[e :U 335 ]
 {
 [e = . . _ADCON1bits 1 5 -> -> 0 `i `uc ]
 [e = . . _ADCON1bits 1 4 -> -> 0 `i `uc ]
 }
-[e :U 337 ]
+[e :U 334 ]
 "310
 [; ;MCAL_LAYER/ADC/hal_adc.c: 310:     } else {
 }
-[e $U 339  ]
-[e :U 335 ]
+[e $U 336  ]
+[e :U 332 ]
 {
 "311
 [; ;MCAL_LAYER/ADC/hal_adc.c: 311:         do{ADCON1bits.VCFG1 = 0; ADCON1bits.VCFG0 = 0; } while(0);
-[e :U 342 ]
+[e :U 339 ]
 {
 [e = . . _ADCON1bits 1 5 -> -> 0 `i `uc ]
 [e = . . _ADCON1bits 1 4 -> -> 0 `i `uc ]
 }
-[e :U 341 ]
+[e :U 338 ]
 "312
 [; ;MCAL_LAYER/ADC/hal_adc.c: 312:     }
 }
-[e :U 339 ]
-[e :U 334 ]
+[e :U 336 ]
+[e :U 331 ]
 "313
 [; ;MCAL_LAYER/ADC/hal_adc.c: 313: }
-[e :UE 329 ]
+[e :UE 326 ]
 }
 "315
 [; ;MCAL_LAYER/ADC/hal_adc.c: 315: void ADC_ISR(void) {
@@ -1066,7 +1053,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
 "317
 [; ;MCAL_LAYER/ADC/hal_adc.c: 317:     if (_ADC_Interrupt_Handler) {
-[e $ ! != __ADC_Interrupt_Handler -> -> 0 `i `*F3591 344  ]
+[e $ ! != __ADC_Interrupt_Handler -> -> 0 `i `*F3591 341  ]
 {
 "318
 [; ;MCAL_LAYER/ADC/hal_adc.c: 318:         _ADC_Interrupt_Handler();
@@ -1074,8 +1061,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "319
 [; ;MCAL_LAYER/ADC/hal_adc.c: 319:     }
 }
-[e :U 344 ]
+[e :U 341 ]
 "320
 [; ;MCAL_LAYER/ADC/hal_adc.c: 320: }
-[e :UE 343 ]
+[e :UE 340 ]
 }

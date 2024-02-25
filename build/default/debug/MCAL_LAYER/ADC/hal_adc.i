@@ -5280,18 +5280,11 @@ Std_ReturnType ADC_Init(const adc_config_t* adc) {
 
         (PIE1bits.ADIE = 1);
 
-
-
+        (INTCONbits.GIEH = 1);
+        (INTCONbits.PEIE = 1);
 
         (PIR1bits.ADIF = 0);
-
-        if (INTERRUPT_HIGH_PRIORITY == adc->priority) {
-            (IPR1bits.ADIP = 1);
-        } else if (INTERRUPT_LOW_PRIORITY == adc->priority) {
-            (IPR1bits.ADIP = 0);
-        }
-
-
+# 63 "MCAL_LAYER/ADC/hal_adc.c"
         _ADC_Interrupt_Handler = adc->ADC_Interrupt_Handler;
 
 

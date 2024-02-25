@@ -5181,13 +5181,10 @@ void RB5_ISR(uint8 source);
 void RB6_ISR(uint8 source);
 void RB7_ISR(uint8 source);
 void ADC_ISR(void);
+void TIMER0_ISR(void);
 # 9 "MCAL_LAYER/Interrupt/mcal_interrupt_manager.c" 2
 static volatile uint8 RB4_f = 1, RB5_f = 1, RB6_f = 1, RB7_f = 1;
-
-
-
-
-
+# 29 "MCAL_LAYER/Interrupt/mcal_interrupt_manager.c"
 void __attribute__((picinterrupt(("")))) Interrupt_Manager_High(void) {
 
     if ((INTCONbits.INT0IE == 1) && (INTCONbits.INT0IF == 1)) {
@@ -5197,13 +5194,56 @@ void __attribute__((picinterrupt(("")))) Interrupt_Manager_High(void) {
     if ((INTCON3bits.INT1IE == 1) && (INTCON3bits.INT1IF == 1)) {
         INT1_ISR();
     }
-}
-
-
-
-void __attribute__((picinterrupt(("low_priority")))) Interrupt_Manager_Low(void) {
 
     if ((INTCON3bits.INT2IE == 1) && (INTCON3bits.INT2IF == 1)) {
         INT2_ISR();
+    }
+    if (1 == PIE1bits.ADIE && 1 == PIR1bits.ADIF) {
+        ADC_ISR();
+    }
+    if (1 == INTCONbits.TMR0IE && 1 == INTCONbits.TMR0IF) {
+        TIMER0_ISR();
+    }
+
+
+    if ((INTCONbits.RBIE == 1) && (INTCONbits.RBIF == 1)) {
+
+
+
+        if ((PORTBbits.RB4 == GPIO_HIGH) && RB4_f == 1) {
+            RB4_f = 0;
+            RB4_ISR(0);
+        }
+        if ((PORTBbits.RB4 == GPIO_LOW) && RB4_f == 0) {
+            RB4_f = 1;
+            RB4_ISR(1);
+        }
+
+        if ((PORTBbits.RB5 == GPIO_HIGH) && RB5_f == 1) {
+            RB5_f = 0;
+            RB5_ISR(0);
+        }
+        if ((PORTBbits.RB5 == GPIO_LOW) && RB5_f == 0) {
+            RB5_f = 1;
+            RB5_ISR(1);
+        }
+
+        if ((PORTBbits.RB6 == GPIO_HIGH) && RB6_f == 1) {
+            RB6_f = 0;
+            RB6_ISR(0);
+        }
+        if ((PORTBbits.RB6 == GPIO_LOW) && RB6_f == 0) {
+            RB6_f = 1;
+            RB6_ISR(1);
+        }
+
+        if ((PORTBbits.RB7 == GPIO_HIGH) && RB7_f == 1) {
+            RB7_f = 0;
+            RB7_ISR(0);
+        }
+        if ((PORTBbits.RB7 == GPIO_LOW) && RB7_f == 0) {
+            RB7_f = 1;
+            RB7_ISR(1);
+        }
     }
 }

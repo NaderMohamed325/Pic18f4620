@@ -23,7 +23,7 @@
 
 // Configuration macros for Timer0 mode (Timer/Counter), and register size (8-bit/16-bit)
 #define TIMER0_TIMER_MODE              1    
-#define TIMER0_COUNTER_MODE            1    
+#define TIMER0_COUNTER_MODE            0    
 #define TIMER0_8BIT_REGISTER_MODE      1
 #define TIMER0_16BIT_REGISTER_MODE     0
 
@@ -39,7 +39,7 @@
 
 // Macros to select Timer0 mode (Timer/Counter)
 #define TIMER0_TIMER_MODE_ENABLE()       (T0CONbits.T0CS=0)
-#define TIMER0_COUNTER_MODE_ENABLE()     (T0CONbits.T0CS=0)
+#define TIMER0_COUNTER_MODE_ENABLE()     (T0CONbits.T0CS=1)
 
 // Macros to select Timer0 register size (8-bit/16-bit)
 #define TIMER0_8BIT_REGISTER_MODE_ENABLE()  (T0CONbits.T08BIT=1)

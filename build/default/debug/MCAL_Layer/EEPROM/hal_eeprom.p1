@@ -343,6 +343,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "42
 [; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 42:     EECON1bits.WREN = 1;
 [e = . . _EECON1bits 0 2 -> -> 1 `i `uc ]
+"46
+[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 46:     (INTCONbits.GIEH = 0);
+[e = . . _INTCONbits 2 2 -> -> 0 `i `uc ]
 "51
 [; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 51:     EECON2 = 0X55;
 [e = _EECON2 -> -> 85 `i `uc ]
@@ -362,6 +365,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "59
 [; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 59:     EECON1bits.WR = 0;
 [e = . . _EECON1bits 0 1 -> -> 0 `i `uc ]
+"63
+[; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 63:     (INTCONbits.GIEH = 1);
+[e = . . _INTCONbits 2 2 -> -> 1 `i `uc ]
 "66
 [; ;MCAL_LAYER/EEPROM/hal_eeprom.c: 66:     return ret;
 [e ) _ret ]

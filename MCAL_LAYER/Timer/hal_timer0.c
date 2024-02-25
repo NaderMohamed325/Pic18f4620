@@ -9,11 +9,14 @@ static void (*Timer0_Interrupt_Handler)(void) = NULL;
 static inline void Timer0_Prescaler_Config(timer0_t const *timer);
 static inline void Timer0_Mode_Config(timer0_t const *timer);
 static inline void Timer0_Reg_Size_Config(timer0_t const *timer);
+static uint16 pre_work_out = 0;
 
-
-
-// Function to initialize Timer0
-
+/**
+ * @brief   Initialize Timer0 module.
+ * @details This function initializes the Timer0 module based on the provided configuration.
+ * @param   timer: Pointer to the Timer0 configuration structure.
+ * @return  Returns E_OK if initialization is successful, otherwise returns E_NOT_OK.
+ */
 Std_ReturnType Timer0_Init(timer0_t const *timer) {
     Std_ReturnType ret = E_OK;
 
@@ -28,15 +31,18 @@ Std_ReturnType Timer0_Init(timer0_t const *timer) {
         Timer0_Prescaler_Config(timer);
         Timer0_Mode_Config(timer);
         Timer0_Reg_Size_Config(timer);
+        TMR0H = (timer->timer0_preload_value) >> 8;
+        TMR0L = (uint8) (timer->timer0_preload_value);
+        pre_work_out = timer->timer0_preload_value;
+
+        // Enable Timer0 interrupt and configure interrupt settings
 #if TIMER0_INTERRUPT_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
-        // Enable Timer0 interrupt and global interrupts
         TIMER0_InterruptEnable();
-        // Clear Timer0 interrupt flag and set the interrupt handler
         TIMER0_InterruptFlagClear();
         Timer0_Interrupt_Handler = timer->Timer0_Interrupt_Handler;
 
-
 #if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
+        // Configure interrupt priority levels
         if (INTERRUPT_HIGH_PRIORITY == timer->priority) {
             TIMER0_HighPrioritySet();
             INTERRUPT_Global_Interrupt_High_Enable();
@@ -57,8 +63,12 @@ Std_ReturnType Timer0_Init(timer0_t const *timer) {
     return ret;
 }
 
-// Function to deinitialize Timer0
-
+/**
+ * @brief   Deinitialize Timer0 module.
+ * @details This function deinitializes the Timer0 module based on the provided configuration.
+ * @param   timer: Pointer to the Timer0 configuration structure.
+ * @return  Returns E_OK if deinitialization is successful, otherwise returns E_NOT_OK.
+ */
 Std_ReturnType Timer0_DeInit(timer0_t const *timer) {
     Std_ReturnType ret = E_OK;
 
@@ -66,16 +76,22 @@ Std_ReturnType Timer0_DeInit(timer0_t const *timer) {
     if (NULL == timer) {
         ret = E_NOT_OK;
     } else {
-#if TIMER0_INTERRUPT_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
-        // Additional deinitialization steps for Timer0 interrupts, if needed
+        TIMER0_MODULE_OFF();
+#if TIMER0_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
+        TIMER0_InterruptDisable();
 #endif
     }
 
     return ret;
 }
 
-// Function to write a value to Timer0
-
+/**
+ * @brief   Write a value to Timer0.
+ * @details This function writes a 16-bit value to Timer0 registers.
+ * @param   timer: Pointer to the Timer0 configuration structure.
+ * @param   value: The value to be written to Timer0.
+ * @return  Returns E_OK if writing is successful, otherwise returns E_NOT_OK.
+ */
 Std_ReturnType Timer0_Write_Value(timer0_t const *timer, uint16 value) {
     Std_ReturnType ret = E_OK;
 
@@ -83,33 +99,45 @@ Std_ReturnType Timer0_Write_Value(timer0_t const *timer, uint16 value) {
     if (NULL == timer) {
         ret = E_NOT_OK;
     } else {
-        // Additional steps for writing a value to Timer0, if needed
+        // Write the value to Timer0 registers
+        TMR0H = (value) >> 8;
+        TMR0L = (uint8) (value);
     }
 
     return ret;
 }
 
-// Function to read the value from Timer0
-
+/**
+ * @brief   Read the value from Timer0.
+ * @details This function reads a 16-bit value from Timer0 registers.
+ * @param   timer: Pointer to the Timer0 configuration structure.
+ * @param   value: Pointer to store the read value.
+ * @return  Returns E_OK if reading is successful, otherwise returns E_NOT_OK.
+ */
 Std_ReturnType Timer0_Read_Value(timer0_t const *timer, uint16 *value) {
-    Std_ReturnType ret = E_OK;
-
-    // Check if the input pointers are NULL
-    if (NULL == timer || NULL == value) {
+     Std_ReturnType ret = E_NOT_OK;
+    uint8 l_tmr0l = 0, l_tmr0h = 0;
+    if(NULL == timer){
         ret = E_NOT_OK;
-    } else {
-        // Additional steps for reading the value from Timer0, if needed
     }
-
+    else{
+        l_tmr0l = TMR0L;
+        l_tmr0h = TMR0H;
+        *value = (uint16)((l_tmr0h << 8) + l_tmr0l);
+        ret = E_OK;
+    }
     return ret;
 }
 
-// Timer0 Interrupt Service Routine (ISR)
-
+/**
+ * @brief   Timer0 Interrupt Service Routine (ISR).
+ * @details This ISR is called when Timer0 interrupt occurs.
+ */
 void TIMER0_ISR(void) {
     // Clear Timer0 interrupt flag
     TIMER0_InterruptFlagClear();
-
+    TMR0H = (pre_work_out) >> 8;
+    TMR0L = (uint8) (pre_work_out);
     // Check if there is a valid interrupt handler and call it
     if (Timer0_Interrupt_Handler) {
         Timer0_Interrupt_Handler();
@@ -130,6 +158,8 @@ static inline void Timer0_Prescaler_Config(timer0_t const *timer) {
     }
 }
 
+// Inline function to configure Timer0 mode
+
 static inline void Timer0_Mode_Config(timer0_t const *timer) {
 
     if (TIMER0_COUNTER_MODE == timer->timer0_mode) {
@@ -143,6 +173,8 @@ static inline void Timer0_Mode_Config(timer0_t const *timer) {
         TIMER0_TIMER_MODE_ENABLE();
     }
 }
+
+// Inline function to configure Timer0 register size
 
 static inline void Timer0_Reg_Size_Config(timer0_t const *timer) {
     if (TIMER0_8BIT_REGISTER_MODE == timer->timer0_register_size) {

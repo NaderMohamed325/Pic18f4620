@@ -5213,6 +5213,9 @@ static void (*Timer0_Interrupt_Handler)(void) = ((void*)0);
 static __attribute__((inline)) void Timer0_Prescaler_Config(timer0_t const *timer);
 static __attribute__((inline)) void Timer0_Mode_Config(timer0_t const *timer);
 static __attribute__((inline)) void Timer0_Reg_Size_Config(timer0_t const *timer);
+static uint16 pre_work_out = 0;
+
+
 
 
 
@@ -5232,25 +5235,18 @@ Std_ReturnType Timer0_Init(timer0_t const *timer) {
         Timer0_Prescaler_Config(timer);
         Timer0_Mode_Config(timer);
         Timer0_Reg_Size_Config(timer);
+        TMR0H = (timer->timer0_preload_value) >> 8;
+        TMR0L = (uint8) (timer->timer0_preload_value);
+        pre_work_out = timer->timer0_preload_value;
+
 
 
         (INTCONbits.TMR0IE = 1);
-
         (INTCONbits.TMR0IF = 0);
         Timer0_Interrupt_Handler = timer->Timer0_Interrupt_Handler;
-
-
-
-        if (INTERRUPT_HIGH_PRIORITY == timer->priority) {
-            (INTCON2bits.TMR0IP = 1);
-            (INTCONbits.GIEH = 1);
-        } else if (INTERRUPT_LOW_PRIORITY == timer->priority) {
-            (INTCON2bits.TMR0IP = 0);
-            (INTCONbits.GIEL = 1);
-        }
-
-
-
+# 54 "MCAL_LAYER/Timer/hal_timer0.c"
+        (INTCONbits.GIEH = 1);
+        (INTCONbits.PEIE = 1);
 
 
 
@@ -5263,6 +5259,10 @@ Std_ReturnType Timer0_Init(timer0_t const *timer) {
 
 
 
+
+
+
+
 Std_ReturnType Timer0_DeInit(timer0_t const *timer) {
     Std_ReturnType ret = (Std_ReturnType)0X01;
 
@@ -5270,16 +5270,15 @@ Std_ReturnType Timer0_DeInit(timer0_t const *timer) {
     if (((void*)0) == timer) {
         ret = (Std_ReturnType)0X00;
     } else {
+        (T0CONbits.TMR0ON=0);
 
-
+        (INTCONbits.TMR0IE = 0);
 
     }
 
     return ret;
 }
-
-
-
+# 95 "MCAL_LAYER/Timer/hal_timer0.c"
 Std_ReturnType Timer0_Write_Value(timer0_t const *timer, uint16 value) {
     Std_ReturnType ret = (Std_ReturnType)0X01;
 
@@ -5288,32 +5287,37 @@ Std_ReturnType Timer0_Write_Value(timer0_t const *timer, uint16 value) {
         ret = (Std_ReturnType)0X00;
     } else {
 
+        TMR0H = (value) >> 8;
+        TMR0L = (uint8) (value);
     }
 
     return ret;
 }
-
-
-
+# 117 "MCAL_LAYER/Timer/hal_timer0.c"
 Std_ReturnType Timer0_Read_Value(timer0_t const *timer, uint16 *value) {
-    Std_ReturnType ret = (Std_ReturnType)0X01;
-
-
-    if (((void*)0) == timer || ((void*)0) == value) {
+     Std_ReturnType ret = (Std_ReturnType)0X00;
+    uint8 l_tmr0l = 0, l_tmr0h = 0;
+    if(((void*)0) == timer){
         ret = (Std_ReturnType)0X00;
-    } else {
-
     }
-
+    else{
+        l_tmr0l = TMR0L;
+        l_tmr0h = TMR0H;
+        *value = (uint16)((l_tmr0h << 8) + l_tmr0l);
+        ret = (Std_ReturnType)0X01;
+    }
     return ret;
 }
+
+
 
 
 
 void TIMER0_ISR(void) {
 
     (INTCONbits.TMR0IF = 0);
-
+    TMR0H = (pre_work_out) >> 8;
+    TMR0L = (uint8) (pre_work_out);
 
     if (Timer0_Interrupt_Handler) {
         Timer0_Interrupt_Handler();
@@ -5334,10 +5338,12 @@ static __attribute__((inline)) void Timer0_Prescaler_Config(timer0_t const *time
     }
 }
 
+
+
 static __attribute__((inline)) void Timer0_Mode_Config(timer0_t const *timer) {
 
-    if (1 == timer->timer0_mode) {
-        (T0CONbits.T0CS=0);
+    if (0 == timer->timer0_mode) {
+        (T0CONbits.T0CS=1);
         if (timer->timer0_counter_edge == 1) {
             (T0CONbits.T0SE=0);
         } else if (timer->timer0_counter_edge == 0) {
@@ -5347,6 +5353,8 @@ static __attribute__((inline)) void Timer0_Mode_Config(timer0_t const *timer) {
         (T0CONbits.T0CS=0);
     }
 }
+
+
 
 static __attribute__((inline)) void Timer0_Reg_Size_Config(timer0_t const *timer) {
     if (1 == timer->timer0_register_size) {
