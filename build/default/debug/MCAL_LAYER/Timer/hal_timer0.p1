@@ -1,11 +1,12 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[p mainexit ]
-"7 app.c
-[; ;app.c: 7: void Application_initialize(void);
-[v _Application_initialize `(v ~T0 @X0 0 ef ]
-"19 ./ECU_LAYER/ecu_layer_init.h
-[; ;./ECU_LAYER/ecu_layer_init.h: 19: void ecu_layer_initialize(void);
-[v _ecu_layer_initialize `(v ~T0 @X0 0 ef ]
+"3 MCAL_LAYER/Timer/hal_timer0.c
+[; ;MCAL_LAYER/Timer/hal_timer0.c: 3: Std_ReturnType Timer0_Init(timer0_t const *timer) {
+[c E3534 0 1 2 3 4 5 6 7 .. ]
+[n E3534 . TIMER0_PRESCALER_DIV_BY_2 TIMER0_PRESCALER_DIV_BY_4 TIMER0_PRESCALER_DIV_BY_8 TIMER0_PRESCALER_DIV_BY_16 TIMER0_PRESCALER_DIV_BY_32 TIMER0_PRESCALER_DIV_BY_64 TIMER0_PRESCALER_DIV_BY_128 TIMER0_PRESCALER_DIV_BY_256  ]
+"67 MCAL_LAYER/Timer/hal_timer0.h
+[; ;MCAL_LAYER/Timer/hal_timer0.h: 67: typedef struct {
+[s S275 `E3534 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S275 . prescaler_value prescaler_enable timer0_counter_edge timer0_mode timer0_register_size ]
 "54 D:/IDE MCU/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\../proc/pic18f4620.h
 [; <" PORTA equ 0F80h ;# ">
 "191
@@ -280,50 +281,49 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; <" TOSH equ 0FFEh ;# ">
 "6715
 [; <" TOSU equ 0FFFh ;# ">
-"4 app.c
-[; ;app.c: 4: Std_ReturnType ret = (Std_ReturnType)0X01;
-[v _ret `uc ~T0 @X0 1 e ]
-[i _ret
--> -> 1 `i `uc
-]
-[v $root$_main `(v ~T0 @X0 0 e ]
+"3 MCAL_LAYER/Timer/hal_timer0.c
+[; ;MCAL_LAYER/Timer/hal_timer0.c: 3: Std_ReturnType Timer0_Init(timer0_t const *timer) {
+[v _Timer0_Init `(uc ~T0 @X0 1 ef1`*CS275 ]
+{
+[e :U _Timer0_Init ]
+[v _timer `*CS275 ~T0 @X0 1 r1 ]
+[f ]
+"7
+[; ;MCAL_LAYER/Timer/hal_timer0.c: 7: }
+[e :UE 276 ]
+}
 "9
-[; ;app.c: 9: int main(void) {
-[v _main `(i ~T0 @X0 1 ef ]
+[; ;MCAL_LAYER/Timer/hal_timer0.c: 9: Std_ReturnType Timer0_DeInit(timer0_t const *timer) {
+[v _Timer0_DeInit `(uc ~T0 @X0 1 ef1`*CS275 ]
 {
-[e :U _main ]
+[e :U _Timer0_DeInit ]
+[v _timer `*CS275 ~T0 @X0 1 r1 ]
 [f ]
-"11
-[; ;app.c: 11:     Application_initialize();
-[e ( _Application_initialize ..  ]
 "13
-[; ;app.c: 13:     while (1) {
-[e :U 287 ]
-{
+[; ;MCAL_LAYER/Timer/hal_timer0.c: 13: }
+[e :UE 277 ]
+}
 "15
-[; ;app.c: 15:     }
-}
-[e :U 286 ]
-[e $U 287  ]
-[e :U 288 ]
-"17
-[; ;app.c: 17:     return 0;
-[e ) -> 0 `i ]
-[e $UE 285  ]
-"18
-[; ;app.c: 18: }
-[e :UE 285 ]
-}
-"20
-[; ;app.c: 20: void Application_initialize(void) {
-[v _Application_initialize `(v ~T0 @X0 1 ef ]
+[; ;MCAL_LAYER/Timer/hal_timer0.c: 15: Std_ReturnType Timer0_Write_Value(timer0_t const *timer, uint16 value) {
+[v _Timer0_Write_Value `(uc ~T0 @X0 1 ef2`*CS275`us ]
 {
-[e :U _Application_initialize ]
+[e :U _Timer0_Write_Value ]
+[v _timer `*CS275 ~T0 @X0 1 r1 ]
+[v _value `us ~T0 @X0 1 r2 ]
 [f ]
-"21
-[; ;app.c: 21:     ecu_layer_initialize();
-[e ( _ecu_layer_initialize ..  ]
-"23
-[; ;app.c: 23: }
-[e :UE 289 ]
+"20
+[; ;MCAL_LAYER/Timer/hal_timer0.c: 20: }
+[e :UE 278 ]
+}
+"22
+[; ;MCAL_LAYER/Timer/hal_timer0.c: 22: Std_ReturnType Timer0_Read_Value(timer0_t const *timer, uint16 *value) {
+[v _Timer0_Read_Value `(uc ~T0 @X0 1 ef2`*CS275`*us ]
+{
+[e :U _Timer0_Read_Value ]
+[v _timer `*CS275 ~T0 @X0 1 r1 ]
+[v _value `*us ~T0 @X0 1 r2 ]
+[f ]
+"26
+[; ;MCAL_LAYER/Timer/hal_timer0.c: 26: }
+[e :UE 279 ]
 }

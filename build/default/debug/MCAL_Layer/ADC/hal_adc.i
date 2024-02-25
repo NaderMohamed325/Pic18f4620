@@ -5169,7 +5169,7 @@ Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 
 
 # 1 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 1
-# 11 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h"
+# 12 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h"
 # 1 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h" 1
 # 14 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h"
 # 1 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/mcal_interrupt_gen_cfg.h" 1
@@ -5179,9 +5179,9 @@ typedef enum {
     INTERRUPT_LOW_PRIORITY = 0,
     INTERRUPT_HIGH_PRIORITY
 } interrupt_priority_cfg;
-# 12 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 2
-# 1 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/../ADC/hal_adc.h" 1
 # 13 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 2
+# 1 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/../ADC/hal_adc.h" 1
+# 14 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 2
 # 15 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/../ADC/hal_adc.h" 2
 # 71 "MCAL_LAYER/ADC/../../MCAL_LAYER/Interrupt/../ADC/hal_adc.h"
 typedef enum {
