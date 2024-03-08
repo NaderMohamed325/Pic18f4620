@@ -43,6 +43,7 @@ Std_ReturnType Timer0_Init(timer0_t const *timer) {
 
 #if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
         // Configure interrupt priority levels
+        INTERRUPT_PRIORITY_LEVELS_ENABLE();
         if (INTERRUPT_HIGH_PRIORITY == timer->priority) {
             TIMER0_HighPrioritySet();
             INTERRUPT_Global_Interrupt_High_Enable();

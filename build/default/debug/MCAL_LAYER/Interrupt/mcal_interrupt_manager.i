@@ -5182,6 +5182,7 @@ void RB6_ISR(uint8 source);
 void RB7_ISR(uint8 source);
 void ADC_ISR(void);
 void TIMER0_ISR(void);
+void TIMER1_ISR(void);
 # 9 "MCAL_LAYER/Interrupt/mcal_interrupt_manager.c" 2
 static volatile uint8 RB4_f = 1, RB5_f = 1, RB6_f = 1, RB7_f = 1;
 # 29 "MCAL_LAYER/Interrupt/mcal_interrupt_manager.c"
@@ -5204,7 +5205,9 @@ void __attribute__((picinterrupt(("")))) Interrupt_Manager_High(void) {
     if (1 == INTCONbits.TMR0IE && 1 == INTCONbits.TMR0IF) {
         TIMER0_ISR();
     }
-
+    if (1 == PIE1bits.TMR1IE && 1 == PIR1bits.TMR1IF) {
+        TIMER1_ISR();
+    }
 
     if ((INTCONbits.RBIE == 1) && (INTCONbits.RBIF == 1)) {
 

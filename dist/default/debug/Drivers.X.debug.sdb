@@ -157,7 +157,7 @@ PIN5 5
 PIN6 6
 PIN7 7
 ]
-"54 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Interrupt/mcal_interrupt_manager.c
+"56 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Interrupt/mcal_interrupt_manager.c
 [e E3402 . `uc
 GPIO_LOW 0
 GPIO_HIGH 1
@@ -177,26 +177,20 @@ TIMER0_PRESCALER_DIV_BY_64 5
 TIMER0_PRESCALER_DIV_BY_128 6
 TIMER0_PRESCALER_DIV_BY_256 7
 ]
-"17 C:\Users\xcite\OneDrive\Documents\Drivers.X\app.c
-[e E3633 . `uc
+"16 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Timer/hal_timer1.c
+[e E3462 . `uc
 INTERRUPT_LOW_PRIORITY 0
 INTERRUPT_HIGH_PRIORITY 1
 ]
-[e E3744 . `uc
-TIMER0_PRESCALER_DIV_BY_2 0
-TIMER0_PRESCALER_DIV_BY_4 1
-TIMER0_PRESCALER_DIV_BY_8 2
-TIMER0_PRESCALER_DIV_BY_16 3
-TIMER0_PRESCALER_DIV_BY_32 4
-TIMER0_PRESCALER_DIV_BY_64 5
-TIMER0_PRESCALER_DIV_BY_128 6
-TIMER0_PRESCALER_DIV_BY_256 7
+[e E3466 . `uc
+TIMER1_PRESCALER_DIV_BY_1 0
+TIMER1_PRESCALER_DIV_BY_2 1
+TIMER1_PRESCALER_DIV_BY_4 2
+TIMER1_PRESCALER_DIV_BY_8 3
 ]
-"12
-[v _Isr Isr `(v  1 e 1 0 ]
-"24
+"18 C:\Users\xcite\OneDrive\Documents\Drivers.X\app.c
 [v _main main `(i  1 e 2 0 ]
-"38
+"29
 [v _Application_initialize Application_initialize `(v  1 e 1 0 ]
 "4 D:\IDE MCU\pic\sources\c99\common\fleq.c
 [v ___fleq __fleq `(b  1 e 0 0 ]
@@ -312,35 +306,23 @@ TIMER0_PRESCALER_DIV_BY_256 7
 [v _RB7_ISR RB7_ISR `(v  1 e 1 0 ]
 "29 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Interrupt/mcal_interrupt_manager.c
 [v _Interrupt_Manager_High Interrupt_Manager_High `IIH(v  1 e 1 0 ]
-"20 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Timer/hal_timer0.c
-[v _Timer0_Init Timer0_Init `(uc  1 e 1 0 ]
-"95
-[v _Timer0_Write_Value Timer0_Write_Value `(uc  1 e 1 0 ]
-"117
-[v _Timer0_Read_Value Timer0_Read_Value `(uc  1 e 1 0 ]
-"136
+"137 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Timer/hal_timer0.c
 [v _TIMER0_ISR TIMER0_ISR `(v  1 e 1 0 ]
-"149
+"150
 [v _Timer0_Prescaler_Config Timer0_Prescaler_Config `T(v  1 s 1 Timer0_Prescaler_Config ]
-"163
+"164
 [v _Timer0_Mode_Config Timer0_Mode_Config `T(v  1 s 1 Timer0_Mode_Config ]
-"179
+"180
 [v _Timer0_Reg_Size_Config Timer0_Reg_Size_Config `T(v  1 s 1 Timer0_Reg_Size_Config ]
-"8 C:\Users\xcite\OneDrive\Documents\Drivers.X\app.c
-[v _freq freq `VEus  1 e 2 0 ]
-[s S1811 . 7 `*.37(v 1 Timer0_Interrupt_Handler 2 0 `E3462 1 priority 1 2 `E3466 1 prescaler_value 1 3 `us 1 timer0_preload_value 2 4 `uc 1 prescaler_enable 1 6 :1:0 
-`uc 1 timer0_counter_edge 1 6 :1:1 
-`uc 1 timer0_mode 1 6 :1:2 
-`uc 1 timer0_register_size 1 6 :1:3 
-`uc 1 _reserved 1 6 :4:4 
-]
-"17
-[v _timer timer `S1811  1 e 7 0 ]
+"123 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Timer/hal_timer1.c
+[v _Timer1_Mode_Config Timer1_Mode_Config `T(v  1 s 1 Timer1_Mode_Config ]
+"144
+[v _TIMER1_ISR TIMER1_ISR `(v  1 e 1 0 ]
 "52 D:/IDE MCU/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include/proc/pic18f4620.h
 [v _PORTA PORTA `VEuc  1 e 1 @3968 ]
 "189
 [v _PORTB PORTB `VEuc  1 e 1 @3969 ]
-[s S1698 . 1 `uc 1 RB0 1 0 :1:0 
+[s S1702 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -350,7 +332,7 @@ TIMER0_PRESCALER_DIV_BY_256 7
 `uc 1 RB7 1 0 :1:7 
 ]
 "230
-[s S1707 . 1 `uc 1 INT0 1 0 :1:0 
+[s S1711 . 1 `uc 1 INT0 1 0 :1:0 
 `uc 1 INT1 1 0 :1:1 
 `uc 1 INT2 1 0 :1:2 
 `uc 1 CCP2 1 0 :1:3 
@@ -359,7 +341,7 @@ TIMER0_PRESCALER_DIV_BY_256 7
 `uc 1 KBI2 1 0 :1:6 
 `uc 1 KBI3 1 0 :1:7 
 ]
-[s S1716 . 1 `uc 1 AN12 1 0 :1:0 
+[s S1720 . 1 `uc 1 AN12 1 0 :1:0 
 `uc 1 AN10 1 0 :1:1 
 `uc 1 AN8 1 0 :1:2 
 `uc 1 AN9 1 0 :1:3 
@@ -368,11 +350,11 @@ TIMER0_PRESCALER_DIV_BY_256 7
 `uc 1 PGC 1 0 :1:6 
 `uc 1 PGD 1 0 :1:7 
 ]
-[s S1725 . 1 `uc 1 . 1 0 :3:0 
+[s S1729 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 CCP2_PA2 1 0 :1:3 
 ]
-[u S1728 . 1 `S1698 1 . 1 0 `S1707 1 . 1 0 `S1716 1 . 1 0 `S1725 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES1728  1 e 1 @3969 ]
+[u S1732 . 1 `S1702 1 . 1 0 `S1711 1 . 1 0 `S1720 1 . 1 0 `S1729 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES1732  1 e 1 @3969 ]
 "360
 [v _PORTC PORTC `VEuc  1 e 1 @3970 ]
 "535
@@ -523,7 +505,36 @@ TIMER0_PRESCALER_DIV_BY_256 7
 [v _ADRESL ADRESL `VEuc  1 e 1 @4035 ]
 "4662
 [v _ADRESH ADRESH `VEuc  1 e 1 @4036 ]
-[s S1821 . 1 `uc 1 T0PS 1 0 :3:0 
+[s S1994 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_T1SYNC 1 0 :1:2 
+]
+"5257
+[s S1997 . 1 `uc 1 TMR1ON 1 0 :1:0 
+`uc 1 TMR1CS 1 0 :1:1 
+`uc 1 nT1SYNC 1 0 :1:2 
+`uc 1 T1OSCEN 1 0 :1:3 
+`uc 1 T1CKPS 1 0 :2:4 
+`uc 1 T1RUN 1 0 :1:6 
+`uc 1 RD16 1 0 :1:7 
+]
+[s S2005 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 T1SYNC 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 T1CKPS0 1 0 :1:4 
+`uc 1 T1CKPS1 1 0 :1:5 
+]
+[s S2011 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 SOSCEN 1 0 :1:3 
+`uc 1 . 1 0 :3:4 
+`uc 1 T1RD16 1 0 :1:7 
+]
+[u S2016 . 1 `S1994 1 . 1 0 `S1997 1 . 1 0 `S2005 1 . 1 0 `S2011 1 . 1 0 ]
+[v _T1CONbits T1CONbits `VES2016  1 e 1 @4045 ]
+"5334
+[v _TMR1L TMR1L `VEuc  1 e 1 @4046 ]
+"5341
+[v _TMR1H TMR1H `VEuc  1 e 1 @4047 ]
+[s S1825 . 1 `uc 1 T0PS 1 0 :3:0 
 `uc 1 PSA 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
 `uc 1 T0CS 1 0 :1:5 
@@ -531,14 +542,14 @@ TIMER0_PRESCALER_DIV_BY_256 7
 `uc 1 TMR0ON 1 0 :1:7 
 ]
 "5878
-[s S1828 . 1 `uc 1 T0PS0 1 0 :1:0 
+[s S1832 . 1 `uc 1 T0PS0 1 0 :1:0 
 `uc 1 T0PS1 1 0 :1:1 
 `uc 1 T0PS2 1 0 :1:2 
 `uc 1 . 1 0 :3:3 
 `uc 1 T016BIT 1 0 :1:6 
 ]
-[u S1834 . 1 `S1821 1 . 1 0 `S1828 1 . 1 0 ]
-[v _T0CONbits T0CONbits `VES1834  1 e 1 @4053 ]
+[u S1838 . 1 `S1825 1 . 1 0 `S1832 1 . 1 0 ]
+[v _T0CONbits T0CONbits `VES1838  1 e 1 @4053 ]
 "5940
 [v _TMR0L TMR0L `VEuc  1 e 1 @4054 ]
 "5947
@@ -648,113 +659,39 @@ TIMER0_PRESCALER_DIV_BY_256 7
 [v _Timer0_Interrupt_Handler Timer0_Interrupt_Handler `*.37(v  1 s 2 Timer0_Interrupt_Handler ]
 "12
 [v _pre_work_out pre_work_out `us  1 s 2 pre_work_out ]
-"24 C:\Users\xcite\OneDrive\Documents\Drivers.X\app.c
+"5 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Timer/hal_timer1.c
+[v _Timer1_Interrupt_Handler Timer1_Interrupt_Handler `*.37(v  1 s 2 Timer1_Interrupt_Handler ]
+"12
+[v _pre_work_out@hal_timer1$F2115 pre_work_out `us  1 s 2 pre_work_out ]
+"18 C:\Users\xcite\OneDrive\Documents\Drivers.X\app.c
 [v _main main `(i  1 e 2 0 ]
 {
-"36
+"27
 } 0
-"95 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Timer/hal_timer0.c
-[v _Timer0_Write_Value Timer0_Write_Value `(uc  1 e 1 0 ]
-{
-[s S1811 . 7 `*.37(v 1 Timer0_Interrupt_Handler 2 0 `E3462 1 priority 1 2 `E3466 1 prescaler_value 1 3 `us 1 timer0_preload_value 2 4 `uc 1 prescaler_enable 1 6 :1:0 
-`uc 1 timer0_counter_edge 1 6 :1:1 
-`uc 1 timer0_mode 1 6 :1:2 
-`uc 1 timer0_register_size 1 6 :1:3 
-`uc 1 _reserved 1 6 :4:4 
-]
-[v Timer0_Write_Value@timer timer `*.30CS1811  1 p 1 3 ]
-[v Timer0_Write_Value@value value `us  1 p 2 4 ]
-"108
-} 0
-"117
-[v _Timer0_Read_Value Timer0_Read_Value `(uc  1 e 1 0 ]
-{
-"119
-[v Timer0_Read_Value@l_tmr0h l_tmr0h `uc  1 a 1 8 ]
-[v Timer0_Read_Value@l_tmr0l l_tmr0l `uc  1 a 1 7 ]
-[s S1811 . 7 `*.37(v 1 Timer0_Interrupt_Handler 2 0 `E3462 1 priority 1 2 `E3466 1 prescaler_value 1 3 `us 1 timer0_preload_value 2 4 `uc 1 prescaler_enable 1 6 :1:0 
-`uc 1 timer0_counter_edge 1 6 :1:1 
-`uc 1 timer0_mode 1 6 :1:2 
-`uc 1 timer0_register_size 1 6 :1:3 
-`uc 1 _reserved 1 6 :4:4 
-]
-"117
-[v Timer0_Read_Value@timer timer `*.30CS1811  1 p 1 3 ]
-[v Timer0_Read_Value@value value `*.30us  1 p 1 4 ]
-"130
-} 0
-"38 C:\Users\xcite\OneDrive\Documents\Drivers.X\app.c
+"29
 [v _Application_initialize Application_initialize `(v  1 e 1 0 ]
 {
-"44
+"35
 } 0
 "11 C:\Users\xcite\OneDrive\Documents\Drivers.X\ECU_LAYER/ecu_layer_init.c
 [v _ecu_layer_initialize ecu_layer_initialize `(v  1 e 1 0 ]
 {
 "16
 } 0
-"20 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Timer/hal_timer0.c
-[v _Timer0_Init Timer0_Init `(uc  1 e 1 0 ]
-{
-[s S1811 . 7 `*.37(v 1 Timer0_Interrupt_Handler 2 0 `E3462 1 priority 1 2 `E3466 1 prescaler_value 1 3 `us 1 timer0_preload_value 2 4 `uc 1 prescaler_enable 1 6 :1:0 
-`uc 1 timer0_counter_edge 1 6 :1:1 
-`uc 1 timer0_mode 1 6 :1:2 
-`uc 1 timer0_register_size 1 6 :1:3 
-`uc 1 _reserved 1 6 :4:4 
-]
-[v Timer0_Init@timer timer `*.30CS1811  1 p 1 5 ]
-"64
-} 0
-"179
-[v _Timer0_Reg_Size_Config Timer0_Reg_Size_Config `T(v  1 s 1 Timer0_Reg_Size_Config ]
-{
-[s S1811 . 7 `*.37(v 1 Timer0_Interrupt_Handler 2 0 `E3462 1 priority 1 2 `E3466 1 prescaler_value 1 3 `us 1 timer0_preload_value 2 4 `uc 1 prescaler_enable 1 6 :1:0 
-`uc 1 timer0_counter_edge 1 6 :1:1 
-`uc 1 timer0_mode 1 6 :1:2 
-`uc 1 timer0_register_size 1 6 :1:3 
-`uc 1 _reserved 1 6 :4:4 
-]
-[v Timer0_Reg_Size_Config@timer timer `*.30CS1811  1 p 1 3 ]
-"185
-} 0
-"149
-[v _Timer0_Prescaler_Config Timer0_Prescaler_Config `T(v  1 s 1 Timer0_Prescaler_Config ]
-{
-[s S1811 . 7 `*.37(v 1 Timer0_Interrupt_Handler 2 0 `E3462 1 priority 1 2 `E3466 1 prescaler_value 1 3 `us 1 timer0_preload_value 2 4 `uc 1 prescaler_enable 1 6 :1:0 
-`uc 1 timer0_counter_edge 1 6 :1:1 
-`uc 1 timer0_mode 1 6 :1:2 
-`uc 1 timer0_register_size 1 6 :1:3 
-`uc 1 _reserved 1 6 :4:4 
-]
-[v Timer0_Prescaler_Config@timer timer `*.30CS1811  1 p 1 3 ]
-"159
-} 0
-"163
-[v _Timer0_Mode_Config Timer0_Mode_Config `T(v  1 s 1 Timer0_Mode_Config ]
-{
-[s S1811 . 7 `*.37(v 1 Timer0_Interrupt_Handler 2 0 `E3462 1 priority 1 2 `E3466 1 prescaler_value 1 3 `us 1 timer0_preload_value 2 4 `uc 1 prescaler_enable 1 6 :1:0 
-`uc 1 timer0_counter_edge 1 6 :1:1 
-`uc 1 timer0_mode 1 6 :1:2 
-`uc 1 timer0_register_size 1 6 :1:3 
-`uc 1 _reserved 1 6 :4:4 
-]
-[v Timer0_Mode_Config@timer timer `*.30CS1811  1 p 1 3 ]
-"175
-} 0
 "29 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Interrupt/mcal_interrupt_manager.c
 [v _Interrupt_Manager_High Interrupt_Manager_High `IIH(v  1 e 1 0 ]
 {
-"90
+"92
 } 0
-"136 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Timer/hal_timer0.c
+"144 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Timer/hal_timer1.c
+[v _TIMER1_ISR TIMER1_ISR `(v  1 e 1 0 ]
+{
+"153
+} 0
+"137 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Timer/hal_timer0.c
 [v _TIMER0_ISR TIMER0_ISR `(v  1 e 1 0 ]
 {
-"145
-} 0
-"12 C:\Users\xcite\OneDrive\Documents\Drivers.X\app.c
-[v _Isr Isr `(v  1 e 1 0 ]
-{
-"14
+"146
 } 0
 "514 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Interrupt/mcal_external_interrupt.c
 [v _RB7_ISR RB7_ISR `(v  1 e 1 0 ]

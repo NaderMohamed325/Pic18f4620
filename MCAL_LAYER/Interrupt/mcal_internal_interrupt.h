@@ -43,6 +43,21 @@
 #endif
 #endif
 
+#if TIMER1_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
+/* This routine clears the interrupt enable for the TIMER1 Module */
+#define TIMER1_InterruptDisable()         (PIE1bits.TMR1IE = 0)
+/* This routine sets the interrupt enable for the TIMER1 Module */
+#define TIMER1_InterruptEnable()          (PIE1bits.TMR1IE = 1)
+/* This routine clears the interrupt flag for the TIMER1 Module */
+#define TIMER1_InterruptFlagClear()       (PIR1bits.TMR1IF = 0)
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE==INTERRUPT_FEATURE_ENABLE 
+/* This routine set the TIMER1 Module Interrupt Priority to be High priority */
+#define TIMER1_HighPrioritySet()          (PIR1bits.TMR1IP = 1)
+/* This routine set the TIMER1 Module Interrupt Priority to be Low priority */
+#define TIMER1_LowPrioritySet()           (PIR1bits.TMR1IP = 0)
+#endif
+#endif
+
 
 
 

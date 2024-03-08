@@ -1,11 +1,4 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[p mainexit ]
-"7 app.c
-[; ;app.c: 7: void Application_initialize(void);
-[v _Application_initialize `(v ~T0 @X0 0 ef ]
-"19 ./ECU_LAYER/ecu_layer_init.h
-[; ;./ECU_LAYER/ecu_layer_init.h: 19: void ecu_layer_initialize(void);
-[v _ecu_layer_initialize `(v ~T0 @X0 0 ef ]
 "54 D:/IDE MCU/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\../proc/pic18f4620.h
 [; <" PORTA equ 0F80h ;# ">
 "191
@@ -280,60 +273,3 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; <" TOSH equ 0FFEh ;# ">
 "6715
 [; <" TOSU equ 0FFFh ;# ">
-"4 app.c
-[; ;app.c: 4: Std_ReturnType ret = (Std_ReturnType)0X01;
-[v _ret `uc ~T0 @X0 1 e ]
-[i _ret
--> -> 1 `i `uc
-]
-"12
-[; ;app.c: 12: void Isr(void) {
-[v _Isr `(v ~T0 @X0 1 ef ]
-{
-[e :U _Isr ]
-[f ]
-"14
-[; ;app.c: 14: }
-[e :UE 287 ]
-}
-[v $root$_main `(v ~T0 @X0 0 e ]
-"18
-[; ;app.c: 18: int main(void) {
-[v _main `(i ~T0 @X0 1 ef ]
-{
-[e :U _main ]
-[f ]
-"20
-[; ;app.c: 20:     Application_initialize();
-[e ( _Application_initialize ..  ]
-"22
-[; ;app.c: 22:     while (1) {
-[e :U 290 ]
-{
-"24
-[; ;app.c: 24:     }
-}
-[e :U 289 ]
-[e $U 290  ]
-[e :U 291 ]
-"26
-[; ;app.c: 26:     return 0;
-[e ) -> 0 `i ]
-[e $UE 288  ]
-"27
-[; ;app.c: 27: }
-[e :UE 288 ]
-}
-"29
-[; ;app.c: 29: void Application_initialize(void) {
-[v _Application_initialize `(v ~T0 @X0 1 ef ]
-{
-[e :U _Application_initialize ]
-[f ]
-"31
-[; ;app.c: 31:     ecu_layer_initialize();
-[e ( _ecu_layer_initialize ..  ]
-"35
-[; ;app.c: 35: }
-[e :UE 292 ]
-}

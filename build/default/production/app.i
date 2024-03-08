@@ -5655,7 +5655,35 @@ Std_ReturnType Timer0_DeInit(timer0_t const *timer);
 Std_ReturnType Timer0_Write_Value(timer0_t const *timer, uint16 value);
 Std_ReturnType Timer0_Read_Value(timer0_t const *timer, uint16 *value);
 # 16 "./app.h" 2
-# 26 "./app.h"
+# 1 "./MCAL_LAYER/Timer/hal_timer1.h" 1
+# 52 "./MCAL_LAYER/Timer/hal_timer1.h"
+typedef enum {
+    TIMER1_PRESCALER_DIV_BY_1 = 0,
+    TIMER1_PRESCALER_DIV_BY_2,
+    TIMER1_PRESCALER_DIV_BY_4,
+    TIMER1_PRESCALER_DIV_BY_8,
+} timer1_prescaler_select_t;
+
+typedef struct {
+
+    void (*Timer1_Interrupt_Handler)(void);
+    interrupt_priority_cfg priority;
+
+    timer1_prescaler_select_t prescaler_value;
+    uint16 timer1_preload_value;
+    uint8 timer1_mode : 1;
+    uint8 counter_mode : 1;
+    uint8 timer1_osc_cfg : 1;
+    uint8 timer1_rw_reg_mode : 1;
+} timer1_t;
+
+
+Std_ReturnType Timer1_Init(timer1_t const *timer);
+Std_ReturnType Timer1_DeInit(timer1_t const *timer);
+Std_ReturnType Timer1_Write_Value(timer1_t const *timer, uint16 value);
+Std_ReturnType Timer1_Read_Value(timer1_t const *timer, uint16 *value);
+# 17 "./app.h" 2
+# 27 "./app.h"
 void Application_initialize(void);
 # 2 "app.c" 2
 
@@ -5664,7 +5692,7 @@ Std_ReturnType ret = (Std_ReturnType)0X01;
 
 
 void Application_initialize(void);
-volatile uint16 freq = 0;
+
 
 
 
@@ -5673,22 +5701,12 @@ void Isr(void) {
 }
 
 
-timer0_t timer = {
-    .Timer0_Interrupt_Handler = Isr,
-    .timer0_counter_edge = 1,
-    .timer0_register_size = 0,
-    .timer0_mode = 0
-};
 
 int main(void) {
 
     Application_initialize();
 
     while (1) {
-
-        Timer0_Read_Value(&timer, &freq);
-          Timer0_Write_Value(&timer, 0);
-        _delay((unsigned long)((1000)*(8000000/4000.0)));
 
     }
 
@@ -5700,5 +5718,5 @@ void Application_initialize(void) {
     ecu_layer_initialize();
 
 
-    Timer0_Init(&timer);
+
 }

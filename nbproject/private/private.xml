@@ -12,14 +12,10 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/xcite/OneDrive/Documents/Drivers.X/MCAL_LAYER/Timer/hal_timer0.c</file>
-            <file>file:/C:/Users/xcite/OneDrive/Documents/Drivers.X/MCAL_LAYER/ADC/hal_adc.c</file>
-            <file>file:/C:/Users/xcite/OneDrive/Documents/Drivers.X/MCAL_LAYER/Interrupt/mcal_interrupt_gen_cfg.h</file>
-            <file>file:/C:/Users/xcite/OneDrive/Documents/Drivers.X/MCAL_LAYER/Interrupt/mcal_internal_interrupt.h</file>
             <file>file:/C:/Users/xcite/OneDrive/Documents/Drivers.X/MCAL_LAYER/Interrupt/mcal_interrupt_cfg.h</file>
-            <file>file:/C:/Users/xcite/OneDrive/Documents/Drivers.X/app.h</file>
             <file>file:/C:/Users/xcite/OneDrive/Documents/Drivers.X/app.c</file>
             <file>file:/C:/Users/xcite/OneDrive/Documents/Drivers.X/MCAL_LAYER/Timer/hal_timer0.h</file>
+            <file>file:/C:/Users/xcite/OneDrive/Documents/Drivers.X/MCAL_LAYER/Timer/hal_timer1.h</file>
         </group>
     </open-files>
 </project-private>

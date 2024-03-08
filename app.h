@@ -13,6 +13,7 @@
 #include "MCAL_LAYER/EEPROM/hal_eeprom.h"
 #include "MCAL_LAYER/ADC/hal_adc.h"
 #include "MCAL_LAYER/Timer/hal_timer0.h"
+#include "MCAL_LAYER/Timer/hal_timer1.h"
 /*-----------------MACROS--------------------*/
 
 

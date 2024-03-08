@@ -1,35 +1,11 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F3756 `(v ~T0 @X0 0 tf ]
-"17 app.c
-[; ;app.c: 17: timer0_t timer = {
-[c E3633 0 1 .. ]
-[n E3633 . INTERRUPT_LOW_PRIORITY INTERRUPT_HIGH_PRIORITY  ]
-[c E3744 0 1 2 3 4 5 6 7 .. ]
-[n E3744 . TIMER0_PRESCALER_DIV_BY_2 TIMER0_PRESCALER_DIV_BY_4 TIMER0_PRESCALER_DIV_BY_8 TIMER0_PRESCALER_DIV_BY_16 TIMER0_PRESCALER_DIV_BY_32 TIMER0_PRESCALER_DIV_BY_64 TIMER0_PRESCALER_DIV_BY_128 TIMER0_PRESCALER_DIV_BY_256  ]
-"69 ./MCAL_LAYER/Timer/hal_timer0.h
-[; ;./MCAL_LAYER/Timer/hal_timer0.h: 69: typedef struct {
-[s S285 `*F3756 1 `E3633 1 `E3744 1 `us 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :4 `uc 1 ]
-[n S285 . Timer0_Interrupt_Handler priority prescaler_value timer0_preload_value prescaler_enable timer0_counter_edge timer0_mode timer0_register_size _reserved ]
 [p mainexit ]
 "7 app.c
 [; ;app.c: 7: void Application_initialize(void);
 [v _Application_initialize `(v ~T0 @X0 0 ef ]
-"87 ./MCAL_LAYER/Timer/hal_timer0.h
-[; ;./MCAL_LAYER/Timer/hal_timer0.h: 87: Std_ReturnType Timer0_Read_Value(timer0_t const *timer, uint16 *value);
-[v _Timer0_Read_Value `(uc ~T0 @X0 0 ef2`*CS285`*us ]
-"86
-[; ;./MCAL_LAYER/Timer/hal_timer0.h: 86: Std_ReturnType Timer0_Write_Value(timer0_t const *timer, uint16 value);
-[v _Timer0_Write_Value `(uc ~T0 @X0 0 ef2`*CS285`us ]
-[v F202 `(v ~T0 @X0 1 tf1`ul ]
-"12 D:/IDE MCU/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\builtins.h
-[v __delay `JF202 ~T0 @X0 0 e ]
-[p i __delay ]
 "19 ./ECU_LAYER/ecu_layer_init.h
 [; ;./ECU_LAYER/ecu_layer_init.h: 19: void ecu_layer_initialize(void);
 [v _ecu_layer_initialize `(v ~T0 @X0 0 ef ]
-"84 ./MCAL_LAYER/Timer/hal_timer0.h
-[; ;./MCAL_LAYER/Timer/hal_timer0.h: 84: Std_ReturnType Timer0_Init(timer0_t const *timer);
-[v _Timer0_Init `(uc ~T0 @X0 0 ef1`*CS285 ]
 "54 D:/IDE MCU/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\../proc/pic18f4620.h
 [; <" PORTA equ 0F80h ;# ">
 "191
@@ -310,12 +286,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _ret
 -> -> 1 `i `uc
 ]
-"8
-[; ;app.c: 8: volatile uint16 freq = 0;
-[v _freq `Vus ~T0 @X0 1 e ]
-[i _freq
--> -> 0 `i `us
-]
 "12
 [; ;app.c: 12: void Isr(void) {
 [v _Isr `(v ~T0 @X0 1 ef ]
@@ -324,75 +294,46 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "14
 [; ;app.c: 14: }
-[e :UE 286 ]
+[e :UE 287 ]
 }
-"17
-[; ;app.c: 17: timer0_t timer = {
-[v _timer `S285 ~T0 @X0 1 e ]
-[i _timer
-:U ..
-:U ..
-&U _Isr
--> -> 0 `i `E3633
--> -> 0 `i `E3744
--> -> 0 `i `us
--> -> 0 `i `uc
--> -> 1 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
-..
-..
-]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"24
-[; ;app.c: 24: int main(void) {
+"18
+[; ;app.c: 18: int main(void) {
 [v _main `(i ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"26
-[; ;app.c: 26:     Application_initialize();
+"20
+[; ;app.c: 20:     Application_initialize();
 [e ( _Application_initialize ..  ]
-"28
-[; ;app.c: 28:     while (1) {
-[e :U 289 ]
-{
-"30
-[; ;app.c: 30:         Timer0_Read_Value(&timer, &freq);
-[e ( _Timer0_Read_Value (2 , -> &U _timer `*CS285 -> &U _freq `*us ]
-"31
-[; ;app.c: 31:           Timer0_Write_Value(&timer, 0);
-[e ( _Timer0_Write_Value (2 , -> &U _timer `*CS285 -> -> 0 `i `us ]
-"32
-[; ;app.c: 32:         _delay((unsigned long)((1000)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"34
-[; ;app.c: 34:     }
-}
-[e :U 288 ]
-[e $U 289  ]
+"22
+[; ;app.c: 22:     while (1) {
 [e :U 290 ]
-"36
-[; ;app.c: 36:     return 0;
-[e ) -> 0 `i ]
-[e $UE 287  ]
-"37
-[; ;app.c: 37: }
-[e :UE 287 ]
+{
+"24
+[; ;app.c: 24:     }
 }
-"39
-[; ;app.c: 39: void Application_initialize(void) {
+[e :U 289 ]
+[e $U 290  ]
+[e :U 291 ]
+"26
+[; ;app.c: 26:     return 0;
+[e ) -> 0 `i ]
+[e $UE 288  ]
+"27
+[; ;app.c: 27: }
+[e :UE 288 ]
+}
+"29
+[; ;app.c: 29: void Application_initialize(void) {
 [v _Application_initialize `(v ~T0 @X0 1 ef ]
 {
 [e :U _Application_initialize ]
 [f ]
-"41
-[; ;app.c: 41:     ecu_layer_initialize();
+"31
+[; ;app.c: 31:     ecu_layer_initialize();
 [e ( _ecu_layer_initialize ..  ]
-"44
-[; ;app.c: 44:     Timer0_Init(&timer);
-[e ( _Timer0_Init (1 -> &U _timer `*CS285 ]
-"45
-[; ;app.c: 45: }
-[e :UE 291 ]
+"35
+[; ;app.c: 35: }
+[e :UE 292 ]
 }
