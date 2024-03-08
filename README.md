@@ -16,7 +16,7 @@ Before using the PIC18F4620 drivers, it's important to have a basic understandin
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/your-username/PIC18F4620-Drivers.git
+   git clone https://github.com/NaderMohamed325/PIC18F4620.git
    ```
 
 2. **Navigate to the Drivers Directory:**
