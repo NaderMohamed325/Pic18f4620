@@ -21,7 +21,7 @@ Before using the PIC18F4620 drivers, it's important to have a basic understandin
 
 2. **Navigate to the Drivers Directory:**
    ```bash
-   cd PIC18F4620-Drivers
+   cd PIC18F4620
    ```
 
 3. **Build and Install the Drivers:**
