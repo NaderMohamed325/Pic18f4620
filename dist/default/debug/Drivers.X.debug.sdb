@@ -157,7 +157,7 @@ PIN5 5
 PIN6 6
 PIN7 7
 ]
-"56 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Interrupt/mcal_interrupt_manager.c
+"59 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Interrupt/mcal_interrupt_manager.c
 [e E3402 . `uc
 GPIO_LOW 0
 GPIO_HIGH 1
@@ -187,6 +187,34 @@ TIMER1_PRESCALER_DIV_BY_1 0
 TIMER1_PRESCALER_DIV_BY_2 1
 TIMER1_PRESCALER_DIV_BY_4 2
 TIMER1_PRESCALER_DIV_BY_8 3
+]
+"19 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Timer/hal_timer2.c
+[e E3462 . `uc
+INTERRUPT_LOW_PRIORITY 0
+INTERRUPT_HIGH_PRIORITY 1
+]
+[e E3484 . `uc
+TIMER2_PRE_SCALER_DIV_BY_1 0
+TIMER2_PRE_SCALER_DIV_BY_4 1
+TIMER2_PRE_SCALER_DIV_BY_16 2
+]
+[e E3466 . `uc
+TIMER2_POST_SCALER_DIV_BY_1 0
+TIMER2_POST_SCALER_DIV_BY_2 1
+TIMER2_POST_SCALER_DIV_BY_3 2
+TIMER2_POST_SCALER_DIV_BY_4 3
+TIMER2_POST_SCALER_DIV_BY_5 4
+TIMER2_POST_SCALER_DIV_BY_6 5
+TIMER2_POST_SCALER_DIV_BY_7 6
+TIMER2_POST_SCALER_DIV_BY_8 7
+TIMER2_POST_SCALER_DIV_BY_9 8
+TIMER2_POST_SCALER_DIV_BY_10 9
+TIMER2_POST_SCALER_DIV_BY_11 10
+TIMER2_POST_SCALER_DIV_BY_12 11
+TIMER2_POST_SCALER_DIV_BY_13 12
+TIMER2_POST_SCALER_DIV_BY_14 13
+TIMER2_POST_SCALER_DIV_BY_15 14
+TIMER2_POST_SCALER_DIV_BY_16 15
 ]
 "18 C:\Users\xcite\OneDrive\Documents\Drivers.X\app.c
 [v _main main `(i  1 e 2 0 ]
@@ -318,11 +346,13 @@ TIMER1_PRESCALER_DIV_BY_8 3
 [v _Timer1_Mode_Config Timer1_Mode_Config `T(v  1 s 1 Timer1_Mode_Config ]
 "144
 [v _TIMER1_ISR TIMER1_ISR `(v  1 e 1 0 ]
+"110 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Timer/hal_timer2.c
+[v _TIMER2_ISR TIMER2_ISR `(v  1 e 1 0 ]
 "52 D:/IDE MCU/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include/proc/pic18f4620.h
 [v _PORTA PORTA `VEuc  1 e 1 @3968 ]
 "189
 [v _PORTB PORTB `VEuc  1 e 1 @3969 ]
-[s S1702 . 1 `uc 1 RB0 1 0 :1:0 
+[s S1706 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -332,7 +362,7 @@ TIMER1_PRESCALER_DIV_BY_8 3
 `uc 1 RB7 1 0 :1:7 
 ]
 "230
-[s S1711 . 1 `uc 1 INT0 1 0 :1:0 
+[s S1715 . 1 `uc 1 INT0 1 0 :1:0 
 `uc 1 INT1 1 0 :1:1 
 `uc 1 INT2 1 0 :1:2 
 `uc 1 CCP2 1 0 :1:3 
@@ -341,7 +371,7 @@ TIMER1_PRESCALER_DIV_BY_8 3
 `uc 1 KBI2 1 0 :1:6 
 `uc 1 KBI3 1 0 :1:7 
 ]
-[s S1720 . 1 `uc 1 AN12 1 0 :1:0 
+[s S1724 . 1 `uc 1 AN12 1 0 :1:0 
 `uc 1 AN10 1 0 :1:1 
 `uc 1 AN8 1 0 :1:2 
 `uc 1 AN9 1 0 :1:3 
@@ -350,11 +380,11 @@ TIMER1_PRESCALER_DIV_BY_8 3
 `uc 1 PGC 1 0 :1:6 
 `uc 1 PGD 1 0 :1:7 
 ]
-[s S1729 . 1 `uc 1 . 1 0 :3:0 
+[s S1733 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 CCP2_PA2 1 0 :1:3 
 ]
-[u S1732 . 1 `S1702 1 . 1 0 `S1711 1 . 1 0 `S1720 1 . 1 0 `S1729 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES1732  1 e 1 @3969 ]
+[u S1736 . 1 `S1706 1 . 1 0 `S1715 1 . 1 0 `S1724 1 . 1 0 `S1733 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES1736  1 e 1 @3969 ]
 "360
 [v _PORTC PORTC `VEuc  1 e 1 @3970 ]
 "535
@@ -505,11 +535,28 @@ TIMER1_PRESCALER_DIV_BY_8 3
 [v _ADRESL ADRESL `VEuc  1 e 1 @4035 ]
 "4662
 [v _ADRESH ADRESH `VEuc  1 e 1 @4036 ]
-[s S1994 . 1 `uc 1 . 1 0 :2:0 
+[s S2216 . 1 `uc 1 T2CKPS 1 0 :2:0 
+`uc 1 TMR2ON 1 0 :1:2 
+`uc 1 TOUTPS 1 0 :4:3 
+]
+"5057
+[s S2220 . 1 `uc 1 T2CKPS0 1 0 :1:0 
+`uc 1 T2CKPS1 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 T2OUTPS0 1 0 :1:3 
+`uc 1 T2OUTPS1 1 0 :1:4 
+`uc 1 T2OUTPS2 1 0 :1:5 
+`uc 1 T2OUTPS3 1 0 :1:6 
+]
+[u S2228 . 1 `S2216 1 . 1 0 `S2220 1 . 1 0 ]
+[v _T2CONbits T2CONbits `VES2228  1 e 1 @4042 ]
+"5217
+[v _TMR2 TMR2 `VEuc  1 e 1 @4044 ]
+[s S1998 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_T1SYNC 1 0 :1:2 
 ]
 "5257
-[s S1997 . 1 `uc 1 TMR1ON 1 0 :1:0 
+[s S2001 . 1 `uc 1 TMR1ON 1 0 :1:0 
 `uc 1 TMR1CS 1 0 :1:1 
 `uc 1 nT1SYNC 1 0 :1:2 
 `uc 1 T1OSCEN 1 0 :1:3 
@@ -517,24 +564,24 @@ TIMER1_PRESCALER_DIV_BY_8 3
 `uc 1 T1RUN 1 0 :1:6 
 `uc 1 RD16 1 0 :1:7 
 ]
-[s S2005 . 1 `uc 1 . 1 0 :2:0 
+[s S2009 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 T1SYNC 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
 `uc 1 T1CKPS0 1 0 :1:4 
 `uc 1 T1CKPS1 1 0 :1:5 
 ]
-[s S2011 . 1 `uc 1 . 1 0 :3:0 
+[s S2015 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 SOSCEN 1 0 :1:3 
 `uc 1 . 1 0 :3:4 
 `uc 1 T1RD16 1 0 :1:7 
 ]
-[u S2016 . 1 `S1994 1 . 1 0 `S1997 1 . 1 0 `S2005 1 . 1 0 `S2011 1 . 1 0 ]
-[v _T1CONbits T1CONbits `VES2016  1 e 1 @4045 ]
+[u S2020 . 1 `S1998 1 . 1 0 `S2001 1 . 1 0 `S2009 1 . 1 0 `S2015 1 . 1 0 ]
+[v _T1CONbits T1CONbits `VES2020  1 e 1 @4045 ]
 "5334
 [v _TMR1L TMR1L `VEuc  1 e 1 @4046 ]
 "5341
 [v _TMR1H TMR1H `VEuc  1 e 1 @4047 ]
-[s S1825 . 1 `uc 1 T0PS 1 0 :3:0 
+[s S1829 . 1 `uc 1 T0PS 1 0 :3:0 
 `uc 1 PSA 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
 `uc 1 T0CS 1 0 :1:5 
@@ -542,14 +589,14 @@ TIMER1_PRESCALER_DIV_BY_8 3
 `uc 1 TMR0ON 1 0 :1:7 
 ]
 "5878
-[s S1832 . 1 `uc 1 T0PS0 1 0 :1:0 
+[s S1836 . 1 `uc 1 T0PS0 1 0 :1:0 
 `uc 1 T0PS1 1 0 :1:1 
 `uc 1 T0PS2 1 0 :1:2 
 `uc 1 . 1 0 :3:3 
 `uc 1 T016BIT 1 0 :1:6 
 ]
-[u S1838 . 1 `S1825 1 . 1 0 `S1832 1 . 1 0 ]
-[v _T0CONbits T0CONbits `VES1838  1 e 1 @4053 ]
+[u S1842 . 1 `S1829 1 . 1 0 `S1836 1 . 1 0 ]
+[v _T0CONbits T0CONbits `VES1842  1 e 1 @4053 ]
 "5940
 [v _TMR0L TMR0L `VEuc  1 e 1 @4054 ]
 "5947
@@ -662,7 +709,11 @@ TIMER1_PRESCALER_DIV_BY_8 3
 "5 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Timer/hal_timer1.c
 [v _Timer1_Interrupt_Handler Timer1_Interrupt_Handler `*.37(v  1 s 2 Timer1_Interrupt_Handler ]
 "12
-[v _pre_work_out@hal_timer1$F2115 pre_work_out `us  1 s 2 pre_work_out ]
+[v _pre_work_out@hal_timer1$F2119 pre_work_out `us  1 s 2 pre_work_out ]
+"13 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Timer/hal_timer2.c
+[v _Timer2_Interrupt_Handler Timer2_Interrupt_Handler `*.37(v  1 s 2 Timer2_Interrupt_Handler ]
+"17
+[v _pre pre `uc  1 e 1 0 ]
 "18 C:\Users\xcite\OneDrive\Documents\Drivers.X\app.c
 [v _main main `(i  1 e 2 0 ]
 {
@@ -681,7 +732,12 @@ TIMER1_PRESCALER_DIV_BY_8 3
 "29 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Interrupt/mcal_interrupt_manager.c
 [v _Interrupt_Manager_High Interrupt_Manager_High `IIH(v  1 e 1 0 ]
 {
-"92
+"95
+} 0
+"110 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Timer/hal_timer2.c
+[v _TIMER2_ISR TIMER2_ISR `(v  1 e 1 0 ]
+{
+"118
 } 0
 "144 C:\Users\xcite\OneDrive\Documents\Drivers.X\MCAL_LAYER/Timer/hal_timer1.c
 [v _TIMER1_ISR TIMER1_ISR `(v  1 e 1 0 ]

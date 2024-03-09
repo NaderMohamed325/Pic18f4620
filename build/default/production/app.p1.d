@@ -29,4 +29,6 @@ MCAL_LAYER/EEPROM/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h  \
 MCAL_LAYER/ADC/hal_adc.h  \
 MCAL_LAYER/ADC/hal_adc_cfg.h  \
 MCAL_LAYER/Timer/hal_timer0.h  \
-MCAL_LAYER/Timer/hal_timer1.h 
+MCAL_LAYER/Timer/hal_timer1.h  \
+MCAL_LAYER/Timer/hal_timer2.h  \
+MCAL_LAYER/Timer/hal_timer3.h 

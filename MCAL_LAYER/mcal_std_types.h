@@ -31,7 +31,7 @@ typedef signed short sint16;
 typedef uint8 Std_ReturnType;
 #define     E_OK        (Std_ReturnType)0X01
 #define     E_NOT_OK    (Std_ReturnType)0X00
-
+#define     null         NULL
 
 
 

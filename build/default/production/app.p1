@@ -294,7 +294,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "14
 [; ;app.c: 14: }
-[e :UE 287 ]
+[e :UE 288 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
 "18
@@ -308,21 +308,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _Application_initialize ..  ]
 "22
 [; ;app.c: 22:     while (1) {
-[e :U 290 ]
+[e :U 291 ]
 {
 "24
 [; ;app.c: 24:     }
 }
-[e :U 289 ]
-[e $U 290  ]
-[e :U 291 ]
+[e :U 290 ]
+[e $U 291  ]
+[e :U 292 ]
 "26
 [; ;app.c: 26:     return 0;
 [e ) -> 0 `i ]
-[e $UE 288  ]
+[e $UE 289  ]
 "27
 [; ;app.c: 27: }
-[e :UE 288 ]
+[e :UE 289 ]
 }
 "29
 [; ;app.c: 29: void Application_initialize(void) {
@@ -335,5 +335,5 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _ecu_layer_initialize ..  ]
 "35
 [; ;app.c: 35: }
-[e :UE 292 ]
+[e :UE 293 ]
 }

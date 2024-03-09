@@ -14,6 +14,8 @@
 #include "MCAL_LAYER/ADC/hal_adc.h"
 #include "MCAL_LAYER/Timer/hal_timer0.h"
 #include "MCAL_LAYER/Timer/hal_timer1.h"
+#include "MCAL_LAYER/Timer/hal_timer2.h"
+#include "MCAL_LAYER/Timer/hal_timer3.h"
 /*-----------------MACROS--------------------*/
 
 

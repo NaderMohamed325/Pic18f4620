@@ -5656,7 +5656,7 @@ Std_ReturnType Timer0_Write_Value(timer0_t const *timer, uint16 value);
 Std_ReturnType Timer0_Read_Value(timer0_t const *timer, uint16 *value);
 # 16 "./app.h" 2
 # 1 "./MCAL_LAYER/Timer/hal_timer1.h" 1
-# 52 "./MCAL_LAYER/Timer/hal_timer1.h"
+# 61 "./MCAL_LAYER/Timer/hal_timer1.h"
 typedef enum {
     TIMER1_PRESCALER_DIV_BY_1 = 0,
     TIMER1_PRESCALER_DIV_BY_2,
@@ -5666,8 +5666,11 @@ typedef enum {
 
 typedef struct {
 
+
     void (*Timer1_Interrupt_Handler)(void);
+
     interrupt_priority_cfg priority;
+
 
     timer1_prescaler_select_t prescaler_value;
     uint16 timer1_preload_value;
@@ -5678,12 +5681,76 @@ typedef struct {
 } timer1_t;
 
 
+
 Std_ReturnType Timer1_Init(timer1_t const *timer);
+
+
 Std_ReturnType Timer1_DeInit(timer1_t const *timer);
+
+
 Std_ReturnType Timer1_Write_Value(timer1_t const *timer, uint16 value);
+
+
 Std_ReturnType Timer1_Read_Value(timer1_t const *timer, uint16 *value);
 # 17 "./app.h" 2
-# 27 "./app.h"
+# 1 "./MCAL_LAYER/Timer/hal_timer2.h" 1
+# 31 "./MCAL_LAYER/Timer/hal_timer2.h"
+typedef enum {
+    TIMER2_POST_SCALER_DIV_BY_1 = 0,
+    TIMER2_POST_SCALER_DIV_BY_2,
+    TIMER2_POST_SCALER_DIV_BY_3,
+    TIMER2_POST_SCALER_DIV_BY_4,
+    TIMER2_POST_SCALER_DIV_BY_5,
+    TIMER2_POST_SCALER_DIV_BY_6,
+    TIMER2_POST_SCALER_DIV_BY_7,
+    TIMER2_POST_SCALER_DIV_BY_8,
+    TIMER2_POST_SCALER_DIV_BY_9,
+    TIMER2_POST_SCALER_DIV_BY_10,
+    TIMER2_POST_SCALER_DIV_BY_11,
+    TIMER2_POST_SCALER_DIV_BY_12,
+    TIMER2_POST_SCALER_DIV_BY_13,
+    TIMER2_POST_SCALER_DIV_BY_14,
+    TIMER2_POST_SCALER_DIV_BY_15,
+    TIMER2_POST_SCALER_DIV_BY_16,
+} timer2_post_scaler_t;
+
+typedef enum {
+    TIMER2_PRE_SCALER_DIV_BY_1 = 0,
+    TIMER2_PRE_SCALER_DIV_BY_4,
+    TIMER2_PRE_SCALER_DIV_BY_16,
+} timer2_pre_scaler_t;
+
+typedef struct {
+
+
+    void (*Timer2_Interrupt_Handler)(void);
+
+    interrupt_priority_cfg priority;
+
+    uint8 timer2_preload_value;
+    timer2_pre_scaler_t timer2_prescaler_value;
+    timer2_post_scaler_t timer2_postscaler_value;
+
+} timer2_t;
+
+
+
+
+
+Std_ReturnType Timer2_Init(timer2_t const *timer);
+
+
+Std_ReturnType Timer2_DeInit(timer2_t const *timer);
+
+
+Std_ReturnType Timer2_Write_Value(timer2_t const *timer, uint8 value);
+
+
+Std_ReturnType Timer2_Read_Value(timer2_t const *timer, uint8 *value);
+# 18 "./app.h" 2
+# 1 "./MCAL_LAYER/Timer/hal_timer3.h" 1
+# 19 "./app.h" 2
+# 29 "./app.h"
 void Application_initialize(void);
 # 2 "app.c" 2
 

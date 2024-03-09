@@ -5244,7 +5244,7 @@ Std_ReturnType Timer0_Init(timer0_t const *timer) {
         (INTCONbits.TMR0IE = 1);
         (INTCONbits.TMR0IF = 0);
         Timer0_Interrupt_Handler = timer->Timer0_Interrupt_Handler;
-# 54 "MCAL_LAYER/Timer/hal_timer0.c"
+# 55 "MCAL_LAYER/Timer/hal_timer0.c"
         (INTCONbits.GIEH = 1);
         (INTCONbits.PEIE = 1);
 
@@ -5278,7 +5278,7 @@ Std_ReturnType Timer0_DeInit(timer0_t const *timer) {
 
     return ret;
 }
-# 95 "MCAL_LAYER/Timer/hal_timer0.c"
+# 96 "MCAL_LAYER/Timer/hal_timer0.c"
 Std_ReturnType Timer0_Write_Value(timer0_t const *timer, uint16 value) {
     Std_ReturnType ret = (Std_ReturnType)0X01;
 
@@ -5293,7 +5293,7 @@ Std_ReturnType Timer0_Write_Value(timer0_t const *timer, uint16 value) {
 
     return ret;
 }
-# 117 "MCAL_LAYER/Timer/hal_timer0.c"
+# 118 "MCAL_LAYER/Timer/hal_timer0.c"
 Std_ReturnType Timer0_Read_Value(timer0_t const *timer, uint16 *value) {
      Std_ReturnType ret = (Std_ReturnType)0X00;
     uint8 l_tmr0l = 0, l_tmr0h = 0;
