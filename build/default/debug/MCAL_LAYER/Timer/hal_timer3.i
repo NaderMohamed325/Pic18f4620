@@ -5174,5 +5174,180 @@ typedef enum {
 } interrupt_priority_cfg;
 # 12 "MCAL_LAYER/Timer/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 2
 # 13 "MCAL_LAYER/Timer/hal_timer3.h" 2
+# 51 "MCAL_LAYER/Timer/hal_timer3.h"
+typedef enum {
+    TIMER3_PRESCALER_DIV_BY_1 = 0,
+    TIMER3_PRESCALER_DIV_BY_2,
+    TIMER3_PRESCALER_DIV_BY_4,
+    TIMER3_PRESCALER_DIV_BY_8,
+} timer3_prescaler_select_t;
+
+typedef struct {
+
+
+    void (*Timer3_Interrupt_Handler)(void);
+
+    interrupt_priority_cfg priority;
+
+
+    timer3_prescaler_select_t prescaler_value;
+    uint16 timer3_preload_value;
+    uint8 timer3_mode : 1;
+    uint8 counter_mode : 1;
+    uint8 timer3_rw_reg_mode : 1;
+} timer3_t;
+
+
+
+
+
+Std_ReturnType Timer3_Init(timer3_t const *timer);
+
+
+Std_ReturnType Timer3_DeInit(timer3_t const *timer);
+
+
+Std_ReturnType Timer3_Write_Value(timer3_t const *timer, uint16 value);
+
+
+Std_ReturnType Timer3_Read_Value(timer3_t const *timer, uint16 *value);
 # 7 "MCAL_LAYER/Timer/hal_timer3.c" 2
 
+
+
+
+
+
+static void (*Timer3_Interrupt_Handler)(void) = ((void*)0);
+
+
+
+static __attribute__((inline)) void Timer3_Mode_Config(timer3_t const *timer);
+
+
+static uint16 pre_work_out = 0;
+
+
+
+
+Std_ReturnType Timer3_Init(timer3_t const *timer) {
+    Std_ReturnType ret = (Std_ReturnType)0X00;
+
+
+    if (((void*)0) == timer) {
+        ret = (Std_ReturnType)0X00;
+    } else {
+
+        (T3CONbits.TMR3ON=0);
+
+
+        Timer3_Mode_Config(timer);
+
+
+        (T3CONbits.T3CKPS=timer->prescaler_value);
+
+
+        TMR3H = (timer->timer3_preload_value) >> 8;
+        TMR3L = (uint8) (timer->timer3_preload_value);
+
+
+
+        (PIE2bits.TMR3IE= 1);
+        (PIR2bits.TMR3IF = 0);
+        Timer3_Interrupt_Handler = timer->Timer3_Interrupt_Handler;
+# 63 "MCAL_LAYER/Timer/hal_timer3.c"
+        (INTCONbits.GIEH = 1);
+        (INTCONbits.PEIE = 1);
+
+
+
+        (T3CONbits.TMR3ON=1);
+
+        ret = (Std_ReturnType)0X01;
+    }
+    return ret;
+}
+
+
+
+Std_ReturnType Timer3_DeInit(timer3_t const *timer) {
+    Std_ReturnType ret = (Std_ReturnType)0X00;
+
+    if (((void*)0) == timer) {
+        ret = (Std_ReturnType)0X00;
+    } else {
+
+        (T3CONbits.TMR3ON=0);
+
+        (PIE2bits.TMR3IE= 0);
+
+
+        ret = (Std_ReturnType)0X01;
+    }
+    return ret;
+}
+
+
+
+Std_ReturnType Timer3_Write_Value(timer3_t const *timer, uint16 value) {
+    Std_ReturnType ret = (Std_ReturnType)0X00;
+
+    if (((void*)0) == timer) {
+        ret = (Std_ReturnType)0X00;
+    } else {
+
+        TMR3H = (value) >> 8;
+        TMR3L = (uint8) (value);
+        ret = (Std_ReturnType)0X01;
+    }
+    return ret;
+}
+
+
+
+Std_ReturnType Timer3_Read_Value(timer3_t const *timer, uint16 *value) {
+      Std_ReturnType ret = (Std_ReturnType)0X00;
+ uint8 l_tmr3l = 0, l_tmr3h = 0;
+    if(((void*)0) == timer){
+        ret = (Std_ReturnType)0X00;
+    }
+    else{
+        l_tmr3l = TMR3L;
+        l_tmr3h = TMR3H;
+        *value = (uint16)((l_tmr3h << 8) + l_tmr3l);
+        ret = (Std_ReturnType)0X01;
+    }
+    return ret;
+}
+
+static __attribute__((inline)) void Timer3_Mode_Config(timer3_t const *timer) {
+
+    if (0 == timer->timer3_mode) {
+        (T3CONbits.TMR3CS=1);
+
+
+        if (1 == timer->counter_mode) {
+            (T3CONbits.T3SYNC=1);
+        } else if (0 == timer->counter_mode) {
+            (T3CONbits.T3SYNC=0);
+        }
+
+    } else if (1 == timer->timer3_mode) {
+
+        (T3CONbits.TMR3CS=0);
+    }
+}
+
+
+
+
+void TIMER3_ISR(void) {
+
+    (PIR2bits.TMR3IF = 0);
+    TMR3H = (pre_work_out) >> 8;
+    TMR3L = (uint8) (pre_work_out);
+
+    if (Timer3_Interrupt_Handler) {
+        Timer3_Interrupt_Handler();
+    }
+}

@@ -93,7 +93,7 @@ Std_ReturnType Timer1_Write_Value(timer1_t const *timer, uint16 value) {
         ret = E_NOT_OK;
     } else {
 
-        // Write the value to Timer0 registers
+        // Write the value to Timer1 registers
         TMR1H = (value) >> 8;
         TMR1L = (uint8) (value);
         ret = E_OK;

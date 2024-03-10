@@ -5174,5 +5174,12 @@ typedef enum {
 } interrupt_priority_cfg;
 # 12 "MCAL_LAYER/Timer/../../MCAL_LAYER/Interrupt/mcal_internal_interrupt.h" 2
 # 13 "MCAL_LAYER/Timer/hal_timer3.h" 2
+# 51 "MCAL_LAYER/Timer/hal_timer3.h"
+typedef enum {
+    TIMER3_PRESCALER_DIV_BY_1 = 0,
+    TIMER3_PRESCALER_DIV_BY_2,
+    TIMER3_PRESCALER_DIV_BY_4,
+    TIMER3_PRESCALER_DIV_BY_8,
+} timer3_prescaler_select_t;
 # 7 "MCAL_LAYER/Timer/hal_timer3.c" 2
 

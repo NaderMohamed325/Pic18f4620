@@ -51,6 +51,9 @@ void __interrupt() Interrupt_Manager_High(void) {
     if (INTERRUPT_ENABLE == PIE1bits.TMR2IE && INTERRUPT_OCCUR == PIR1bits.TMR2IF) {
         TIMER2_ISR();
     }
+     if (INTERRUPT_ENABLE == PIE2bits.TMR3IE && INTERRUPT_OCCUR == PIR2bits.TMR3IF) {
+        TIMER3_ISR();
+    }
     // Check and call RBx ISRs for pin change interrupts
     if ((INTCONbits.RBIE == INTERRUPT_ENABLE) && (INTCONbits.RBIF == INTERRUPT_OCCUR)) {
         // Check each RBx pin individually and call the corresponding ISR

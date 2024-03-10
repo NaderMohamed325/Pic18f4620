@@ -5261,6 +5261,7 @@ Std_ReturnType Timer2_Init(timer2_t const *timer) {
         (INTCONbits.PEIE = 1);
 
 
+        (T2CONbits.TMR2ON=1);
         ret = (Std_ReturnType)0X01;
     }
     return ret;
@@ -5275,6 +5276,10 @@ Std_ReturnType Timer2_DeInit(timer2_t const *timer) {
         ret = (Std_ReturnType)0X00;
     } else {
 
+        (T2CONbits.TMR2ON=1);
+
+        (PIE1bits.TMR2IE= 0);
+
         ret = (Std_ReturnType)0X01;
     }
     return ret;
@@ -5288,7 +5293,7 @@ Std_ReturnType Timer2_Write_Value(timer2_t const *timer, uint8 value) {
     if (((void*)0) == timer) {
         ret = (Std_ReturnType)0X00;
     } else {
-
+        TMR2 = value;
         ret = (Std_ReturnType)0X01;
     }
     return ret;
@@ -5302,10 +5307,24 @@ Std_ReturnType Timer2_Read_Value(timer2_t const *timer, uint8 *value) {
     if (((void*)0) == timer || ((void*)0) == value) {
         ret = (Std_ReturnType)0X00;
     } else {
-
+        *value = TMR2;
         ret = (Std_ReturnType)0X01;
     }
     return ret;
 
 
+}
+
+
+
+
+
+void TIMER2_ISR(void) {
+
+    (PIR1bits.TMR2IF = 0);
+    TMR2 = pre;
+
+    if (Timer2_Interrupt_Handler) {
+        Timer2_Interrupt_Handler();
+    }
 }

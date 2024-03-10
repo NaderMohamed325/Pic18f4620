@@ -5749,6 +5749,43 @@ Std_ReturnType Timer2_Write_Value(timer2_t const *timer, uint8 value);
 Std_ReturnType Timer2_Read_Value(timer2_t const *timer, uint8 *value);
 # 18 "./app.h" 2
 # 1 "./MCAL_LAYER/Timer/hal_timer3.h" 1
+# 51 "./MCAL_LAYER/Timer/hal_timer3.h"
+typedef enum {
+    TIMER3_PRESCALER_DIV_BY_1 = 0,
+    TIMER3_PRESCALER_DIV_BY_2,
+    TIMER3_PRESCALER_DIV_BY_4,
+    TIMER3_PRESCALER_DIV_BY_8,
+} timer3_prescaler_select_t;
+
+typedef struct {
+
+
+    void (*Timer3_Interrupt_Handler)(void);
+
+    interrupt_priority_cfg priority;
+
+
+    timer3_prescaler_select_t prescaler_value;
+    uint16 timer3_preload_value;
+    uint8 timer3_mode : 1;
+    uint8 counter_mode : 1;
+    uint8 timer3_rw_reg_mode : 1;
+} timer3_t;
+
+
+
+
+
+Std_ReturnType Timer3_Init(timer3_t const *timer);
+
+
+Std_ReturnType Timer3_DeInit(timer3_t const *timer);
+
+
+Std_ReturnType Timer3_Write_Value(timer3_t const *timer, uint16 value);
+
+
+Std_ReturnType Timer3_Read_Value(timer3_t const *timer, uint16 *value);
 # 19 "./app.h" 2
 # 29 "./app.h"
 void Application_initialize(void);
@@ -5762,18 +5799,34 @@ void Application_initialize(void);
 
 
 
+volatile uint16 val = 0;
+Led_t led = {
+    .led_status = LED_OFF,
+    .pin_index = PIN0,
+    .port_index = PORTC_INDEX,
+};
 
 void Isr(void) {
-
+    led_toggle_status(&led);
 }
 
 
+
+timer1_t timer1 = {
+    .Timer1_Interrupt_Handler = Isr,
+    .prescaler_value = TIMER1_PRESCALER_DIV_BY_8,
+    .timer1_mode = 1,
+    .timer1_osc_cfg = 0,
+    .timer1_preload_value = 3036,
+    .timer1_rw_reg_mode = 1,
+};
 
 int main(void) {
 
     Application_initialize();
 
     while (1) {
+
 
     }
 
@@ -5783,7 +5836,6 @@ int main(void) {
 void Application_initialize(void) {
 
     ecu_layer_initialize();
-
-
-
+    Timer1_Init(&timer1);
+    led_intialize(&led);
 }
